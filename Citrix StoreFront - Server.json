@@ -1,0 +1,17 @@
+[
+    {
+        "Exclusion":  "%SystemRoot%\\ServiceProfiles\\NetworkService\\AppData\\Roaming\\Citrix\\SubscriptionsStore\\**\\PersistentDictionary.edb",
+        "ExclusionType":  "File",
+        "Justification":  "Path can be different per server"
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Receiver StoreFront\\Services\\SubscriptionsStoreService\\Citrix.DeliveryServices.SubscriptionsStore.ServiceHost.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Receiver StoreFront\\Services\\CredentialWallet\\Citrix.DeliveryServices.CredentialWallet.ServiceHost.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    }
+]

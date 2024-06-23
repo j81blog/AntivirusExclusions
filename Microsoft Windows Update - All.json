@@ -1,0 +1,37 @@
+[
+    {
+        "Exclusion":  "%SystemRoot%\\SoftwareDistribution\\Datastore\\Datastore.edb",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\SoftwareDistribution\\Datastore\\Logs\\Edb*.jrs",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\SoftwareDistribution\\Datastore\\Logs\\Edb.chk",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\SoftwareDistribution\\Datastore\\Logs\\Tmp.edb",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramData%\\Microsoft\\Search\\Data\\Applications\\Windows\\windows.edb",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\SoftwareDistribution\\Datastore\\*\\Res\\*.log",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\SoftwareDistribution\\Datastore\\*\\edb\\*.log",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    }
+]

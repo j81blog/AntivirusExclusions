@@ -1,0 +1,47 @@
+[
+    {
+        "Exclusion":  "%SystemRoot%\\ServiceProfiles\\NetworkService\\HaDatabaseName.mdf",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\ServiceProfiles\\NetworkService\\HaImportDatabaseName.mdf",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\ServiceProfiles\\NetworkService\\HaDatabaseName_log.ldf",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\ServiceProfiles\\NetworkService\\HaImportDatabaseName_log.ldf",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Logs\\CDF",
+        "ExclusionType":  "Folder",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramData%\\Citrix\\WorkspaceCloud\\Logs",
+        "ExclusionType":  "Folder",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\XaXdCloudProxy\\XaXdCloudProxy.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Broker\\Service\\HighAvailabilityService.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\ConfigSync\\ConfigSyncService.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    }
+]

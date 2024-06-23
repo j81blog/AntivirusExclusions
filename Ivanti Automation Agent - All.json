@@ -1,0 +1,72 @@
+[
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\agent.exe",
+        "ExclusionType":  "File/Process",
+        "Justification":  "Service Name: RESWAS"
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\agent_updater.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\deployer.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\Wisexch.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\wisgate.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\wisShell_2.0.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\wisShell_4.0.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\wisstub_2.0_x64.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\wisstub_2.0_x86.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\wisstub_4.0_x64.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\wisstub_4.0_x86.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\Sidekick32.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\Sidekick64.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Agent\\ SidekickCore\\SidekickCore.exe",
+        "ExclusionType":  "File",
+        "Justification":  null
+    }
+]

@@ -1,0 +1,77 @@
+[
+    {
+        "Exclusion":  "**\\*.vdiskcache",
+        "ExclusionType":  "File (Extension)",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "**\\vdiskdif.vhdx",
+        "ExclusionType":  "File",
+        "Justification":  "7.x only"
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\drivers\\bnistack6.sys",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\drivers\\CfsDep2.sys",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\drivers\\CVhdBusP6.sys",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\drivers\\CVhdMp.sys",
+        "ExclusionType":  "File",
+        "Justification":  "7.x only"
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\drivers\\cnicteam.sys",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\PvsVm\\Service\\PvsVmAgent.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Provisioning Services\\BNDevice.exe",
+        "ExclusionType":  "Process",
+        "Justification":  "17-03-2022"
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Personal vDisk\\BIN\\CTXPVD.exe",
+        "ExclusionType":  "Process",
+        "Justification":  "PvD and AppDisks only"
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Personal vDisk\\BIN\\CTXPVDSVC.exe",
+        "ExclusionType":  "Process",
+        "Justification":  "PvD and AppDisks only"
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Provisioning Services\\BNIstack6.sys",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Provisioning Services\\CnicTeam.sys",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Provisioning Services\\CfsDep2.sys",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\Provisioning Services\\CVhdMp.sys",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    }
+]

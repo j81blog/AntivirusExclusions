@@ -1,0 +1,42 @@
+[
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.edb",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.sdb",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.log",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.chk",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.jrs",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.xml",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.csv",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\Security\\Database\\*.cmtx",
+        "ExclusionType":  "File",
+        "Justification":  null
+    }
+]

@@ -1,0 +1,12 @@
+[
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Microsoft Intune Management Extension\\Content",
+        "ExclusionType":  "Folder",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\IMECache",
+        "ExclusionType":  "Folder",
+        "Justification":  ""
+    }
+]

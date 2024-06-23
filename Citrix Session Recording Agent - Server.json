@@ -1,0 +1,27 @@
+[
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\SessionRecording\\Agent\\Bin\\SsRecAgent.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\SessionRecording\\Agent\\Bin\\SsRecAgentWrapper.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\drivers\\ssrecdrv.sys",
+        "ExclusionType":  "Files",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\drivers\\srminifilterdrv.sys",
+        "ExclusionType":  "Files",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%SystemRoot%\\System32\\msmq",
+        "ExclusionType":  "Folder",
+        "Justification":  ""
+    }
+]

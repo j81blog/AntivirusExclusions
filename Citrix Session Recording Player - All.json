@@ -1,0 +1,12 @@
+[
+    {
+        "Exclusion":  "%ProgramFiles%\\Citrix\\SessionRecording\\Player\\Bin\\SsRecPlayer.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%UserProfile%\\AppData\\Local\\Citrix\\SessionRecording\\Player\\Cache",
+        "ExclusionType":  "Folder",
+        "Justification":  null
+    }
+]

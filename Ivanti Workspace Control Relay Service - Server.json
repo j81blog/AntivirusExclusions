@@ -1,0 +1,132 @@
+[
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Ivanti\\Workspace Control\\Relay Server\\RelayServer.exe",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.log",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.pll",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.plla",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.pllc",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.stu",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.str",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.nur",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.pmw",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.lic",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.licn",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.licu",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.licr",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.pta",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.ptc",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.pts",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.mls",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.vdxlic",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.vdxlicn",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.vdxlicr",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.sublic",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.sublicn",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.cnl",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Transactions\\*.appv",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "C:\\Relay\\Cache\\{\u003cGUID\u003e}\\Cache\\{DateTime}\\Resources\\Custom_resources",
+        "ExclusionType":  "Folder",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramData%\\Ivanti\\Relay Server\\",
+        "ExclusionType":  "Folders",
+        "Justification":  "Folder en subfolders"
+    }
+]

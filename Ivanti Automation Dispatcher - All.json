@@ -1,0 +1,22 @@
+[
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Dispatcher\\dispatcher.exe",
+        "ExclusionType":  "File/Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Dispatcher\\updater.exe",
+        "ExclusionType":  "File/Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Dispatcher\\Updates\\Dispatcher\\dispatcher.exe",
+        "ExclusionType":  "File/Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles%\\Ivanti\\Automation\\Dispatcher\\Updates\\Dispatcher\\updater.exe",
+        "ExclusionType":  "File/Process",
+        "Justification":  null
+    }
+]

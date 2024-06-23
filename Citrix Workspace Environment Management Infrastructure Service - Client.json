@@ -1,0 +1,77 @@
+[
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\Agent Log Parser.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\AgentGroupPolicyUtility.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\Citrix.Wem.Agent.LogonService.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\AgentCacheUtility.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\AppsMgmtUtil.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\Norskale Agent Host Service.exe",
+        "ExclusionType":  "Process",
+        "Justification":  "Up to on-prem 1909+/ Up to cloud 1903+"
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\Citrix.Wem.Agent.Service.exe",
+        "ExclusionType":  "Process",
+        "Justification":  "On-prem 1909+ /Cloud 1903+"
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\PrnsMgmtUtil.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\VUEMAppCmd.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\VUEMAppCmdDbg.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\VUEMAppHide.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\VUEMCmdAgent.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\VUEMMaintMsg.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\VUEMRSAV.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Norskale\\Norskale Agent Host\\VUEMUIAgent.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    }
+]

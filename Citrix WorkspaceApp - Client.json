@@ -1,0 +1,52 @@
+[
+    {
+        "Exclusion":  "%userprofile%\\AppData\\Local\\Temp\\Citrix\\RTMediaEngineSRV\\MediaEngineSRVDebugLogs\\*\\*.txt",
+        "ExclusionType":  "File",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\MediaEngineService.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\CDViewer.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\concentr.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\wfica32.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\AuthManager\\AuthManSvr.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\SelfServicePlugin\\SelfService.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\SelfServicePlugin\\SelfServicePlugin.exe",
+        "ExclusionType":  "Process",
+        "Justification":  ""
+    },
+    {
+        "Exclusion":  "%ProgramFiles(x86)%\\Citrix\\ICA Client\\HdxTeams.exe",
+        "ExclusionType":  "Process",
+        "Justification":  "Optimization for Microsoft Teams for Workspace app 2009.5 or older "
+    },
+    {
+        "Exclusion":  "%ProgramFiles%(x86)\\Citrix\\ICA Client\\HdxRtcEngine.exe",
+        "ExclusionType":  "Process",
+        "Justification":  "Optimization for Microsoft Teams for Workspace app 2009.6 or higher 17-03-2022"
+    }
+]
