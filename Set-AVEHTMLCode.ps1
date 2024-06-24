@@ -25,7 +25,7 @@ $htmlCode.Append(@"
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.4.4/luxon.min.js"
         integrity="sha512-dUlSLLkxslGILhPdCkALwk4szPhp3xmZIKFtlUD+O9Lslq41Aksmdt5OGqpomDoT4FsCUH70jQU8ezZHI3v1RQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <meta charset="utf-8" />
+   <meta charset="utf-8" />
     <title>Anti Virus Exclusions</title>
 </head>
 <style>
@@ -43,6 +43,7 @@ $htmlCode.Append(@"
 "@) | Out-Null
 
 ForEach ($csvFile in $csvFiles) {
+    $csvFilename = $csvFile.Name
     $jsonFilename = "$outputPath\$($csvFile.BaseName).json"
     $csvData = Import-Csv -Path $csvFile.FullName -Delimiter ";"
     $json = $csvData | ConvertTo-Json -Depth 5
@@ -62,7 +63,12 @@ ForEach ($csvFile in $csvFiles) {
             </h2>
             <div id="$($shortCode)-table"></div>
             <script>
-                var table = new Tabulator("#$($shortCode)-table", {
+                function $($shortCode)down() {
+                    $($shortCode)table.download("csv", "$($csvFilename)", {
+                        delimiter: ","
+                    });
+                }
+                var $($shortCode)table = new Tabulator("#$($shortCode)-table", {
                     ajaxURL: "$($jsonFilename)",
                     layout: "fitDataStretch",
                     setSort: [
@@ -73,9 +79,12 @@ ForEach ($csvFile in $csvFiles) {
                         { title: "Exclusion", field: "Exclusion", width: 650 },
                         { title: "ExclusionType", field: "ExclusionType", width: 150, hozAlign: "left" },
                         { title: "Justification", field: "Justification", hozAlign: "left", formatter: "textarea" }
-                    ]
+                    ],
+
+                    footerElement: "<button id='download-$($shortCode)-csv' onclick='$($shortCode)down();'>Download CSV</button>"
                 });
             </script>
+            </div>
         </div>
 
 "@) | Out-Null
