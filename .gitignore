@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+#We don't want to save the generated files
+output/
+
 # User-specific files
 *.rsuser
 *.suo
