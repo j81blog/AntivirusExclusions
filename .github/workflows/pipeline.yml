@@ -1,0 +1,25 @@
+name: Anti Virus Exclusions
+on:
+  push:
+    branches:
+      - 'dev'
+      - 'main'
+
+jobs:
+  publish:
+    name: publish and push
+    runs-on: windows-2022
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          clean: true
+      - name: Publish files
+        shell: pwsh
+        env:
+          SSHHost: ${{ secrets.SSHHost }}
+          SSHPath: ${{ secrets.SSHPath }}
+          SSHUsername: ${{ secrets.SSHUsername }}
+          SSHPassword: ${{ secrets.SSHPassword }}
+        run: |
+          .\ci\Publish-Files.ps1
