@@ -62,6 +62,13 @@ if (Test-Path -Path $FilesPath) {
             Set-SFTPItem -Session $SSHSession.SessionID -Destination $SSHPath -Path $file.FullName -Force
         }
         Write-Host "Files copied"
+        try {
+            Write-Host "Trying to clean up files in $FilesPath"
+            Remove-Item -Path $FilesPath -Recurse -Force
+            Write-Host "Files cleaned up"
+        } catch {
+            Write-Warning "Failed to clean up files, $($_.Exception.Message)"
+        }
 
         Write-Host "Disconnecting"
         if (Remove-SFTPSession -SFTPSession $SSHSession) {
