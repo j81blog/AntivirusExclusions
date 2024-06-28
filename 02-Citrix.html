@@ -1,0 +1,26 @@
+<div>
+    These are exclusions specific for Citrix
+    <br />
+    When using non-persistent images, all changes are lost after a reboot. This also applies to antivirus definitions
+    and possible contaminations. Depending on the degree of security desired, a decision can be made as to whether it
+    will be necessary to install an antivirus agent on the virtual desktop.
+    The following antivirus exclusions should be applied to all Citrix infrastructure servers:
+    <ul>
+        <li>Set real-time scanning to scan local drives only and not network drives</li>
+        <li>Disable scan on boot</li>
+        <li>Remove any unnecessary antivirus related entries from the Run key</li>
+        <li>Exclude the pagefile(s) from being scanned</li>
+        <li>Exclude Windows event logs from being scanned</li>
+        <li>Exclude IIS log files from being scanned</li>
+        <li>Exclude the print spooler directory (to improve print performance)</li>
+    </ul>
+    It is recommended to update a master image or vDisk at least once a month, this is to keep the size of the virus
+    definition files to a minimum. For updating only the definition files it of no importance how the image gets updated
+    (vDisk version, editing a MCS image or enrolling an entirely new image).
+    Applying the new definition files must occur during computer start-up and at a random interval during business hours
+    (most virtualization aware anti-virus solutions provide such a function).
+    Start-up of the Citrix services should be delayed to ensure enough time is available to update the definition files.
+    This can be done by altering the service start-up method to 'delayed start', or by implementing a script to
+    'manually' start the services after a period of time. Virus definitions sizes tent to increase over time, this
+    timeframe must be taken into account.
+</div>
