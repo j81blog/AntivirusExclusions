@@ -42,26 +42,35 @@ if (Get-Module -Name Posh-SSH) {
 
 $FilesPath = [System.IO.Path]::Combine($projectRoot, $OutputPath)
 
-Write-Host "Connecting to host"
-$SSHSession = New-SFTPSession -ComputerName $SSHHost -Port $Port -Credential $Credential
+Write-Host "Creating output directory and content"
+& "$PSSCriptRoot\Set-AVEHTMLCode.ps1" -ProjectRoot $projectRoot -OutputPath $FilesPath
+Write-Host "Output directory and content created"
 
-if ($SSHSession.Connected -eq $true) {
-    Write-Host "Connected to host, copying files"
+if (Test-Path -Path $FilesPath) {
     $files = Get-ChildItem -Path $FilesPath
+    Write-Host "$($files.Count) Files to copy, connecting to host"
+    $SSHSession = New-SFTPSession -ComputerName $SSHHost -Port $Port -Credential $Credential
 
-    ForEach ($file in $files) {
-        Write-Host "Uploading file: $file"
-        Set-SFTPItem -Session $SSHSession.SessionID -Destination $SSHPath -Path $file.FullName -Force
-    }
-    Write-Host "Files copied"
+    if ($SSHSession.Connected -eq $true) {
+        Write-Host "Connected to host, copying files"
 
-    Write-Host "Disconnecting"
-    if (Remove-SFTPSession -SFTPSession $SSHSession) {
-        Write-Host "Disconnected"
+        ForEach ($file in $files) {
+            Write-Host "Uploading file: $file"
+            Set-SFTPItem -Session $SSHSession.SessionID -Destination $SSHPath -Path $file.FullName -Force
+        }
+        Write-Host "Files copied"
+
+        Write-Host "Disconnecting"
+        if (Remove-SFTPSession -SFTPSession $SSHSession) {
+            Write-Host "Disconnected"
+        } else {
+            Write-Host "Failed to disconnect"
+        }
     } else {
-        Write-Host "Failed to disconnect"
+        Write-Host "Failed to connect to host"
+        Exit 1
     }
 } else {
-    Write-Host "Failed to connect to host"
-    Exit 1
+    Write-Host "No files to copy"
+    Exit 0
 }

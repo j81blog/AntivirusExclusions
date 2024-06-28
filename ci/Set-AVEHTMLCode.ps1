@@ -1,9 +1,30 @@
-Import-Module -Name PSParseHTML -ErrorAction Stop
-$csvFiles = Get-ChildItem -Path "$PSScriptRoot\*" -Include "*.csv"
+[CmdletBinding()]
+[OutputType()]
+param (
+    $ProjectRoot = "$PSScriptRoot",
+
+    $OutputPath = "$PSScriptRoot\output"
+)
+Write-Host "Generating HTML and json files"
+Write-Host "Project root: $projectRoot"
+Write-Host "Checking if PSParseHTML module is installed"
+if (Get-Module -Name PSParseHTML -ListAvailable) {
+    Write-Host "PSParseHTML module is already installed"
+} else {
+    Install-Module -Name PSParseHTML -Force -AllowClobber
+}
+Import-Module PSParseHTML
+
+if (Get-Module -Name PSParseHTML) {
+    Write-Host "PSParseHTML module is imported"
+} else {
+    Import-Module -Name PSParseHTML -ErrorAction Stop
+}
+
+$csvFiles = Get-ChildItem -Path "$ProjectRoot\*" -Include "*.csv"
 Write-Host "CSVs: $($csvFiles.Count)"
-$htmlVendorHeadings = Get-ChildItem -Path "$PSScriptRoot\*" -Include "*.html" | Where-Object { $_.Name -match "^[0-9]{1,3}\-[A-Za-z0-9()]*\.html$" } | Sort-Object -Property Name
+$htmlVendorHeadings = Get-ChildItem -Path "$ProjectRoot\*" -Include "*.html" | Where-Object { $_.Name -match "^[0-9]{1,3}\-[A-Za-z0-9()]*\.html$" } | Sort-Object -Property Name
 Write-Host "Vendor HTMLs: $($htmlVendorHeadings.Count)"
-$outputPath = "$PSScriptRoot\output"
 $indexFilename = "$outputPath\index.html"
 $htmlCode = New-Object -TypeName System.Text.StringBuilder
 if (Test-Path -Path $outputPath) {
@@ -249,4 +270,4 @@ $htmlCode.Append(@"
 "@) | Out-Null
 
 [System.IO.File]::WriteAllText($indexFilename, $(Format-HTML -Content $htmlCode.ToString()))
-Write-Information -MessageData "HTML was written to disk: $($outputPath)" -InformationAction Continue
+Write-Host "HTML and JSON files written to disk: $($outputPath)"
