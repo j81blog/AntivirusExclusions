@@ -15,7 +15,7 @@ jobs:
         with:
           clean: true
       - name: Publish files
-        shell: pwsh
+        shell: powershell
         env:
           SSHHost: ${{ secrets.SSHHost }}
           SSHPath: ${{ secrets.SSHPath }}
