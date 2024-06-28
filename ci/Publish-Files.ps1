@@ -60,7 +60,7 @@ if ($SSHSession.Connected -eq $true) {
         Write-Host "Disconnected"
     } else {
         Write-Host "Failed to disconnect"
-
+    }
 } else {
     Write-Host "Failed to connect to host"
     Exit 1
