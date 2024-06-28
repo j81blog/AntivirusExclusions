@@ -11,13 +11,16 @@ Write-Host "Checking if PSParseHTML module is installed"
 if (Get-Module -Name PSParseHTML -ListAvailable) {
     Write-Host "PSParseHTML module is already installed"
 } else {
+    Write-Host "Installing PSParseHTML module"
     Install-Module -Name PSParseHTML -Force -AllowClobber
+    Write-Host "PSParseHTML module installed"
 }
 Import-Module PSParseHTML
 
 if (Get-Module -Name PSParseHTML) {
-    Write-Host "PSParseHTML module is imported"
+    Write-Host "PSParseHTML module is already imported"
 } else {
+    Write-Host "Importing PSParseHTML module"
     Import-Module -Name PSParseHTML -ErrorAction Stop
 }
 

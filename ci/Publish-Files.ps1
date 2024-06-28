@@ -25,18 +25,21 @@ if (-Not ([String]::IsNullOrEmpty("${env:GITHUB_WORKSPACE}")) -and (Test-Path -P
     $SSHPath = Read-Host -Prompt "Enter SSH Path"
 }
 
-Write-Host "Project root: $projectRoot"
+Write-Host "Project root......: $projectRoot"
 Write-Host "Checking if Posh-SSH module is installed"
 if (Get-Module -Name Posh-SSH -ListAvailable) {
     Write-Host "Posh-SSH module is already installed"
 } else {
+    Write-Host "Installing Posh-SSH module"
     Install-Module -Name Posh-SSH -Force -AllowClobber
+    Write-Host "Posh-SSH module installed"
 }
 Import-Module Posh-SSH
 
 if (Get-Module -Name Posh-SSH) {
-    Write-Host "Posh-SSH module is imported"
+    Write-Host "Posh-SSH module is already imported"
 } else {
+    Write-Host "Importing Posh-SSH module"
     Import-Module -Name Posh-SSH
 }
 
@@ -49,7 +52,7 @@ Write-Host "Output directory and content created"
 if (Test-Path -Path $FilesPath) {
     $files = Get-ChildItem -Path $FilesPath
     Write-Host "$($files.Count) Files to copy, connecting to host"
-    $SSHSession = New-SFTPSession -ComputerName $SSHHost -Port $Port -Credential $Credential
+    $SSHSession = New-SFTPSession -ComputerName $SSHHost -Port $Port -Credential $Credential -Verbose
 
     if ($SSHSession.Connected -eq $true) {
         Write-Host "Connected to host, copying files"
