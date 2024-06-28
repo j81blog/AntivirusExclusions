@@ -52,7 +52,7 @@ Write-Host "Output directory and content created"
 if (Test-Path -Path $FilesPath) {
     $files = Get-ChildItem -Path $FilesPath
     Write-Host "$($files.Count) Files to copy, connecting to host"
-    $SSHSession = New-SFTPSession -ComputerName $SSHHost -Port $Port -Credential $Credential -Verbose
+    $SSHSession = New-SFTPSession -ComputerName $SSHHost -Port $Port -Credential $Credential -Force
 
     if ($SSHSession.Connected -eq $true) {
         Write-Host "Connected to host, copying files"
