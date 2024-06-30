@@ -84,7 +84,7 @@ $htmlCode.Append(@"
         background-color: #3759d7;
     }
     hr {
-        width: 70%;
+        width: 100%;
         height:5px;
     }
 </style>
