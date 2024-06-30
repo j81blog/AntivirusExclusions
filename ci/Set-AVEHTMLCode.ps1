@@ -301,6 +301,8 @@ $htmlCode.Append($htmlCodeExclusions.ToString())
 
 $htmlCode.Append(@"
         </div>
+        <br />
+        <p>Updated: $((Get-Date).ToString('dd-MM-yyyy HH:mm'))</p>
 </body>
 </html>
 "@) | Out-Null
