@@ -80,9 +80,12 @@ $htmlCode.Append(@"
         margin: 4px 2px;
         cursor: pointer;
     }
-
     .button1 {
         background-color: #3759d7;
+    }
+    hr {
+        width: 70%;
+        height:2px;
     }
 </style>
 
@@ -101,6 +104,9 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
 
     $htmlCodeExclusions.Append(@"
 <div>
+    <hr>
+</div>
+<div>
     <h2 id="$($vendorTileLink)">
         <a href="#$($vendorTileLink)">
             $($vendor)
@@ -109,13 +115,13 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
     $($vendorContent)
 </div>
 "@) | Out-Null
-$htmlCodeIndex.Append(@"
-<div>
-    <h2><a href="#$($vendorTileLink)">
-        $($vendor)
-    </a></h2>
-</div>
-"@) | Out-Null
+    #    $htmlCodeIndex.Append(@"
+    #<div>
+    #    <h2><a href="#$($vendorTileLink)">
+    #        $($vendor)
+    #    </a></h2>
+    #</div>
+    #"@) | Out-Null
     ForEach ($csvFile in $vendorCsvs) {
         $title = $csvFile.BaseName
         $csvFilename = $csvFile.Name
@@ -180,13 +186,13 @@ $(Get-Content -Path $itemPreCodeFilename)
 </div>
 <br />
 "@) | Out-Null
-$htmlCodeIndex.Append(@"
-<div>
-    <h3><a href="#$($titleLink)">
-        $($title)
-    </a></h3>
-</div>
-"@) | Out-Null
+            #$htmlCodeIndex.Append(@"
+            #<div>
+            #    <h3><a href="#$($titleLink)">
+            #        $($title)
+            #    </a></h3>
+            #</div>
+            #"@) | Out-Null
         }
         if (Test-Path -Path $itemPostCodeFilename) {
             $htmlCodeExclusions.Append(@"
@@ -210,7 +216,7 @@ if ($unprocessedCsvs.Count -gt 0) {
     </h2>
 </div>
 "@) | Out-Null
-$htmlCodeIndex.Append(@"
+    $htmlCodeIndex.Append(@"
 <div>
     <h2><a href="#misc">
         Miscellaneous
@@ -280,7 +286,7 @@ var $($shortCode)table = new Tabulator("#$($shortCode)-table", {
 </div>
 <br />
 "@) | Out-Null
-$htmlCodeIndex.Append(@"
+            $htmlCodeIndex.Append(@"
 <div>
 <h3><a href="#$($titleLink)">
     $($title)
@@ -303,7 +309,7 @@ $htmlCode.Append($htmlCodeExclusions.ToString())
 $htmlCode.Append(@"
         </div>
         <br />
-        <p>Updated: $((Get-Date).ToString('dd-MM-yyyy HH:mm'))</p>
+        <p>Page generated: $((Get-Date).ToString('dd-MM-yyyy HH:mm'))</p>
 </body>
 </html>
 "@) | Out-Null
