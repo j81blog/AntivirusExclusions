@@ -122,7 +122,7 @@ $htmlCodeIndex.Append(@"
         Write-Host "CSV: $csvFilename"
         $jsonFilepath = "$($outputPath)\$($csvFile.BaseName).json"
         $jsonFilename = Split-Path -Path $jsonFilepath -Leaf
-        $csvData = @(Import-Csv -Path $csvFile.FullName -Delimiter ";")
+        $csvData = @(Import-Csv -Path $csvFile.FullName -Delimiter ";" | Select-Object -Property "Exclusion", "ExclusionType", "Description", "Justification")
         Write-Host "CSV Data: $($csvData.Count)"
         $json = $csvData | ConvertTo-Json -Depth 5
         $titleLink = $title.Replace("(", $null).Replace(")", $null).Replace(" ", "-").Replace("---", "-").Replace("--", "-").ToLower()
@@ -171,6 +171,7 @@ $(Get-Content -Path $itemPreCodeFilename)
         columns: [
             { title: "Exclusion", field: "Exclusion", width: 650 },
             { title: "ExclusionType", field: "ExclusionType", width: 150, hozAlign: "left" },
+            { title: "Description", field: "Justification", width: 300, hozAlign: "left", formatter: "textarea" }
             { title: "Justification", field: "Justification", hozAlign: "left", formatter: "textarea" }
         ],
         footerElement: "<div><button id='download-$($shortCode)-csv' onclick='$($shortCode)csvdown();' class='button button1'>Download CSV</button><button id='download-$($shortCode)-pdf' onclick='$($shortCode)pdfdown();' class='button button1'>Download PDF</button></div>",
@@ -221,7 +222,7 @@ $htmlCodeIndex.Append(@"
         $csvFilename = $csvFile.Name
         Write-Host "CSV: $csvFilename"
         $jsonFilepath = "$outputPath\$($csvFile.BaseName).json"
-        $csvData = Import-Csv -Path $csvFile.FullName -Delimiter ";" | Select-Object -Property "Exclusion", "ExclusionType", "Description", "Justification"
+        $csvData = @(Import-Csv -Path $csvFile.FullName -Delimiter ";" | Select-Object -Property "Exclusion", "ExclusionType", "Description", "Justification")
         $json = $csvData | ConvertTo-Json -Depth 5
         $jsonFilename = Split-Path -Path $jsonFilepath -Leaf
         $titleLink = $title.Replace("(", $null).Replace(")", $null).Replace(" ", "-").Replace("---", "-").Replace("--", "-").ToLower()
