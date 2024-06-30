@@ -103,6 +103,7 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
     Write-Host "CSVs: $($vendorCsvs.Count)"
 
     $htmlCodeExclusions.Append(@"
+<p><hr></p>
 <p>
 <div>
     <h2 id="$($vendorTileLink)">
