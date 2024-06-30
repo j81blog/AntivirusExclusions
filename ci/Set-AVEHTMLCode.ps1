@@ -92,6 +92,9 @@ $htmlCode.Append(@"
 <body>
 
     <h1>Anti Virus Exclusions</h1>
+    <p><b>Index</b></p>
+    <p>You will find below a list of exclusions for various vendors. Click on the vendor name to jump to the list of exclusions for that vendor.</p>
+    <br />
 "@) | Out-Null
 
 ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
