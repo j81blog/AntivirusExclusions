@@ -85,7 +85,7 @@ $htmlCode.Append(@"
     }
     hr {
         width: 70%;
-        height:2px;
+        height:5px;
     }
 </style>
 
@@ -103,9 +103,7 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
     Write-Host "CSVs: $($vendorCsvs.Count)"
 
     $htmlCodeExclusions.Append(@"
-<div>
-    <hr>
-</div>
+<p>
 <div>
     <h2 id="$($vendorTileLink)">
         <a href="#$($vendorTileLink)">
@@ -114,14 +112,17 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
     </h2>
     $($vendorContent)
 </div>
+</p>
 "@) | Out-Null
-    #    $htmlCodeIndex.Append(@"
-    #<div>
-    #    <h2><a href="#$($vendorTileLink)">
-    #        $($vendor)
-    #    </a></h2>
-    #</div>
-    #"@) | Out-Null
+    $htmlCodeIndex.Append(@"
+<p>
+<div>
+    <h2><a href="#$($vendorTileLink)">
+        $($vendor)
+    </a></h2>
+</div>
+</p>
+"@) | Out-Null
     ForEach ($csvFile in $vendorCsvs) {
         $title = $csvFile.BaseName
         $csvFilename = $csvFile.Name
@@ -137,6 +138,7 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
         $itemPostCodeFilename = "$($csvFile.FullName)".Replace(".csv", "-post.html")
 
         $htmlCodeExclusions.Append(@"
+<p>
 <div>
     <h3 id="$($titleLink)">
         <a href="#$($titleLink)">
@@ -184,15 +186,9 @@ $(Get-Content -Path $itemPreCodeFilename)
     });
 </script>
 </div>
+</p>
 <br />
 "@) | Out-Null
-            #$htmlCodeIndex.Append(@"
-            #<div>
-            #    <h3><a href="#$($titleLink)">
-            #        $($title)
-            #    </a></h3>
-            #</div>
-            #"@) | Out-Null
         }
         if (Test-Path -Path $itemPostCodeFilename) {
             $htmlCodeExclusions.Append(@"
@@ -201,13 +197,13 @@ $(Get-Content -Path $itemPreCodeFilename)
         }
         $processedCsvs += $csvFile.FullName
     }
-
 }
 
 $unprocessedCsvs = $csvFiles | Where-Object { $_.FullName -notin $processedCsvs } | Sort-Object -Property Name
 
 if ($unprocessedCsvs.Count -gt 0) {
     $htmlCodeExclusions.Append(@"
+<p>
 <div>
     <h2 id=misc">
         <a href="#misc">
@@ -215,6 +211,8 @@ if ($unprocessedCsvs.Count -gt 0) {
         </a>
     </h2>
 </div>
+</p>
+
 "@) | Out-Null
     $htmlCodeIndex.Append(@"
 <div>
@@ -237,6 +235,7 @@ if ($unprocessedCsvs.Count -gt 0) {
         $itemPostCodeFilename = "$($csvFile.FullName)".Replace(".csv", "-post.html")
 
         $htmlCodeExclusions.Append(@"
+<p>
 <div>
 <h3 id="$($titleLink)">
     <a href="#$($titleLink)">
@@ -284,14 +283,8 @@ var $($shortCode)table = new Tabulator("#$($shortCode)-table", {
 });
 </script>
 </div>
+</p>
 <br />
-"@) | Out-Null
-            $htmlCodeIndex.Append(@"
-<div>
-<h3><a href="#$($titleLink)">
-    $($title)
-</a></h3>
-</div>
 "@) | Out-Null
         }
         if (Test-Path -Path $itemPostCodeFilename) {
