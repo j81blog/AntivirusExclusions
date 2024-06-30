@@ -180,7 +180,7 @@ $(Get-Content -Path $itemPreCodeFilename)
         columns: [
             { title: "Exclusion", field: "Exclusion", width: 650 },
             { title: "ExclusionType", field: "ExclusionType", width: 150, hozAlign: "left" },
-            { title: "Description", field: "Justification", width: 300, hozAlign: "left", formatter: "textarea" },
+            { title: "Description", field: "Description", width: 300, hozAlign: "left", formatter: "textarea" },
             { title: "Justification", field: "Justification", hozAlign: "left", formatter: "textarea" }
         ],
         footerElement: "<div><button id='download-$($shortCode)-csv' onclick='$($shortCode)csvdown();' class='button button1'>Download CSV</button><button id='download-$($shortCode)-pdf' onclick='$($shortCode)pdfdown();' class='button button1'>Download PDF</button></div>",
@@ -277,7 +277,7 @@ var $($shortCode)table = new Tabulator("#$($shortCode)-table", {
     columns: [
         { title: "Exclusion", field: "Exclusion", width: 650 },
         { title: "ExclusionType", field: "ExclusionType", width: 150, hozAlign: "left" },
-        { title: "Description", field: "Justification", width: 300, hozAlign: "left", formatter: "textarea" },
+        { title: "Description", field: "Description", width: 300, hozAlign: "left", formatter: "textarea" },
         { title: "Justification", field: "Justification", hozAlign: "left", formatter: "textarea" }
     ],
     footerElement: "<div><button id='download-$($shortCode)-csv' onclick='$($shortCode)csvdown();' class='button button1'>Download CSV</button><button id='download-$($shortCode)-pdf' onclick='$($shortCode)pdfdown();' class='button button1'>Download PDF</button></div>",
