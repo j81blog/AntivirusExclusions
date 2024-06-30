@@ -1,0 +1,6 @@
+"Exclusion";"ExclusionType";"Justification"
+"Pagefile.sys";"Folder";""
+"%systemroot%\System32\Spool";"Folder";""
+"%systemroot%\SoftwareDistribution\Datastore";"Folder";""
+"%allusersprofile%\NTUser.pol";"File";""
+"%Systemroot%\system32\GroupPolicy\registry.pol";"File";""

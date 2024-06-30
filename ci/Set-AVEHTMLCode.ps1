@@ -30,6 +30,8 @@ $htmlVendorHeadings = Get-ChildItem -Path "$ProjectRoot\*" -Include "*.html" | W
 Write-Host "Vendor HTMLs: $($htmlVendorHeadings.Count)"
 $indexFilename = "$outputPath\index.html"
 $htmlCode = New-Object -TypeName System.Text.StringBuilder
+$htmlCodeExclusions = New-Object -TypeName System.Text.StringBuilder
+$htmlCodeIndex = New-Object -TypeName System.Text.StringBuilder
 if (Test-Path -Path $outputPath) {
     Remove-Item -Path $outputPath -Recurse -Force
 }
@@ -97,7 +99,7 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
     Write-Host "Vendor: $vendor"
     Write-Host "CSVs: $($vendorCsvs.Count)"
 
-    $htmlCode.Append(@"
+    $htmlCodeExclusions.Append(@"
 <div>
     <h2 id="$($vendorTileLink)">
         <a href="#$($vendorTileLink)">
@@ -107,12 +109,18 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
     $($vendorContent)
 </div>
 "@) | Out-Null
-
+$htmlCodeIndex.Append(@"
+<div>
+    <h2><a href="#$($vendorTileLink)">
+        $($vendor)
+    </a></h2>
+</div>
+"@) | Out-Null
     ForEach ($csvFile in $vendorCsvs) {
         $title = $csvFile.BaseName
         $csvFilename = $csvFile.Name
         Write-Host "CSV: $csvFilename"
-        $jsonFilepath = "$outputPath\$($csvFile.BaseName).json"
+        $jsonFilepath = "$($outputPath)\$($csvFile.BaseName).json"
         $jsonFilename = Split-Path -Path $jsonFilepath -Leaf
         $csvData = @(Import-Csv -Path $csvFile.FullName -Delimiter ";")
         Write-Host "CSV Data: $($csvData.Count)"
@@ -122,7 +130,7 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
         $itemPreCodeFilename = "$($csvFile.FullName)".Replace(".csv", "-pre.html")
         $itemPostCodeFilename = "$($csvFile.FullName)".Replace(".csv", "-post.html")
 
-        $htmlCode.Append(@"
+        $htmlCodeExclusions.Append(@"
 <div>
     <h3 id="$($titleLink)">
         <a href="#$($titleLink)">
@@ -132,14 +140,14 @@ ForEach ($htmlVendorHeading in $htmlVendorHeadings) {
 "@) | Out-Null
 
         if (Test-Path -Path $itemPreCodeFilename) {
-            $htmlCode.Append(@"
+            $htmlCodeExclusions.Append(@"
 $(Get-Content -Path $itemPreCodeFilename)
 <br />
 "@) | Out-Null
         }
         if ($csvData.Count -gt 0) {
             [System.IO.File]::WriteAllText($jsonFilepath, $json)
-            $htmlCode.Append(@"
+            $htmlCodeExclusions.Append(@"
 <div id="$($shortCode)-table"></div>
 <script>
     function $($shortCode)csvdown() {
@@ -171,9 +179,16 @@ $(Get-Content -Path $itemPreCodeFilename)
 </div>
 <br />
 "@) | Out-Null
+$htmlCodeIndex.Append(@"
+<div>
+    <h3><a href="#$($titleLink)">
+        $($title)
+    </a></h3>
+</div>
+"@) | Out-Null
         }
         if (Test-Path -Path $itemPostCodeFilename) {
-            $htmlCode.Append(@"
+            $htmlCodeExclusions.Append(@"
                 $(Get-Content -Path $itemPostCodeFilename)
 "@) | Out-Null
         }
@@ -185,7 +200,7 @@ $(Get-Content -Path $itemPreCodeFilename)
 $unprocessedCsvs = $csvFiles | Where-Object { $_.FullName -notin $processedCsvs } | Sort-Object -Property Name
 
 if ($unprocessedCsvs.Count -gt 0) {
-    $htmlCode.Append(@"
+    $htmlCodeExclusions.Append(@"
 <div>
     <h2 id=misc">
         <a href="#misc">
@@ -194,13 +209,19 @@ if ($unprocessedCsvs.Count -gt 0) {
     </h2>
 </div>
 "@) | Out-Null
-
+$htmlCodeIndex.Append(@"
+<div>
+    <h2><a href="#misc">
+        Miscellaneous
+    </a></h2>
+</div>
+"@) | Out-Null
     foreach ($csvFile in $unprocessedCsvs) {
         $title = $csvFile.BaseName
         $csvFilename = $csvFile.Name
         Write-Host "CSV: $csvFilename"
         $jsonFilepath = "$outputPath\$($csvFile.BaseName).json"
-        $csvData = Import-Csv -Path $csvFile.FullName -Delimiter ";"
+        $csvData = Import-Csv -Path $csvFile.FullName -Delimiter ";" | Select-Object -Property "Exclusion", "ExclusionType", "Description", "Justification"
         $json = $csvData | ConvertTo-Json -Depth 5
         $jsonFilename = Split-Path -Path $jsonFilepath -Leaf
         $titleLink = $title.Replace("(", $null).Replace(")", $null).Replace(" ", "-").Replace("---", "-").Replace("--", "-").ToLower()
@@ -208,7 +229,7 @@ if ($unprocessedCsvs.Count -gt 0) {
         $itemPreCodeFilename = "$($csvFile.FullName)".Replace(".csv", "-pre.html")
         $itemPostCodeFilename = "$($csvFile.FullName)".Replace(".csv", "-post.html")
 
-        $htmlCode.Append(@"
+        $htmlCodeExclusions.Append(@"
 <div>
 <h3 id="$($titleLink)">
     <a href="#$($titleLink)">
@@ -217,7 +238,7 @@ if ($unprocessedCsvs.Count -gt 0) {
 </h3>
 "@) | Out-Null
         if (Test-Path -Path $itemPreCodeFilename) {
-            $htmlCode.Append(@"
+            $htmlCodeExclusions.Append(@"
 $(Get-Content -Path $itemPreCodeFilename)
 <br />
 "@) | Out-Null
@@ -225,7 +246,7 @@ $(Get-Content -Path $itemPreCodeFilename)
 
         if ($csvData.Count -gt 0) {
             [System.IO.File]::WriteAllText($jsonFilepath, $json)
-            $htmlCode.Append(@"
+            $htmlCodeExclusions.Append(@"
 <div id="$($shortCode)-table"></div>
 <script>
 function $($shortCode)csvdown() {
@@ -249,6 +270,7 @@ var $($shortCode)table = new Tabulator("#$($shortCode)-table", {
     columns: [
         { title: "Exclusion", field: "Exclusion", width: 650 },
         { title: "ExclusionType", field: "ExclusionType", width: 150, hozAlign: "left" },
+        { title: "Description", field: "Justification", width: 300, hozAlign: "left", formatter: "textarea" }
         { title: "Justification", field: "Justification", hozAlign: "left", formatter: "textarea" }
     ],
     footerElement: "<div><button id='download-$($shortCode)-csv' onclick='$($shortCode)csvdown();' class='button button1'>Download CSV</button><button id='download-$($shortCode)-pdf' onclick='$($shortCode)pdfdown();' class='button button1'>Download PDF</button></div>",
@@ -257,14 +279,25 @@ var $($shortCode)table = new Tabulator("#$($shortCode)-table", {
 </div>
 <br />
 "@) | Out-Null
+$htmlCodeIndex.Append(@"
+<div>
+<h3><a href="#$($titleLink)">
+    $($title)
+</a></h3>
+</div>
+"@) | Out-Null
         }
         if (Test-Path -Path $itemPostCodeFilename) {
-            $htmlCode.Append(@"
+            $htmlCodeExclusions.Append(@"
             $(Get-Content -Path $itemPostCodeFilename)
 "@) | Out-Null
         }
     }
 }
+
+$htmlCode.Append($htmlCodeIndex.ToString())
+
+$htmlCode.Append($htmlCodeExclusions.ToString())
 
 $htmlCode.Append(@"
         </div>
