@@ -14,13 +14,18 @@ pnpm-debug.log*
 
 # environment variables
 .env
-.env.production
+.env.*
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# vscode setting folder (keep shared team configs)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
 
 # legacy PowerShell build output (removed once migration is complete)
 output/
