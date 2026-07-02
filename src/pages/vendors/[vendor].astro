@@ -1,0 +1,116 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SourceLinks from '../../components/SourceLinks.astro';
+
+export async function getStaticPaths() {
+  const vendors = await getCollection('vendors');
+  return vendors.map((vendor) => ({
+    params: { vendor: vendor.id },
+    props: { vendor },
+  }));
+}
+
+const { vendor } = Astro.props;
+const { Content } = await render(vendor);
+
+const items = (await getCollection('items', (item) => item.data.vendor === vendor.id)).sort(
+  (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
+);
+---
+
+<BaseLayout title={vendor.data.title}>
+  <div class="breadcrumb">
+    <a href="/">Vendors</a>
+    <span>/</span>
+    <span>{vendor.data.title}</span>
+  </div>
+
+  <h1>{vendor.data.title}</h1>
+
+  <SourceLinks sources={vendor.data.sources} />
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  {
+    items.length === 0 ? (
+      <p class="empty-state">No exclusions published yet for this vendor.</p>
+    ) : (
+      <ul class="item-list">
+        {items.map((item) => (
+          <li>
+            <a href={`/items/${item.id}/`}>{item.data.title}</a>
+            <span class="item-count">{item.data.exclusions.length} exclusions</span>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  <style>
+    .breadcrumb {
+      display: flex;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 10px;
+    }
+
+    .breadcrumb a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--color-text);
+    }
+
+    .prose {
+      color: var(--color-text-secondary);
+      max-width: 620px;
+      margin-bottom: 24px;
+    }
+
+    .empty-state {
+      color: var(--color-text-muted);
+    }
+
+    .item-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .item-list li:last-child {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .item-list a {
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    .item-list a:hover {
+      color: var(--color-accent);
+    }
+
+    .item-count {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+  </style>
+</BaseLayout>

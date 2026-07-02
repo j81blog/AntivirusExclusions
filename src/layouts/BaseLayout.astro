@@ -1,0 +1,122 @@
+---
+import Icon from '../components/Icon.astro';
+import CartBadge from '../components/CartBadge';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Community-maintained antivirus and EDR exclusion recommendations for VDI environments.' } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} · AV exclusions</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a href="/" class="site-brand">
+          <Icon name="shield-check" size={20} />
+          <span>AV exclusions</span>
+        </a>
+        <nav class="site-nav">
+          <a href="/cart" aria-label="Cart" class="cart-link">
+            <Icon name="shopping-cart" size={18} />
+            <CartBadge client:only="preact" />
+          </a>
+        </nav>
+      </div>
+    </header>
+    <main class="container site-main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          A community-maintained collection of antivirus/EDR exclusion recommendations for VDI
+          environments. <a href="https://github.com/j81blog/AntivirusExclusions">Contribute on GitHub</a>.
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      .site-header {
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .site-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 52px;
+      }
+
+      .site-brand {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 500;
+        font-size: 15px;
+        color: var(--color-text);
+        text-decoration: none;
+      }
+
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .site-nav a {
+        color: var(--color-text-secondary);
+        display: flex;
+        align-items: center;
+      }
+
+      .site-nav a:hover {
+        color: var(--color-text);
+      }
+
+      .cart-link {
+        position: relative;
+      }
+
+      :global(.cart-badge) {
+        position: absolute;
+        top: -7px;
+        right: -10px;
+        background: var(--color-accent);
+        color: var(--color-bg);
+        font-size: 10px;
+        line-height: 1;
+        border-radius: 8px;
+        padding: 2px 5px;
+      }
+
+      .site-main {
+        min-height: calc(100vh - 52px - 90px);
+        padding-top: 28px;
+        padding-bottom: 40px;
+      }
+
+      .site-footer {
+        border-top: 1px solid var(--color-border);
+        padding: 20px 0;
+      }
+
+      .site-footer p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--color-text-muted);
+      }
+    </style>
+  </body>
+</html>
