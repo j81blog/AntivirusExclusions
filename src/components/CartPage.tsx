@@ -43,7 +43,7 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div class="cart-empty">
-        <p>Your selection is empty. Browse a product and check the exclusions you need, then use "Add selected to cart".</p>
+        <p>Your selection is empty. Browse a product and check the exclusions you need, then use "Add to downloads".</p>
         <a href="/" class="button">Browse products</a>
       </div>
     );

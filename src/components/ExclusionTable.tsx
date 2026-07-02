@@ -132,7 +132,7 @@ export default function ExclusionTable({ itemSlug, itemTitle, rows }: Props) {
         <button onClick={downloadPdf}>Download PDF</button>
         <button onClick={downloadJson}>Download JSON</button>
         <button class="button-accent" onClick={addSelectedToCart}>
-          Add selected to cart
+          Add to downloads
         </button>
       </div>
       <div ref={elRef}></div>

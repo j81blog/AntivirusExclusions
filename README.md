@@ -5,7 +5,7 @@
 A community-maintained collection of antivirus/EDR exclusion recommendations for VDI
 and RDSH environments — FSLogix, Citrix, Ivanti, ESET, Trend Micro, and more. Every
 product page lists its recommended exclusions in a filterable, sortable table, with
-CSV/PDF/JSON export (per product, or combined across products via the cart).
+CSV/PDF/JSON export (per product, or combined across products via the downloads page).
 
 ## Tech stack
 
@@ -30,7 +30,7 @@ src/
     vendors/{slug}.md      One file per vendor
   components/               ExclusionTable.tsx (Preact island), CartPage.tsx, Icon.astro, ...
   layouts/BaseLayout.astro
-  pages/                     index, vendors/[vendor], items/[slug], cart
+  pages/                     index, vendors/[vendor], items/[slug], downloads
   stores/cart.ts             Shared cart store (localStorage-backed)
   lib/
     contentSchemas.ts       Zod schemas for items/vendors - single source of truth,
@@ -72,18 +72,18 @@ browser and you should see the vendor list on the homepage.
   table:
   - Type the filter box — rows should narrow live.
   - Click column headers — rows should sort.
-  - Check a few row checkboxes, click **Add selected to cart** — the cart icon badge in
+  - Check a few row checkboxes, click **Add to downloads** — the download icon badge in
     the header should update.
   - Click **Download CSV** / **Download PDF** / **Download JSON** — a file should
     download for each.
-- **Cart page** (`/cart`) — shows everything you've added across products, with its own
-  combined CSV/PDF/JSON export and per-row remove buttons.
+- **Downloads page** (`/downloads`) — shows everything you've added across products,
+  with its own combined CSV/PDF/JSON export and per-row remove buttons.
 - **Dark mode** — the site follows `prefers-color-scheme`; toggle your OS/browser theme
   and confirm text stays readable and the table header/badges still contrast properly.
 
-Since the cart is `localStorage`-backed, it persists across page reloads and browser
-restarts (same origin). Clear it via the **Clear selection** button on `/cart`, or via
-your browser's dev tools (`localStorage.removeItem('ave-cart')`).
+Since the selection is `localStorage`-backed, it persists across page reloads and
+browser restarts (same origin). Clear it via the **Clear selection** button on
+`/downloads`, or via your browser's dev tools (`localStorage.removeItem('ave-cart')`).
 
 ### Other useful commands
 
