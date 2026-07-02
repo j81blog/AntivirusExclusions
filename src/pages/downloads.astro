@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CartPage from '../components/CartPage';
+---
+
+<BaseLayout title="Selected exclusions">
+  <h1>Selected exclusions</h1>
+  <p class="page-intro">
+    Exclusions you've added from individual product pages, ready to export as one combined
+    file.
+  </p>
+  <CartPage client:only="preact" />
+
+  <style>
+    .page-intro {
+      color: var(--color-text-secondary);
+      max-width: 560px;
+      margin: 0 0 24px;
+    }
+  </style>
+</BaseLayout>

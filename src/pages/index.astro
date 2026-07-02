@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VendorCard from '../components/VendorCard.astro';
+
+const vendors = (await getCollection('vendors')).sort((a, b) => a.data.order - b.data.order);
+const items = await getCollection('items');
+
+const vendorCards = vendors.map((vendor) => ({
+  slug: vendor.id,
+  title: vendor.data.title,
+  itemCount: items.filter((item) => item.data.vendor === vendor.id).length,
+}));
+---
+
+<BaseLayout title="Home">
+  <h1>AV exclusions</h1>
+  <p class="page-intro">
+    Community-maintained antivirus and EDR exclusion recommendations for VDI environments,
+    organized by vendor. Pick a vendor to see its products, or open a product to browse, filter
+    and export its recommended exclusions.
+  </p>
+
+  <div class="vendor-grid">
+    {vendorCards.map((vendor) => <VendorCard {...vendor} />)}
+  </div>
+
+  <style>
+    .page-intro {
+      color: var(--color-text-secondary);
+      max-width: 620px;
+      margin: 0 0 28px;
+    }
+
+    .vendor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+  </style>
+</BaseLayout>

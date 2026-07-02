@@ -1,0 +1,26 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+}
+
+const { name, size = 16 } = Astro.props;
+
+const icons = import.meta.glob('/node_modules/@tabler/icons/icons/outline/*.svg', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+}) as Record<string, string>;
+
+const svg = icons[`/node_modules/@tabler/icons/icons/outline/${name}.svg`];
+
+if (!svg) {
+  throw new Error(`Unknown icon: ${name}`);
+}
+
+const inlineSvg = svg
+  .replace('width="24"', `width="${size}"`)
+  .replace('height="24"', `height="${size}"`);
+---
+
+<Fragment set:html={inlineSvg} />

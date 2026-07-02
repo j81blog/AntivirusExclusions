@@ -1,0 +1,52 @@
+---
+import Icon from './Icon.astro';
+
+interface Source {
+  label: string;
+  url: string;
+}
+
+interface Props {
+  sources: Source[];
+}
+
+const { sources } = Astro.props;
+---
+
+{
+  sources.length > 0 && (
+    <ul class="source-links">
+      {sources.map((source) => (
+        <li>
+          <a href={source.url} target="_blank" rel="noopener noreferrer">
+            <Icon name="external-link" size={14} />
+            {source.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
+<style>
+  .source-links {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .source-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .source-links a:hover {
+    text-decoration: underline;
+  }
+</style>

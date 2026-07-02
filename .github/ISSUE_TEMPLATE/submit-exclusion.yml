@@ -1,0 +1,91 @@
+name: Submit exclusions
+description: Add a new product, or add exclusions to a product that already exists. This opens a pull request automatically for review.
+title: "[Submission]: "
+labels: ["content-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing! Filling this in will automatically open a pull request
+        with your changes for review - nothing goes live until a maintainer approves it.
+
+        Adding rows to a product that already exists? Use the exact same **Vendor** and
+        **Product name** below and your rows will be merged into the existing page.
+  - type: dropdown
+    id: vendor
+    attributes:
+      label: Vendor
+      description: Pick the vendor this product belongs to. Brand-new vendor? Choose "Other" and fill in the field below.
+      options:
+        - Microsoft
+        - Citrix
+        - Ivanti
+        - ESET
+        - Trend Micro
+        - Other (specify below)
+    validations:
+      required: true
+  - type: input
+    id: new-vendor
+    attributes:
+      label: New vendor name
+      description: Only fill this in if you picked "Other" above.
+      placeholder: e.g. SentinelOne
+    validations:
+      required: false
+  - type: input
+    id: product-name
+    attributes:
+      label: Product name
+      description: Exact product/component name.
+      placeholder: e.g. Citrix StoreFront
+    validations:
+      required: true
+  - type: textarea
+    id: intro
+    attributes:
+      label: Intro text
+      description: Short description shown above the exclusion table. Only used when creating a brand-new product page - ignored when adding rows to an existing one.
+      placeholder: Av exclusions for ...
+    validations:
+      required: false
+  - type: input
+    id: source-label
+    attributes:
+      label: Source label
+      description: Short label for the source link, e.g. the article title.
+      placeholder: e.g. Vendor documentation - antivirus exclusions
+    validations:
+      required: true
+  - type: input
+    id: source-url
+    attributes:
+      label: Source URL
+      description: Link to official documentation backing these exclusions. We don't accept undocumented submissions.
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: exclusions
+    attributes:
+      label: Exclusions
+      description: |
+        One exclusion per line: `path;type;description;justification`
+
+        - `path` and `type` are required. `description` and `justification` may be left
+          blank, but keep the semicolons so the columns line up.
+        - `type` should be one of: Process, File, Folder, File / Extension,
+          File / Folder, File / Process, Registry
+      placeholder: |
+        %ProgramFiles%\Example\example.exe;Process;;
+        %ProgramData%\Example\Cache\*;File / Folder;;Only when caching is enabled
+      render: text
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirmation
+    attributes:
+      label: Confirmation
+      options:
+        - label: These exclusions come from official vendor documentation, or my own tested configuration (linked above)
+          required: true

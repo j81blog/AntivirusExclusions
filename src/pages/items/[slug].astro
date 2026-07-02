@@ -1,0 +1,132 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SourceLinks from '../../components/SourceLinks.astro';
+import ExclusionTable from '../../components/ExclusionTable';
+import Icon from '../../components/Icon.astro';
+import { rowId } from '../../lib/rowId';
+
+export async function getStaticPaths() {
+  const items = await getCollection('items');
+  return items.map((item) => ({
+    params: { slug: item.id },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const { Content } = await render(item);
+const vendor = await getEntry('vendors', item.data.vendor);
+
+const rows = item.data.exclusions.map((exclusion) => ({
+  id: rowId(item.id, exclusion.path, exclusion.type),
+  path: exclusion.path,
+  type: exclusion.type,
+  description: exclusion.description,
+  justification: exclusion.justification,
+}));
+---
+
+<BaseLayout title={item.data.title}>
+  <div class="breadcrumb">
+    <a href="/">Vendors</a>
+    <span>/</span>
+    {vendor && <a href={`/vendors/${vendor.id}/`}>{vendor.data.title}</a>}
+    <span>/</span>
+    <span>{item.data.title}</span>
+  </div>
+
+  <div class="item-heading">
+    <h1>{item.data.title}</h1>
+    {vendor && (
+      <a href={`/vendors/${vendor.id}/`} class="badge badge-accent">
+        {vendor.data.title}
+      </a>
+    )}
+  </div>
+
+  <div class="prose">
+    <Content />
+  </div>
+
+  <SourceLinks sources={item.data.sources} />
+
+  {
+    item.data.notes.length > 0 && (
+      <div class="notes">
+        {item.data.notes.map((note) => (
+          <div class={`callout ${note.kind === 'warning' ? 'callout-warning' : 'callout-note'}`}>
+            {note.kind === 'warning' && <Icon name="alert-triangle" size={16} />}
+            <p>
+              {note.kind !== 'note' && <strong>{note.kind === 'extra' ? 'Extra: ' : 'Warning: '}</strong>}
+              {note.text}
+            </p>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    rows.length > 0 ? (
+      <ExclusionTable client:visible itemSlug={item.id} itemTitle={item.data.title} rows={rows} />
+    ) : (
+      <p class="empty-state">No exclusions have been documented for this product yet.</p>
+    )
+  }
+
+  <style>
+    .breadcrumb {
+      display: flex;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 10px;
+    }
+
+    .breadcrumb a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--color-text);
+    }
+
+    .item-heading {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .item-heading h1 {
+      margin: 0;
+    }
+
+    .item-heading .badge {
+      text-decoration: none;
+    }
+
+    .prose {
+      color: var(--color-text-secondary);
+      max-width: 620px;
+      margin: 8px 0 16px;
+    }
+
+    .notes {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .notes p {
+      margin: 0;
+    }
+
+    .empty-state {
+      color: var(--color-text-muted);
+    }
+  </style>
+</BaseLayout>

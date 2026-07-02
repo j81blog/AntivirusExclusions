@@ -1,0 +1,150 @@
+name: Submission to pull request
+
+on:
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  process-submission:
+    # Gate on the presence of a form field header in the body, not the
+    # `content-submission` label or the title prefix - the label only gets
+    # attached automatically if it already exists in the repo (chicken/egg
+    # problem for the very first submission), and the title is a plain text
+    # box the submitter could edit or clear. The body headers come directly
+    # from the issue form's structured fields, so this is the most reliable
+    # signal that this is actually a submission and not an unrelated issue.
+    if: contains(github.event.issue.body, '### Vendor')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v6
+
+      - name: Ensure labels exist
+        uses: actions/github-script@v7
+        with:
+          script: |
+            for (const label of [
+              { name: 'content-submission', color: '0e8a16', description: 'Opened via the exclusions submission form' },
+              { name: 'needs-info', color: 'd93f0b', description: 'Submission needs more information before it can become a PR' },
+            ]) {
+              try {
+                await github.rest.issues.createLabel({ owner: context.repo.owner, repo: context.repo.repo, ...label });
+              } catch (err) {
+                if (err.status !== 422) throw err; // 422 = label already exists, fine
+              }
+            }
+            try {
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['content-submission'],
+              });
+            } catch {
+              // non-fatal - purely cosmetic
+            }
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply submission
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: npx tsx tools/submission/applySubmission.ts
+
+      # Reads the result file directly (never templates its contents into
+      # script source) and handles the error-comment path itself, since the
+      # error messages can contain attacker-controlled text (e.g. a
+      # submitted URL or exclusion type) - interpolating that into a
+      # `${{ }}` expression inside a script body would be a script
+      # injection risk. Only sets `status` as a job output, which is a
+      # fixed 'ok'/'error' enum, not user-controlled.
+      - name: Handle result
+        id: result
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const resultPath = path.join(process.env.RUNNER_TEMP, 'submission-result.json');
+            const result = JSON.parse(fs.readFileSync(resultPath, 'utf8'));
+
+            core.setOutput('status', result.status);
+            core.setOutput('prTitle', result.prTitle ?? '');
+            core.setOutput('prBody', result.prBody ?? '');
+
+            if (result.status === 'error') {
+              const body = [
+                "Thanks for the submission! A few things need fixing before this can become a pull request:",
+                "",
+                ...result.errors.map((e) => `- ${e}`),
+                "",
+                "Edit this issue to fix them - the checks will run again automatically.",
+              ].join('\n');
+
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+              await github.rest.issues.addLabels({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                labels: ['needs-info'],
+              });
+            } else {
+              try {
+                await github.rest.issues.removeLabel({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  name: 'needs-info',
+                });
+              } catch {
+                // label wasn't present, nothing to remove
+              }
+            }
+
+      # peter-evans/create-pull-request receives prTitle/prBody as plain
+      # action inputs (env-var-backed), not as script source, so this is
+      # not subject to the same injection concern as the step above.
+      - name: Open pull request
+        if: steps.result.outputs.status == 'ok'
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.SUBMISSION_PR_TOKEN }}
+          commit-message: "Add exclusions from issue #${{ github.event.issue.number }}"
+          branch: submission/issue-${{ github.event.issue.number }}
+          base: main
+          title: ${{ steps.result.outputs.prTitle }}
+          body: ${{ steps.result.outputs.prBody }}
+          labels: content-submission
+
+      - name: Comment PR link on issue
+        if: steps.result.outputs.status == 'ok' && steps.cpr.outputs.pull-request-number
+        uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ steps.cpr.outputs.pull-request-number }}
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `Opened #${process.env.PR_NUMBER} with your submission. A maintainer will review it from there.`,
+            });

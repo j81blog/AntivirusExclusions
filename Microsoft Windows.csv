@@ -1,7 +1,0 @@
-"Exclusion";"ExclusionType";"Description";"Justification"
-"Pagefile.sys";"Folder";"";""
-"C:\System32\Spool";"Folder";"";""
-"C:\SoftwareDistribution\Datastore";"Folder";"";""
-"C:\Users\Public\NTUser.pol";"File";"";""
-"C:\system32\GroupPolicy\registry.pol";"File";"";""
-"C:\Windows\System32\svchost.exe";"File";"System process";"Can cause system instability if scanned/blocked"
