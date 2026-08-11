@@ -55,7 +55,10 @@ function stripCodeFence(raw: string): string {
 export function parseExclusionRows(raw: string): RawExclusionRow[] {
   const lines = stripCodeFence(raw)
     .split(/\r?\n/)
-    .map((line) => line.trim())
+    // Vendor docs are HTML, so pasted paths arrive with `&nbsp;` where a space
+    // belongs - visually identical, but the path then matches nothing on disk
+    // and the exclusion silently does nothing.
+    .map((line) => line.replace(/\u00a0/g, ' ').trim())
     .filter((line) => line.length > 0);
 
   // The field description spells the column names out, so submitters
