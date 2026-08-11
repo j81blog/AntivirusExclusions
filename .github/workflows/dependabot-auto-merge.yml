@@ -17,11 +17,21 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Allow-list rather than "not major", so anything unrecognised - an
-      # empty update-type, a grouped PR the action could not classify - falls
+      # Allow-list rather than "not major", so anything unrecognised falls
       # through to manual review instead of merging itself.
+      #
+      # Grouped security PRs are the exception: fetch-metadata reports
+      # update-type as null for them (it populates it fine for ordinary
+      # version-update groups), so the allow-list alone would strand exactly
+      # the updates that should move fastest. These are gated on the required
+      # build check instead. Acceptable here because security groups in this
+      # repo are transitive dependencies, which npm cannot bump past the
+      # range their parent allows. Drop the second clause to go back to
+      # reviewing every security batch by hand.
       - name: Enable auto-merge for patch and minor updates
-        if: contains(fromJSON('["version-update:semver-patch", "version-update:semver-minor"]'), steps.metadata.outputs.update-type)
+        if: >-
+          contains(fromJSON('["version-update:semver-patch", "version-update:semver-minor"]'), steps.metadata.outputs.update-type)
+          || steps.metadata.outputs.dependency-group == 'security'
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           # Deliberately not GITHUB_TOKEN. A merge attributed to

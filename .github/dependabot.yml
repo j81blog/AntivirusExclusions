@@ -14,6 +14,13 @@ updates:
     commit-message:
       prefix: deps
       prefix-development: deps-dev
+    ignore:
+      # @astrojs/check -> @astrojs/language-server -> @volar/kit resolves an
+      # older TypeScript, so npm ERESOLVEs on v7 and the PR can never go
+      # green. Drop this once @astrojs/check supports TypeScript 7.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
     groups:
       # First match wins, so this has to come before the generic groups below.
       # astro and @astrojs/* have to move together - a major bump of one
