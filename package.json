@@ -24,15 +24,15 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.9",
-    "@tabler/icons": "^3.44.0",
+    "@astrojs/check": "^0.9.10",
+    "@tabler/icons": "^3.46.0",
     "@types/js-yaml": "^4.0.9",
     "@types/papaparse": "^5.5.2",
-    "@types/tabulator-tables": "^6.3.5",
+    "@types/tabulator-tables": "^6.3.6",
     "cheerio": "^1.2.0",
-    "js-yaml": "^5.2.1",
+    "js-yaml": "^5.2.3",
     "papaparse": "^5.5.4",
-    "tsx": "^4.22.4",
+    "tsx": "^4.23.11",
     "typescript": "^6.0.3"
   }
 }
