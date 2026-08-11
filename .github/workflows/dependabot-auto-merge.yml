@@ -1,0 +1,34 @@
+name: Dependabot auto-merge
+
+on: pull_request
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  auto-merge:
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Allow-list rather than "not major", so anything unrecognised - an
+      # empty update-type, a grouped PR the action could not classify - falls
+      # through to manual review instead of merging itself.
+      - name: Enable auto-merge for patch and minor updates
+        if: contains(fromJSON('["version-update:semver-patch", "version-update:semver-minor"]'), steps.metadata.outputs.update-type)
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          # Deliberately not GITHUB_TOKEN. A merge attributed to
+          # github-actions[bot] does not start new workflow runs, so deploy.yml
+          # would never fire and the published site would drift behind main.
+          # Workflows triggered by Dependabot read Dependabot secrets, not
+          # Actions secrets, so this has to be set under Settings ->
+          # Secrets and variables -> Dependabot.
+          GITHUB_TOKEN: ${{ secrets.DEPENDABOT_AUTOMERGE_TOKEN }}
+        run: gh pr merge --auto --squash "$PR_URL"

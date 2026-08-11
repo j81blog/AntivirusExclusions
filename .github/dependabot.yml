@@ -1,0 +1,58 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Amsterdam
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+    commit-message:
+      prefix: deps
+      prefix-development: deps-dev
+    groups:
+      # First match wins, so this has to come before the generic groups below.
+      # astro and @astrojs/* have to move together - a major bump of one
+      # without the other will not build.
+      astro:
+        patterns:
+          - astro
+          - "@astrojs/*"
+      production:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+      development:
+        dependency-type: development
+        update-types:
+          - minor
+          - patch
+      # Security fixes bypass the weekly schedule and land as soon as an
+      # advisory is published. Without this, each advisory gets its own PR;
+      # the digest that prompted this config covered 7 packages at once.
+      security:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Amsterdam
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: ci
+    groups:
+      github-actions:
+        patterns:
+          - "*"

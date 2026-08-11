@@ -11,6 +11,9 @@ on:
 
 jobs:
   build:
+    # Explicit name so the check run is distinct from the `build` job in
+    # deploy.yml - the main ruleset requires this one by name.
+    name: Build and type-check
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
