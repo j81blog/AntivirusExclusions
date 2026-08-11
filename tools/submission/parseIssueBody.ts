@@ -34,21 +34,43 @@ export interface RawExclusionRow {
   justification: string;
 }
 
+const HEADER_ROW = 'path;type;description;justification';
+
+/**
+ * The Exclusions field is declared `render: text`, so GitHub wraps its value
+ * in a fenced code block when it renders the issue body. Without this the
+ * fence lines get parsed as exclusions and every submission fails with a
+ * "type is required" error on the first and last row.
+ */
+function stripCodeFence(raw: string): string {
+  const lines = raw.split(/\r?\n/);
+  if (!lines[0]?.trimStart().startsWith('```')) return raw;
+
+  lines.shift();
+  if (lines[lines.length - 1]?.trim() === '```') lines.pop();
+  return lines.join('\n');
+}
+
 /** Parses the `path;type;description;justification` textarea, one row per line. */
 export function parseExclusionRows(raw: string): RawExclusionRow[] {
-  return raw
+  const lines = stripCodeFence(raw)
     .split(/\r?\n/)
     .map((line) => line.trim())
-    .filter((line) => line.length > 0)
-    .map((line) => {
-      const parts = line.split(';');
-      return {
-        path: (parts[0] ?? '').trim(),
-        type: (parts[1] ?? '').trim(),
-        description: (parts[2] ?? '').trim(),
-        justification: (parts[3] ?? '').trim(),
-      };
-    });
+    .filter((line) => line.length > 0);
+
+  // The field description spells the column names out, so submitters
+  // reasonably paste them as a header row. Treat that as a header.
+  if (lines[0]?.toLowerCase().replace(/\s+/g, '') === HEADER_ROW) lines.shift();
+
+  return lines.map((line) => {
+    const parts = line.split(';');
+    return {
+      path: (parts[0] ?? '').trim(),
+      type: (parts[1] ?? '').trim(),
+      description: (parts[2] ?? '').trim(),
+      justification: (parts[3] ?? '').trim(),
+    };
+  });
 }
 
 /** Checks whether a rendered checkboxes field's option is checked (`- [X] ...`). */
