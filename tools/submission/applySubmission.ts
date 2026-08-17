@@ -70,6 +70,35 @@ function countItemsForVendor(vendorSlug: string): number {
   return count;
 }
 
+/**
+ * Item files are named after a title that includes the vendor ("Citrix Cloud
+ * Connector"), but the form asks only for a product name ("Cloud Connector"),
+ * so a plain slug lookup misses the existing page and the submission is filed
+ * as a duplicate product instead of extra rows. Try the vendor-prefixed slug
+ * too, and only accept a file that belongs to this vendor - two vendors can
+ * ship a product under the same name.
+ */
+/**
+ * Every item is titled and filed under its vendor ("Citrix Cloud Connector"),
+ * while the form asks for a bare product name ("Cloud Connector"), so qualify
+ * it here. Submitters do sometimes type the vendor anyway - don't double it.
+ */
+function qualifiedTitle(vendorName: string, productName: string): string {
+  return productName.toLowerCase().startsWith(`${vendorName.toLowerCase()} `)
+    ? productName
+    : `${vendorName} ${productName}`;
+}
+
+function findItemPath(vendorSlug: string, productName: string): string | null {
+  for (const slug of [slugify(productName), slugify(`${vendorSlug} ${productName}`)]) {
+    const candidate = path.join(ITEMS_DIR, `${slug}.md`);
+    if (!existsSync(candidate)) continue;
+    const { data } = splitFrontmatter(readFileSync(candidate, 'utf8'));
+    if (data.vendor === vendorSlug) return candidate;
+  }
+  return null;
+}
+
 function resultTempPath(): string {
   const dir = process.env.RUNNER_TEMP ?? mkdtempSync(path.join(os.tmpdir(), 'ave-submission-'));
   return path.join(dir, 'submission-result.json');
@@ -146,9 +175,11 @@ function main() {
   const vendorPath = path.join(VENDORS_DIR, `${vendorSlug}.md`);
   const isNewVendor = !existsSync(vendorPath);
 
-  const itemSlug = slugify(productName);
-  const itemPath = path.join(ITEMS_DIR, `${itemSlug}.md`);
-  const isNewItem = !existsSync(itemPath);
+  const itemTitle = qualifiedTitle(vendorName, productName);
+  const existingItemPath = findItemPath(vendorSlug, productName);
+  const itemPath = existingItemPath ?? path.join(ITEMS_DIR, `${slugify(itemTitle)}.md`);
+  const itemSlug = path.basename(itemPath, '.md');
+  const isNewItem = existingItemPath === null;
 
   const changedFiles: string[] = [];
 
@@ -170,14 +201,14 @@ function main() {
   if (isNewItem) {
     itemData = {
       vendor: vendorSlug,
-      title: productName,
+      title: itemTitle,
       order: countItemsForVendor(vendorSlug) + 1,
       sources: [{ label: sourceLabel, url: sourceUrl }],
       notes: [],
       exclusions: normalizedRows,
       tags: [],
     };
-    itemBody = introText || `Av exclusions for ${productName}.`;
+    itemBody = introText || `Av exclusions for ${itemTitle}.`;
   } else {
     const existing = splitFrontmatter(readFileSync(itemPath, 'utf8'));
     const existingItem = itemSchema.parse(existing.data);
@@ -219,14 +250,14 @@ function main() {
   changedFiles.push(path.relative(ROOT, itemPath));
 
   const prTitle = isNewItem
-    ? `Add exclusions: ${productName}`
-    : `Update exclusions: ${productName} (+${addedRowCount} row${addedRowCount === 1 ? '' : 's'})`;
+    ? `Add exclusions: ${itemData.title}`
+    : `Update exclusions: ${itemData.title} (+${addedRowCount} row${addedRowCount === 1 ? '' : 's'})`;
 
   const prBodyLines = [
     `Automated submission from #${issueNumber}.`,
     '',
     isNewVendor ? `- Created new vendor **${vendorName}**` : null,
-    isNewItem ? `- Created new product **${productName}**` : `- Added rows to existing product **${productName}**`,
+    isNewItem ? `- Created new product **${itemData.title}**` : `- Added rows to existing product **${itemData.title}**`,
     !isNewItem && introText
       ? '- Note: submitted intro text was ignored because this product page already exists.'
       : null,
