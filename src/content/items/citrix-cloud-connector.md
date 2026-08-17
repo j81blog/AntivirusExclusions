@@ -7,43 +7,11 @@ sources:
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
 notes: []
 exclusions:
-  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName.mdf'
+  - path: '%ProgramFiles%\Citrix\Broker\Service\ControlScripts\HighAvailabilityServiceControl.psm1'
     type: File
     description: ''
     justification: ''
-  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName.mdf'
-    type: File
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName_log.ldf'
-    type: File
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName_log.ldf'
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Logs\CDF
-    type: Folder
-    description: ''
-    justification: ''
-  - path: '%ProgramData%\Citrix\WorkspaceCloud\Logs'
-    type: Folder
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\XaXdCloudProxy\XaXdCloudProxy.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\Broker\Service\HighAvailabilityService.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\ConfigSync\ConfigSyncService.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\ConfigSync\ConfigSync.ps1'
+  - path: '%ProgramFiles%\Citrix\Broker\Service\Setup Scripts\BackupDesktopServerKeys.ps1'
     type: File
     description: ''
     justification: ''
@@ -55,15 +23,15 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\Broker\Service\Setup Scripts\BackupDesktopServerKeys.ps1'
-    type: File
-    description: ''
-    justification: ''
   - path: '%ProgramFiles%\Citrix\Broker\Service\Setup Scripts\Set-ADControllerDiscovery.ps1'
     type: File
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\Broker\Service\ControlScripts\HighAvailabilityServiceControl.psm1'
+  - path: '%ProgramFiles%\Citrix\ConfigSync\ConfigSync.ps1'
+    type: File
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\Monitor\SnapIn\Citrix.Monitor.Admin.V1\Citrix.Monitor.Commands.psm1'
     type: File
     description: ''
     justification: ''
@@ -83,36 +51,36 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\Monitor\SnapIn\Citrix.Monitor.Admin.V1\Citrix.Monitor.Commands.psm1'
+  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName_log.ldf'
     type: File
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName.mdf'
+    type: File
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName_log.ldf'
+    type: File
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName.mdf'
+    type: File
+    description: ''
+    justification: ''
+  - path: '%ProgramData%\Citrix\WorkspaceCloud\InstallLogs'
+    type: Folder
+    description: 'The following processes write to this folder: Citrix.CloudServices.AutoUpdater.Updater.exe, cwcconnector.exe, cwcconnectorcomponents.exe, cwcconnectorprerequisites.exe or msiexec.exe. Exclusions can be limited to *.log files in this folder.'
+    justification: ''
+  - path: '%ProgramData%\Citrix\WorkspaceCloud\Logs'
+    type: Folder
     description: ''
     justification: ''
   - path: '%SystemDrive%\Logs'
     type: Folder
     description: 'The following processes write to this folder: CdfCaptureService.exe, XaXdCloudProxy.exe, cwcconnectorcomponents.exe, msiexec.exe'
     justification: ''
-  - path: '%ProgramData%\Citrix\WorkspaceCloud\InstallLogs'
+  - path: C:\Logs\CDF
     type: Folder
-    description: 'The following processes write to this folder: Citrix.CloudServices.AutoUpdater.Updater.exe, cwcconnector.exe, cwcconnectorcomponents.exe, cwcconnectorprerequisites.exe or msiexec.exe. Exclusions can be limited to *.log files in this folder.'
-    justification: ''
-  - path: '%SystemRoot%\Temp\<ProductGUID>\Logger\Citrix.CloudServices.AutoUpdater.Logger.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\Temp\<ProductGUID>\Updater\Citrix.CloudServices.AutoUpdater.Updater.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\Temp\<ProductGUID>\<ProductGUID>\CWCConnector.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\Temp\<ProductGUID>\<ProductGUID>\cwcconnectorcomponents.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\Temp\<ProductGUID>\<ProductGUID>\cwcconnectorprerequisites.exe'
-    type: Process
     description: ''
     justification: ''
   - path: '%ProgramData%\Citrix\WorkspaceCloud\InstallExes\CWCConnector.exe'
@@ -124,6 +92,10 @@ exclusions:
     description: ''
     justification: ''
   - path: '%ProgramData%\Citrix\WorkspaceCloud\InstallExes\cwcconnectorprerequisites.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%ProgramData%\Package Cache\<ProductGUID>\Citrix.CloudServices.SetupTools.CustomActions.exe'
     type: Process
     description: ''
     justification: ''
@@ -139,43 +111,43 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramData%\Package Cache\<ProductGUID>\Citrix.CloudServices.SetupTools.CustomActions.exe'
+  - path: '%ProgramFiles(x86)%\Citrix\NetScaler Cloud Gateway\Citrix.NetScaler.CloudGateway.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\Microsoft.NET\Framework64\<DotNetVersionFolder>\InstallUtil.exe'
+  - path: '%ProgramFiles(x86)%\Citrix\NetScaler Cloud Gateway\MetricsService.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\system32\wevtutil.exe'
+  - path: '%ProgramFiles%\Citrix\AccessSecurityService\Citrix.AccessSecurityService.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\system32\netsh.exe'
+  - path: '%ProgramFiles%\Citrix\Broker\Service\HighAvailabilityService.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\system32\taskkill.exe'
+  - path: '%ProgramFiles%\Citrix\CdfCaptureService\CdfCaptureService.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\system32\sc.exe'
+  - path: '%ProgramFiles%\Citrix\CitrixITSMAdapterProvider\WorkspaceAutomationConnectorPlugin.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\SysWOW64\wevtutil.exe'
+  - path: '%ProgramFiles%\Citrix\CloudServices\Agent\Citrix.CloudServices.Agent.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\SysWOW64\netsh.exe'
+  - path: '%ProgramFiles%\Citrix\CloudServices\AgentDiscovery\Citrix.CloudServices.AgentDiscovery.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\SysWOW64\taskkill.exe'
+  - path: '%ProgramFiles%\Citrix\CloudServices\AgentDiscovery\Handlers\XenApp65\Citrix.CloudServices.AgentDiscovery.XenApp65.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\SysWOW64\sc.exe'
+  - path: '%ProgramFiles%\Citrix\CloudServices\AgentDiscovery\Handlers\XenDesktop7\Citrix.CloudServices.AgentDiscovery.XenDesktop7.exe'
     type: Process
     description: ''
     justification: ''
@@ -199,39 +171,19 @@ exclusions:
     type: Process
     description: ''
     justification: ''
+  - path: '%ProgramFiles%\Citrix\CloudServices\MessageBroker\Citrix.CloudServices.MessageBroker.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\CloudServices\StaMessagingPlugin\Citrix.CloudServices.StaMessagingPlugin.exe'
+    type: Process
+    description: ''
+    justification: ''
   - path: '%ProgramFiles%\Citrix\CloudServices\WebRelayAgent\Citrix.CloudServices.WebRelay.Agent.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\CloudServices\AgentDiscovery\Citrix.CloudServices.AgentDiscovery.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\CloudServices\AgentDiscovery\Handlers\XenApp65\Citrix.CloudServices.AgentDiscovery.XenApp65.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\CloudServices\AgentDiscovery\Handlers\XenDesktop7\Citrix.CloudServices.AgentDiscovery.XenDesktop7.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\CloudServices\Agent\Citrix.CloudServices.Agent.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Citrix\NetScaler Cloud Gateway\MetricsService.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Citrix\NetScaler Cloud Gateway\Citrix.NetScaler.CloudGateway.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\RemoteHCLServer\Service\RemoteHCLServer.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Common Files\Citrix\HCLPlugins\RegisterPlugins.exe'
+  - path: '%ProgramFiles%\Citrix\ClxMtpService\Citrix.ClxMtpService.exe'
     type: Process
     description: ''
     justification: ''
@@ -239,19 +191,19 @@ exclusions:
     type: Process
     description: ''
     justification: ''
+  - path: '%ProgramFiles%\Citrix\ConfigSync\ConfigSyncService.exe'
+    type: Process
+    description: ''
+    justification: ''
   - path: '%ProgramFiles%\Citrix\ConfigSync\MonitorNotificationRun.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Microsoft SQL Server\<SQLServerVersionFolder>\Shared\sqlwriter.exe'
+  - path: '%ProgramFiles%\Citrix\Monitor\Service\MonitorConnectorService.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Microsoft SQL Server\<SQLServerVersionFolder>\LocalDB\Binn\sqlservr.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Microsoft SQL Server\<SQLServerVersionFolder>\Tools\Binn\SqlLocalDb.exe'
+  - path: '%ProgramFiles%\Citrix\RemoteHCLServer\Service\RemoteHCLServer.exe'
     type: Process
     description: ''
     justification: ''
@@ -259,15 +211,7 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\CdfCaptureService\CdfCaptureService.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\CitrixITSMAdapterProvider\WorkspaceAutomationConnectorPlugin.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Citrix\ClxMtpService\Citrix.ClxMtpService.exe'
+  - path: '%ProgramFiles%\Citrix\StaService\Service\StaService.exe'
     type: Process
     description: ''
     justification: ''
@@ -279,23 +223,79 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\CloudServices\MessageBroker\Citrix.CloudServices.MessageBroker.exe'
+  - path: '%ProgramFiles%\Citrix\XaXdCloudProxy\XaXdCloudProxy.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\CloudServices\StaMessagingPlugin\Citrix.CloudServices.StaMessagingPlugin.exe'
+  - path: '%ProgramFiles%\Common Files\Citrix\HCLPlugins\RegisterPlugins.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\Monitor\Service\MonitorConnectorService.exe'
+  - path: '%ProgramFiles%\Microsoft SQL Server\<SQLServerVersionFolder>\LocalDB\Binn\sqlservr.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\AccessSecurityService\Citrix.AccessSecurityService.exe'
+  - path: '%ProgramFiles%\Microsoft SQL Server\<SQLServerVersionFolder>\Shared\sqlwriter.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\StaService\Service\StaService.exe'
+  - path: '%ProgramFiles%\Microsoft SQL Server\<SQLServerVersionFolder>\Tools\Binn\SqlLocalDb.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\Microsoft.NET\Framework64\<DotNetVersionFolder>\InstallUtil.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\system32\netsh.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\system32\sc.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\system32\taskkill.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\system32\wevtutil.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SysWOW64\netsh.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SysWOW64\sc.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SysWOW64\taskkill.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SysWOW64\wevtutil.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\Temp\<ProductGUID>\<ProductGUID>\CWCConnector.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\Temp\<ProductGUID>\<ProductGUID>\cwcconnectorcomponents.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\Temp\<ProductGUID>\<ProductGUID>\cwcconnectorprerequisites.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\Temp\<ProductGUID>\Logger\Citrix.CloudServices.AutoUpdater.Logger.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\Temp\<ProductGUID>\Updater\Citrix.CloudServices.AutoUpdater.Updater.exe'
     type: Process
     description: ''
     justification: ''

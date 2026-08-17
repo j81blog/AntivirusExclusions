@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import * as yaml from 'js-yaml';
 import { itemSchema, vendorSchema, linkSchema, type Item, type Vendor } from '../../src/lib/contentSchemas';
 import { slugify } from '../../src/lib/slugify';
+import { sortExclusions } from '../../src/lib/sortExclusions';
 import { parseIssueBody, getField, parseExclusionRows, isChecked } from './parseIssueBody';
 import exclusionTypeMap from '../shared/exclusion-type-map.json' with { type: 'json' };
 
@@ -239,6 +240,8 @@ function main() {
       return;
     }
   }
+
+  itemData.exclusions = sortExclusions(itemData.exclusions);
 
   const itemCheck = itemSchema.safeParse(itemData);
   if (!itemCheck.success) {

@@ -7,12 +7,12 @@ sources:
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
 notes: []
 exclusions:
-  - path: '%ProgramFiles%\Citrix\SessionRecording\Player\Bin\SsRecPlayer.exe'
-    type: Process
-    description: ''
-    justification: ''
   - path: '%UserProfile%\AppData\Local\Citrix\SessionRecording\Player\Cache'
     type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\Player\Bin\SsRecPlayer.exe'
+    type: Process
     description: ''
     justification: ''
 tags: []

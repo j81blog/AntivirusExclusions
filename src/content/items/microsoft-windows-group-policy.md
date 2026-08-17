@@ -23,6 +23,10 @@ exclusions:
     type: File
     description: ''
     justification: ''
+  - path: '%SystemRoot%\System32\GroupPolicy\Registry.pol'
+    type: File
+    description: ''
+    justification: Group Policy client settings file
   - path: '%SystemRoot%\System32\GroupPolicy\User\Registry.pol'
     type: File
     description: ''
@@ -31,10 +35,6 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: '%SystemRoot%\System32\GroupPolicy\Registry.pol'
-    type: File
-    description: ''
-    justification: Group Policy client settings file
 tags: []
 ---
 

@@ -9,11 +9,11 @@ notes:
   - kind: note
     text: On a 64- bit system, by default, the installation directory will exist in "%ProgramFiles(x86)%" instead of "%ProgramFiles%" on 32-bit systems.
 exclusions:
-  - path: '%ProgramFiles(x86)%\Norskale\Norskale Infrastructure Services\Norskale Broker Service.exe'
+  - path: '%ProgramFiles(x86)%\Norskale\Norskale Infrastructure Services\Norskale Broker Service Configuration Utility.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles(x86)%\Norskale\Norskale Infrastructure Services\Norskale Broker Service Configuration Utility.exe'
+  - path: '%ProgramFiles(x86)%\Norskale\Norskale Infrastructure Services\Norskale Broker Service.exe'
     type: Process
     description: ''
     justification: ''

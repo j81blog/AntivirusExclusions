@@ -9,11 +9,15 @@ notes:
   - kind: note
     text: On a 64- bit system, by default, the installation directory will exist in "%ProgramFiles(x86)%" instead of "%ProgramFiles%" on 32-bit systems.
 exclusions:
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\cpushld.exe'
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\Data\DBCache\Resources\custom_resources'
+    type: File / Folder
+    description: OR the redirected location! (Optional) Custom Resources
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\ConsoleHelper.exe'
     type: File / Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\ConsoleHelper.exe'
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\cpushld.exe'
     type: File / Process
     description: ''
     justification: ''
@@ -46,6 +50,10 @@ exclusions:
     description: ''
     justification: ''
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pfwsmgr.exe'
+    type: File / Process
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pfxa6.exe'
     type: File / Process
     description: ''
     justification: ''
@@ -117,19 +125,31 @@ exclusions:
     type: File / Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pfxa6.exe'
-    type: File / Process
-    description: ''
-    justification: ''
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\RES.Workspacemanager.WMSync.exe'
     type: File / Process
     description: ''
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\ResPesvc.exe'
+    type: File / Process
+    description: Service
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\ResPesvc64.exe'
+    type: File / Process
+    description: Service
     justification: ''
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\setoutsi.exe'
     type: File / Process
     description: ''
     justification: ''
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\setprint.exe'
+    type: File / Process
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\svc\res.exe'
+    type: File / Process
+    description: Service
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\svc\resop.exe'
     type: File / Process
     description: ''
     justification: ''
@@ -145,33 +165,9 @@ exclusions:
     type: File / Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\ResPesvc.exe'
-    type: File / Process
-    description: Service
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\ResPesvc64.exe'
-    type: File / Process
-    description: Service
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\svc\res.exe'
-    type: File / Process
-    description: Service
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\svc\resop.exe'
-    type: File / Process
-    description: ''
-    justification: ''
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pfgii.exe'
     type: Process
     description: (Optional) Citrix Streamed Applications
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrdesk.exe'
-    type: Process
-    description: (Optional) RES ONE Workspace Shell
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrfunc.exe'
-    type: Process
-    description: (Optional) Application Manager feature
     justification: ''
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\PFXA6.exe'
     type: Process
@@ -185,17 +181,13 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\system32\pwrgrids.exe'
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrdesk.exe'
     type: Process
-    description: (Optional) Virtual Applications
+    description: (Optional) RES ONE Workspace Shell
     justification: ''
-  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\Data\DBCache\Resources\custom_resources'
-    type: File / Folder
-    description: OR the redirected location! (Optional) Custom Resources
-    justification: ''
-  - path: '%ProgramFiles%\RES Software\VDX Plugin\VDXPluginHelper.exe'
+  - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrfunc.exe'
     type: Process
-    description: (Optional) RES VDX Plugin 32 / 64 bit
+    description: (Optional) Application Manager feature
     justification: ''
   - path: '%ProgramFiles%\RES Software\VDX Engine\VDXEngine.exe'
     type: Process
@@ -204,6 +196,14 @@ exclusions:
   - path: '%ProgramFiles%\RES Software\VDX Engine\VDXEngineHelper.exe'
     type: Process
     description: (Optional) RES VDX Engine 32 / 64 bit
+    justification: ''
+  - path: '%ProgramFiles%\RES Software\VDX Plugin\VDXPluginHelper.exe'
+    type: Process
+    description: (Optional) RES VDX Plugin 32 / 64 bit
+    justification: ''
+  - path: '%SystemRoot%\system32\pwrgrids.exe'
+    type: Process
+    description: (Optional) Virtual Applications
     justification: ''
 tags: []
 ---

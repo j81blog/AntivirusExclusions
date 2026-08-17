@@ -15,15 +15,11 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\AgentGroupPolicyUtility.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Citrix.Wem.Agent.LogonService.exe'
-    type: Process
-    description: ''
-    justification: ''
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\AgentCacheUtility.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\AgentGroupPolicyUtility.exe'
     type: Process
     description: ''
     justification: ''
@@ -31,14 +27,18 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Norskale Agent Host Service.exe'
+  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Citrix.Wem.Agent.LogonService.exe'
     type: Process
     description: ''
-    justification: Up to on-prem 1909+/ Up to cloud 1903+
+    justification: ''
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Citrix.Wem.Agent.Service.exe'
     type: Process
     description: ''
     justification: On-prem 1909+ /Cloud 1903+
+  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Norskale Agent Host Service.exe'
+    type: Process
+    description: ''
+    justification: Up to on-prem 1909+/ Up to cloud 1903+
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\PrnsMgmtUtil.exe'
     type: Process
     description: ''

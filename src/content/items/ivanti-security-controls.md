@@ -17,14 +17,14 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Cache\{DateTime}\Resources\Custom_resources
-    type: Folder
-    description: ''
-    justification: ''
   - path: '%ProgramData%\Ivanti\Relay Server\'
     type: Folder
     description: ''
     justification: Folder en subfolders
+  - path: C:\Relay\Cache\{<GUID>}\Cache\{DateTime}\Resources\Custom_resources
+    type: Folder
+    description: ''
+    justification: ''
 tags: []
 ---
 

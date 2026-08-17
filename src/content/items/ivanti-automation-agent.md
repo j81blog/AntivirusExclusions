@@ -9,15 +9,23 @@ notes:
   - kind: note
     text: On a 64- bit system, by default, the installation directory will exist in "%ProgramFiles(x86)%" instead of "%ProgramFiles%" on 32-bit systems.
 exclusions:
-  - path: '%ProgramFiles%\Ivanti\Automation\Agent\agent.exe'
-    type: File / Process
+  - path: '%ProgramFiles%\Ivanti\Automation\Agent\ SidekickCore\SidekickCore.exe'
+    type: File
     description: ''
-    justification: 'Service Name: RESWAS'
+    justification: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\agent_updater.exe'
     type: File
     description: ''
     justification: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\deployer.exe'
+    type: File
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Ivanti\Automation\Agent\Sidekick32.exe'
+    type: File
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Ivanti\Automation\Agent\Sidekick64.exe'
     type: File
     description: ''
     justification: ''
@@ -53,18 +61,10 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Ivanti\Automation\Agent\Sidekick32.exe'
-    type: File
+  - path: '%ProgramFiles%\Ivanti\Automation\Agent\agent.exe'
+    type: File / Process
     description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Ivanti\Automation\Agent\Sidekick64.exe'
-    type: File
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\Ivanti\Automation\Agent\ SidekickCore\SidekickCore.exe'
-    type: File
-    description: ''
-    justification: ''
+    justification: 'Service Name: RESWAS'
 tags: []
 ---
 

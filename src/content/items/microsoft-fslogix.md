@@ -7,16 +7,8 @@ sources:
     url: https://learn.microsoft.com/en-us/fslogix/overview-prerequisites#configure-antivirus-file-and-folder-exclusions
 notes: []
 exclusions:
-  - path: '%ProgramFiles%\FSLogix\Apps\frxccd.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\FSLogix\Apps\frxccds.exe'
-    type: Process
-    description: ''
-    justification: ''
-  - path: '%ProgramFiles%\FSLogix\Apps\frxsvc.exe'
-    type: Process
+  - path: '%Programfiles%\FSLogix\Apps\frxccd.sys'
+    type: File
     description: ''
     justification: ''
   - path: '%Programfiles%\FSLogix\Apps\frxdrv.sys'
@@ -27,34 +19,38 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: '%Programfiles%\FSLogix\Apps\frxccd.sys'
-    type: File
-    description: ''
-    justification: ''
-  - path: '%TEMP%\*\*.VHD'
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*.VHDX
     type: File / Extension
     description: ''
-    justification: ''
-  - path: '%TEMP%\*\*.VHDX'
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.VHD
     type: File / Extension
     description: ''
-    justification: ''
-  - path: '%SystemRoot%\TEMP\*.VHD'
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.lock
     type: File / Extension
     description: ''
-    justification: ''
-  - path: '%SystemRoot%\TEMP\*.VHDX'
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.meta
     type: File / Extension
     description: ''
-    justification: ''
-  - path: '%ProgramData%\FSLogix\Cache\*'
-    type: File / Folder
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.metadata
+    type: File / Extension
     description: ''
-    justification: If CloudCache is enabled
-  - path: '%ProgramData%\FSLogix\Proxy\*'
-    type: File / Folder
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.lock
+    type: File / Extension
     description: ''
-    justification: If CloudCache is enabled
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.meta
+    type: File / Extension
+    description: ''
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.metadata
+    type: File / Extension
+    description: ''
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhd
     type: File / Extension
     description: ''
@@ -87,38 +83,42 @@ exclusions:
     type: File / Extension
     description: ''
     justification: Only when using VHDX files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.VHD
+  - path: '%SystemRoot%\TEMP\*.VHD'
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.lock
+    justification: ''
+  - path: '%SystemRoot%\TEMP\*.VHDX'
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.meta
+    justification: ''
+  - path: '%TEMP%\*\*.VHD'
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.metadata
+    justification: ''
+  - path: '%TEMP%\*\*.VHDX'
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*.VHDX
-    type: File / Extension
+    justification: ''
+  - path: '%ProgramData%\FSLogix\Cache\*'
+    type: File / Folder
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.lock
-    type: File / Extension
+    justification: If CloudCache is enabled
+  - path: '%ProgramData%\FSLogix\Proxy\*'
+    type: File / Folder
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.meta
-    type: File / Extension
+    justification: If CloudCache is enabled
+  - path: '%ProgramFiles%\FSLogix\Apps\frxccd.exe'
+    type: Process
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
-  - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.metadata
-    type: File / Extension
+    justification: ''
+  - path: '%ProgramFiles%\FSLogix\Apps\frxccds.exe'
+    type: Process
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+    justification: ''
+  - path: '%ProgramFiles%\FSLogix\Apps\frxsvc.exe'
+    type: Process
+    description: ''
+    justification: ''
 tags: []
 ---
 

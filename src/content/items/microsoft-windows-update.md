@@ -9,23 +9,11 @@ sources:
     url: https://learn.microsoft.com/en-us/defender-endpoint/configure-server-exclusions-microsoft-defender-antivirus
 notes: []
 exclusions:
-  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Datastore.edb'
-    type: File
-    description: Windows Update or Automatic Update database file
-    justification: ''
-  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Logs\Edb*.jrs'
-    type: File
-    description: Log files
-    justification: ''
-  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Logs\Edb.chk'
-    type: File
-    description: Log files
-    justification: ''
-  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Logs\Tmp.edb'
-    type: File
-    description: Log files
-    justification: ''
   - path: '%ProgramData%\Microsoft\Search\Data\Applications\Windows\windows.edb'
+    type: File
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SoftwareDistribution\Datastore\*\edb\*.log'
     type: File
     description: ''
     justification: ''
@@ -33,9 +21,21 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: '%SystemRoot%\SoftwareDistribution\Datastore\*\edb\*.log'
+  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Datastore.edb'
     type: File
-    description: ''
+    description: Windows Update or Automatic Update database file
+    justification: ''
+  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Logs\Edb.chk'
+    type: File
+    description: Log files
+    justification: ''
+  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Logs\Edb*.jrs'
+    type: File
+    description: Log files
+    justification: ''
+  - path: '%SystemRoot%\SoftwareDistribution\Datastore\Logs\Tmp.edb'
+    type: File
+    description: Log files
     justification: ''
 tags: []
 ---

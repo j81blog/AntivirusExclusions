@@ -9,19 +9,19 @@ notes:
   - kind: note
     text: Also configure the IIS Exclusions when IIS installed on the same server.
 exclusions:
-  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName.mdf'
-    type: File
-    description: ''
-    justification: 1912+
-  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName.mdf'
-    type: File
-    description: ''
-    justification: 1912+
   - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName_log.ldf'
     type: File
     description: ''
     justification: 1912+
+  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName.mdf'
+    type: File
+    description: ''
+    justification: 1912+
   - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName_log.ldf'
+    type: File
+    description: ''
+    justification: 1912+
+  - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName.mdf'
     type: File
     description: ''
     justification: 1912+
@@ -33,10 +33,6 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Microsoft SQL Server\150\LocalDB\Binn\sqlservr.exe'
-    type: Process
-    description: ''
-    justification: ''
   - path: '%ProgramFiles%\Citrix\Broker\Service\HighAvailabilityService.exe'
     type: Process
     description: ''
@@ -45,6 +41,10 @@ exclusions:
     type: Process
     description: ''
     justification: 1912+
+  - path: '%ProgramFiles%\Microsoft SQL Server\150\LocalDB\Binn\sqlservr.exe'
+    type: Process
+    description: ''
+    justification: ''
   - path: '%ProgramFiles%\Microsoft SQL Server\160\LocalDB\Binn\sqlservr.exe'
     type: Process
     description: ''

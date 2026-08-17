@@ -11,27 +11,11 @@ notes:
   - kind: note
     text: If these files are not excluded, antivirus software might prevent appropriate access to these files, and security databases can become corrupted. Scanning these files can prevent the files from being used or might prevent a security policy from being applied to the files. These files should not be scanned because antivirus software might not correctly treat them as proprietary database files. These are the recommended exclusions. There might be other file types that are not included in this article that should be excluded.
 exclusions:
-  - path: '%SystemRoot%\Security\Database\*.edb'
-    type: File
-    description: Windows Security files
-    justification: ''
-  - path: '%SystemRoot%\Security\Database\*.sdb'
-    type: File
-    description: Windows Security files
-    justification: ''
-  - path: '%SystemRoot%\Security\Database\*.log'
-    type: File
-    description: Windows Security files
-    justification: ''
   - path: '%SystemRoot%\Security\Database\*.chk'
     type: File
     description: Windows Security files
     justification: ''
-  - path: '%SystemRoot%\Security\Database\*.jrs'
-    type: File
-    description: Windows Security files
-    justification: ''
-  - path: '%SystemRoot%\Security\Database\*.xml'
+  - path: '%SystemRoot%\Security\Database\*.cmtx'
     type: File
     description: Windows Security files
     justification: ''
@@ -39,7 +23,23 @@ exclusions:
     type: File
     description: Windows Security files
     justification: ''
-  - path: '%SystemRoot%\Security\Database\*.cmtx'
+  - path: '%SystemRoot%\Security\Database\*.edb'
+    type: File
+    description: Windows Security files
+    justification: ''
+  - path: '%SystemRoot%\Security\Database\*.jrs'
+    type: File
+    description: Windows Security files
+    justification: ''
+  - path: '%SystemRoot%\Security\Database\*.log'
+    type: File
+    description: Windows Security files
+    justification: ''
+  - path: '%SystemRoot%\Security\Database\*.sdb'
+    type: File
+    description: Windows Security files
+    justification: ''
+  - path: '%SystemRoot%\Security\Database\*.xml'
     type: File
     description: Windows Security files
     justification: ''

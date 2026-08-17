@@ -9,6 +9,10 @@ sources:
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices
 notes: []
 exclusions:
+  - path: C:\Program Files\Citrix\User Profile Manager\Driver\upmjit.sys
+    type: File
+    description: User Profile Manager driver
+    justification: ''
   - path: C:\Program Files\Citrix\User Profile Manager
     type: Folder
     description: User Profile Manager install path
@@ -16,10 +20,6 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\User Profile Manager\UserProfileManager.exe'
     type: Process
     description: User Profile Manager executable
-    justification: ''
-  - path: C:\Program Files\Citrix\User Profile Manager\Driver\upmjit.sys
-    type: File
-    description: User Profile Manager driver
     justification: ''
 tags: []
 ---

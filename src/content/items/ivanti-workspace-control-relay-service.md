@@ -11,7 +11,39 @@ exclusions:
     type: File
     description: ''
     justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.appv
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.cnl
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.lic
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.licn
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.licr
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.licu
+    type: File
+    description: ''
+    justification: ''
   - path: C:\Relay\Cache\{<GUID>}\Transactions\*.log
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.mls
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.nur
     type: File
     description: ''
     justification: ''
@@ -27,35 +59,7 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.stu
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.str
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.nur
-    type: File
-    description: ''
-    justification: ''
   - path: C:\Relay\Cache\{<GUID>}\Transactions\*.pmw
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.lic
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.licn
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.licu
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.licr
     type: File
     description: ''
     justification: ''
@@ -71,7 +75,19 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.mls
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.str
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.stu
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.sublic
+    type: File
+    description: ''
+    justification: ''
+  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.sublicn
     type: File
     description: ''
     justification: ''
@@ -87,30 +103,14 @@ exclusions:
     type: File
     description: ''
     justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.sublic
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.sublicn
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.cnl
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Transactions\*.appv
-    type: File
-    description: ''
-    justification: ''
-  - path: C:\Relay\Cache\{<GUID>}\Cache\{DateTime}\Resources\Custom_resources
-    type: Folder
-    description: ''
-    justification: ''
   - path: '%ProgramData%\Ivanti\Relay Server\'
     type: Folder
     description: ''
     justification: Folder en subfolders
+  - path: C:\Relay\Cache\{<GUID>}\Cache\{DateTime}\Resources\Custom_resources
+    type: Folder
+    description: ''
+    justification: ''
 tags: []
 ---
 

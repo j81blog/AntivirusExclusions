@@ -9,22 +9,18 @@ sources:
     url: https://learn.microsoft.com/en-us/defender-endpoint/configure-server-exclusions-microsoft-defender-antivirus
 notes: []
 exclusions:
-  - path: '%SystemRoot%\SYSVOL"'
-    type: Folder
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\SYSVOL"'
-    type: Folder
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\SYSVOL"'
-    type: Folder
-    description: ''
-    justification: ''
-  - path: '%SystemRoot%\SYSVOL"'
-    type: Folder
-    description: ''
-    justification: ''
+  - path: '%SystemRoot%\NTDS\Edb.chk"'
+    type: File
+    description: NTDS Working folder
+    justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\DSA Working Directory'
+  - path: '%SystemRoot%\NTDS\Edb*.jrs"'
+    type: File
+    description: Active Directory transaction log files
+    justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Database Log Files Path'
+  - path: '%SystemRoot%\NTDS\EDB*.log"'
+    type: File
+    description: Active Directory transaction log files
+    justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Database Log Files Path'
   - path: '%SystemRoot%\NTDS\Ntds.dit"'
     type: File
     description: Main NTDS database files
@@ -33,7 +29,7 @@ exclusions:
     type: File
     description: Main NTDS database files
     justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\DSA Database File'
-  - path: '%SystemRoot%\NTDS\EDB*.log"'
+  - path: '%SystemRoot%\NTDS\Ntds.pat"'
     type: File
     description: Active Directory transaction log files
     justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Database Log Files Path'
@@ -41,19 +37,7 @@ exclusions:
     type: File
     description: Active Directory transaction log files
     justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Database Log Files Path'
-  - path: '%SystemRoot%\NTDS\Edb*.jrs"'
-    type: File
-    description: Active Directory transaction log files
-    justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Database Log Files Path'
-  - path: '%SystemRoot%\NTDS\Ntds.pat"'
-    type: File
-    description: Active Directory transaction log files
-    justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Database Log Files Path'
   - path: '%SystemRoot%\NTDS\Temp.edb"'
-    type: File
-    description: NTDS Working folder
-    justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\DSA Working Directory'
-  - path: '%SystemRoot%\NTDS\Edb.chk"'
     type: File
     description: NTDS Working folder
     justification: 'The location of these files is specified in the following registry subkey: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\DSA Working Directory'
@@ -65,6 +49,22 @@ exclusions:
     type: File / Folder
     description: ''
     justification: Optionally only allow *.log, *.dns, BOOT in (sub) folders
+  - path: '%SystemRoot%\SYSVOL"'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SYSVOL"'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SYSVOL"'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%SystemRoot%\SYSVOL"'
+    type: Folder
+    description: ''
+    justification: ''
 tags: []
 ---
 

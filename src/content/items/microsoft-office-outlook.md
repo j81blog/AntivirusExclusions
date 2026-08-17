@@ -5,18 +5,6 @@ order: 6
 sources: []
 notes: []
 exclusions:
-  - path: '*.pst'
-    type: File / Extension
-    description: ''
-    justification: If not configured, corruption can occur.
-  - path: '*.ost'
-    type: File / Extension
-    description: ''
-    justification: If not configured, corruption can occur.
-  - path: '%localappdata%\Microsoft\Outlook\Offline Address Books\<guid>\*.oab'
-    type: File
-    description: ''
-    justification: Outlook address book files (Directory may be different)
   - path: '%appdata%\Microsoft\Outlook\*.srs'
     type: File
     description: ''
@@ -29,6 +17,18 @@ exclusions:
     type: File
     description: ''
     justification: Print styles
+  - path: '%localappdata%\Microsoft\Outlook\Offline Address Books\<guid>\*.oab'
+    type: File
+    description: ''
+    justification: Outlook address book files (Directory may be different)
+  - path: '*.ost'
+    type: File / Extension
+    description: ''
+    justification: If not configured, corruption can occur.
+  - path: '*.pst'
+    type: File / Extension
+    description: ''
+    justification: If not configured, corruption can occur.
 tags: []
 ---
 

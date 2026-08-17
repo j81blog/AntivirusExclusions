@@ -7,11 +7,23 @@ sources:
     url: https://learn.microsoft.com/en-us/defender-endpoint/configure-server-exclusions-microsoft-defender-antivirus#web-server-exclusions
 notes: []
 exclusions:
-  - path: '%SystemRoot%\IIS Temporary Compressed Files'
-    type: Folder
+  - path: '%SystemRoot%\inetpub\logs\logfiles\**.log'
+    type: File
     description: ''
-    justification: ''
-  - path: '%SystemDrive%\inetpub\temp\IIS Temporary Compressed Files'
+    justification: IIS 7
+  - path: '%SystemRoot%\system32\inetsrv\config\*.config'
+    type: File
+    description: ''
+    justification: IIS 7
+  - path: '%SystemRoot%\system32\inetsrv\MBschema.xml'
+    type: File
+    description: ''
+    justification: IIS 6
+  - path: '%SystemRoot%\system32\inetsrv\MetaBase.xml'
+    type: File
+    description: ''
+    justification: IIS 6
+  - path: '%systemDrive%\inetpub\logs'
     type: Folder
     description: ''
     justification: ''
@@ -19,7 +31,7 @@ exclusions:
     type: Folder
     description: ''
     justification: ''
-  - path: '%systemDrive%\inetpub\logs'
+  - path: '%SystemDrive%\inetpub\temp\IIS Temporary Compressed Files'
     type: Folder
     description: ''
     justification: ''
@@ -27,34 +39,22 @@ exclusions:
     type: Folder
     description: ''
     justification: ''
-  - path: '%SystemRoot%\SysWOW64\inetsrv\w3wp.exe'
-    type: Process
-    description: ''
-    justification: x64 systems only
-  - path: '%SystemRoot%\system32\inetsrv\w3wp.exe'
-    type: Process
+  - path: '%SystemRoot%\IIS Temporary Compressed Files'
+    type: Folder
     description: ''
     justification: ''
   - path: '%SystemDrive%\PHP5433\php-cgi.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%SystemRoot%\inetpub\logs\logfiles\**.log'
-    type: File
+  - path: '%SystemRoot%\system32\inetsrv\w3wp.exe'
+    type: Process
     description: ''
-    justification: IIS 7
-  - path: '%SystemRoot%\system32\inetsrv\MetaBase.xml'
-    type: File
+    justification: ''
+  - path: '%SystemRoot%\SysWOW64\inetsrv\w3wp.exe'
+    type: Process
     description: ''
-    justification: IIS 6
-  - path: '%SystemRoot%\system32\inetsrv\MBschema.xml'
-    type: File
-    description: ''
-    justification: IIS 6
-  - path: '%SystemRoot%\system32\inetsrv\config\*.config'
-    type: File
-    description: ''
-    justification: IIS 7
+    justification: x64 systems only
 tags: []
 ---
 
