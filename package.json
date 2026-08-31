@@ -30,8 +30,8 @@
     "@types/papaparse": "^5.5.2",
     "@types/tabulator-tables": "^6.3.6",
     "cheerio": "^1.2.0",
-    "js-yaml": "^5.3.0",
-    "papaparse": "^5.6.0",
+    "js-yaml": "^5.4.1",
+    "papaparse": "^5.7.0",
     "tsx": "^4.23.12",
     "typescript": "^6.0.3"
   }
