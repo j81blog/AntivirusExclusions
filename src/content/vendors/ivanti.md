@@ -5,7 +5,7 @@ sources: []
 ---
 
 These are exclusions specific for Ivanti
-
+    <br>
     <b>Ivanti Automation Console or Workspace Control products</b>
     Directory can be one of these, depending of time of installation or upgrade!
     <ul>
