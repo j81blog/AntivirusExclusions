@@ -20,8 +20,8 @@
     "jspdf-autotable": "^5.0.8",
     "nanostores": "^1.5.3",
     "preact": "^10.29.8",
-    "tabulator-tables": "^6.5.2",
-    "zod": "^4.6.2"
+    "tabulator-tables": "^6.5.3",
+    "zod": "^4.6.5"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
