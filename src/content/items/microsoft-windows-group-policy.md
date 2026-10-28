@@ -1,40 +1,58 @@
 ---
 vendor: microsoft
 title: Microsoft Windows Group Policy
-order: 10
+order: 17
 sources:
   - label: Microsoft
     url: https://support.microsoft.com/en-us/help/822158/virus-scanning-recommendations-for-enterprise-computers-that-are-running
-  - label: Microsoft Defender Antivirus exclusions on Windows Server
-    url: https://learn.microsoft.com/en-us/defender-endpoint/configure-server-exclusions-microsoft-defender-antivirus
+  - label: Microsoft Defender Antivirus built-in exclusions
+    url: https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-exclusions-overview#built-in-exclusions
 notes:
   - kind: note
-    text: Group Policy exclusions apply to Windows Server only. If you're using Microsoft Defender Antivirus, Group Policy exclusions are included in automatic server role exclusions.
+    text: Microsoft Defender Antivirus excludes these Group Policy files automatically (built-in exclusions, all Windows versions). Add them manually for other antivirus products.
 exclusions:
   - path: '%AllUsersProfile%\NTUser.pol'
     type: File
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%SystemRoot%\System32\GroupPolicy\Machine\Registry.pol'
     type: File
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%SystemRoot%\System32\GroupPolicy\Machine\Registry.tmp'
     type: File
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%SystemRoot%\System32\GroupPolicy\Registry.pol'
     type: File
     description: ''
     justification: Group Policy client settings file
+    condition: ''
+    status: legacy
   - path: '%SystemRoot%\System32\GroupPolicy\User\Registry.pol'
     type: File
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%SystemRoot%\System32\GroupPolicy\User\Registry.tmp'
     type: File
     description: ''
     justification: ''
+    condition: ''
+    status: current
+  - path: '%ProgramData%\Microsoft\GroupPolicy\Users\<User SID>\NTUser.pol'
+    type: File
+    description: ''
+    justification: ''
+    condition: ''
+    status: current
 tags: []
 ---
 

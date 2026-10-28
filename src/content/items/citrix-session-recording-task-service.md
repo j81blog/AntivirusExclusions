@@ -11,18 +11,26 @@ exclusions:
     type: Folder
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramData%\Citrix\SessionRecording\SRTask'
     type: Folder
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramFiles%\Citrix\SessionRecording\SRTaskService\SsRecTaskService.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramFiles%\Citrix\SessionRecording\SRTaskService\ExportConsole\SsRecExporterConsole.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
 tags: []
 ---
 

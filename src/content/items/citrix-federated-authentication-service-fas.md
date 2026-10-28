@@ -11,18 +11,26 @@ exclusions:
     type: Folder
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%windir%\ServiceProfiles\NetworkService\AppData\Local\FasDatabase'
     type: Folder
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramFiles%\Citrix\Federated Authentication Service\Citrix.Authentication.FederatedAuthenticationService.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramFiles%\Citrix\Federated Authentication Service\FasAdminConsole.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
 tags: []
 ---
 

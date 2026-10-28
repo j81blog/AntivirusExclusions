@@ -11,6 +11,8 @@ exclusions:
     type: Folder
     description: ''
     justification: ''
+    condition: ''
+    status: current
 tags: []
 ---
 
