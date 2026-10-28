@@ -1,7 +1,7 @@
 ---
 vendor: citrix
 title: Citrix Virtual Apps and Desktops Delivery Controller
-order: 11
+order: 13
 sources:
   - label: 'Tech Paper: Endpoint Security, Antivirus, and Antimalware Best Practices'
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
@@ -25,7 +25,7 @@ exclusions:
     type: File
     description: ''
     justification: 1912+
-  - path: '%ProgramData% \Citrix\Broker\Cache'
+  - path: '%ProgramData%\Citrix\Broker\Cache'
     type: Folder
     description: ''
     justification: 1912+

@@ -10,11 +10,15 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\SessionRecording\Server\App_Data*.xml'
     type: File
     description: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+  - path: C:\SessionRecordings\<yyyy>\<MM>\<dd>\i_*.icl*
+    type: File
+    description: ''
     justification: ''
   - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\log'
     type: Folder
     description: ''
-    justification: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%SystemRoot%\System32\msmq'
     type: Folder
     description: ''
@@ -24,6 +28,50 @@ exclusions:
     description: ''
     justification: ''
   - path: C:\SessionRecordingsRestored
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\Server'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\RestApiService'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\SignalRApiService'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\WebSocketServer'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\Logging'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\LoggingWebService'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\EndPointRestApiService'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\RecordingDataApiServiceDsAuth'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\Database'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\PolicyConsole'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\Scripts'
     type: Folder
     description: ''
     justification: ''
@@ -47,11 +95,19 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\SsRecWebSocketServer.exe'
+  - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\SsRecUtils.exe'
     type: Process
     description: ''
     justification: ''
+  - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\SsRecWebSocketServer.exe'
+    type: Process
+    description: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\TestPolicyAdmin.exe'
+    type: Process
+    description: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+  - path: '%ProgramFiles%\Citrix\SessionRecording\MQCoreService\Bin\SsRecMQCoreService.exe'
     type: Process
     description: ''
     justification: ''

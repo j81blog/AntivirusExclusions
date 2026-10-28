@@ -67,6 +67,10 @@ exclusions:
     type: File
     description: ''
     justification: ''
+  - path: '%ProgramFiles%\Citrix\Broker\Service\Setup Scripts\RemoveLhcDatabase.ps1'
+    type: File
+    description: ''
+    justification: ''
   - path: '%ProgramData%\Citrix\WorkspaceCloud\InstallLogs'
     type: Folder
     description: 'The following processes write to this folder: Citrix.CloudServices.AutoUpdater.Updater.exe, cwcconnector.exe, cwcconnectorcomponents.exe, cwcconnectorprerequisites.exe or msiexec.exe. Exclusions can be limited to *.log files in this folder.'
@@ -82,7 +86,7 @@ exclusions:
   - path: C:\Logs\CDF
     type: Folder
     description: ''
-    justification: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramData%\Citrix\WorkspaceCloud\InstallExes\CWCConnector.exe'
     type: Process
     description: ''
