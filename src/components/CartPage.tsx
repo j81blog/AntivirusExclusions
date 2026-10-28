@@ -1,6 +1,6 @@
 import { useStore } from '@nanostores/preact';
 import { cartStore, removeRowFromCart, clearCart, type CartItem } from '../stores/cart';
-import AvExport from './AvExport';
+import ExportMenu from './ExportMenu';
 
 function downloadBlob(filename: string, content: string, mime: string) {
   const blob = new Blob([content], { type: mime });
@@ -66,24 +66,23 @@ export default function CartPage() {
       <div class="cart-toolbar">
         <p class="cart-count">{items.length} exclusion{items.length === 1 ? '' : 's'} selected</p>
         <div class="cart-actions">
-          <button onClick={() => downloadBlob('av-exclusions-selection.csv', toCsv(items), 'text/csv')}>
-            Download CSV
-          </button>
-          <button onClick={() => toPdf(items)}>Download PDF</button>
-          <button
-            onClick={() =>
-              downloadBlob('av-exclusions-selection.json', JSON.stringify(items, null, 2), 'application/json')
+          <ExportMenu
+            fileActions={[
+              { label: 'CSV', run: () => downloadBlob('av-exclusions-selection.csv', toCsv(items), 'text/csv') },
+              { label: 'PDF', run: () => toPdf(items) },
+              {
+                label: 'JSON',
+                run: () =>
+                  downloadBlob('av-exclusions-selection.json', JSON.stringify(items, null, 2), 'application/json'),
+              },
+            ]}
+            getAvRows={() =>
+              items.map((item) => ({ path: item.path, type: item.type, condition: item.condition, itemTitle: item.itemTitle }))
             }
-          >
-            Download JSON
-          </button>
+          />
           <button onClick={() => clearCart()}>Clear selection</button>
         </div>
       </div>
-
-      <AvExport
-        getRows={() => items.map((item) => ({ path: item.path, type: item.type, condition: item.condition, itemTitle: item.itemTitle }))}
-      />
 
       <div class="cart-table-wrap">
         <table class="cart-table">
