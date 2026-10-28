@@ -181,6 +181,41 @@ table {
   color: var(--color-text-secondary);
 }
 
+.av-export {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.av-export-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.av-export select {
+  font: inherit;
+  padding: 4px 6px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.experimental-badge {
+  display: inline-flex;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: var(--badge-registry-bg);
+  color: var(--badge-registry-text);
+}
+
 .cart-toolbar {
   display: flex;
   align-items: center;
