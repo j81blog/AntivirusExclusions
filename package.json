@@ -22,7 +22,7 @@
     "nanostores": "^1.5.3",
     "preact": "^10.29.8",
     "tabulator-tables": "^6.5.2",
-    "zod": "^4.6.2"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
