@@ -285,15 +285,29 @@ button.export-menu-item:focus-visible {
 }
 
 .cart-table {
+  width: 100%;
   font-size: 13px;
 }
 
+/* Text columns wrap so the table fits next to the sidebar. */
 .cart-table th,
 .cart-table td {
   padding: 8px 10px;
   text-align: left;
+  vertical-align: top;
   border-top: 1px solid var(--color-border);
+}
+
+.cart-table th,
+.cart-table td:first-child,
+.cart-table td:nth-child(3),
+.cart-table td:last-child {
   white-space: nowrap;
+}
+
+.cart-table td.mono {
+  min-width: 260px;
+  overflow-wrap: anywhere;
 }
 
 .cart-table thead th {
