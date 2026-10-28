@@ -2,6 +2,8 @@
 vendor: microsoft
 title: Microsoft Windows Server DHCP
 order: 19
+lastReviewed: 2026-10-28
+related: []
 sources:
   - label: Microsoft Defender Antivirus exclusions on Windows Server
     url: https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-exclusions-windows-server#dhcp-server-exclusions
@@ -15,31 +17,36 @@ exclusions:
     justification: The location is set by DatabasePath, DhcpLogFilePath and BackupDatabasePath in HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DHCPServer\Parameters.
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\DHCP\*\*.pat'
     type: File
     description: ''
     justification: The location is set by DatabasePath, DhcpLogFilePath and BackupDatabasePath in HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DHCPServer\Parameters.
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\DHCP\*\*.log'
     type: File
     description: ''
     justification: The location is set by DatabasePath, DhcpLogFilePath and BackupDatabasePath in HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DHCPServer\Parameters.
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\DHCP\*\*.chk'
     type: File
     description: ''
     justification: The location is set by DatabasePath, DhcpLogFilePath and BackupDatabasePath in HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DHCPServer\Parameters.
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\DHCP\*\*.edb'
     type: File
     description: ''
     justification: The location is set by DatabasePath, DhcpLogFilePath and BackupDatabasePath in HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\DHCPServer\Parameters.
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Windows Server DHCP
+Windows Server DHCP Server role.

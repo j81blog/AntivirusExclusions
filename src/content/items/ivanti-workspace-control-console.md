@@ -2,6 +2,11 @@
 vendor: ivanti
 title: Ivanti Workspace Control Console
 order: 13
+lastReviewed: 2026-10-28
+related:
+  - ivanti-workspace-control-agent
+  - ivanti-workspace-control-application-whitelist-monitor
+  - ivanti-workspace-control-relay-service
 sources:
   - label: Ivanti Workspace Control Antivirus Best Practices
     url: https://hub.ivanti.com/s/article/Ivanti-Workspace-Control-Antivirus-Best-Practices?language=en_US
@@ -17,115 +22,134 @@ exclusions:
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\PFPol.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\PFXA6.exe'
     type: File
     description: (Optional) Application Publishing to Citrix XenApp 6.x
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\PFXA7.exe'
     type: File
     description: (Optional) Application Publishing to Citrix XenApp 7.x
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\PFXACloud.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrfunc.exe'
     type: File
     description: (Optional) Application Manager feature
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrmail.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\PwrRat.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrsnmp.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrtech.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrtrace.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\pwrx64.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\StartWiz.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\svc\resop.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: legacy
+    source: https://hub.ivanti.com/s/article/Ivanti-Workspace-Control-Antivirus-Best-Practices?language=en_US
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\UserSettingsCaptureWizard.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\wmedit.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\WMExchAuto.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\wmwizrds.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
   - path: '%ProgramFiles(x86)%\Ivanti\Workspace Control\svc\res.exe'
     type: File / Process
     description: Service
     justification: ''
     condition: ''
     status: current
+    source: https://help.ivanti.com/res/help/en_US/IWC/2024/Help/Content/10036.htm
 tags: []
 ---
 
-Av exclusions for Ivanti Workspace Control Console
+Workspace Control management console.

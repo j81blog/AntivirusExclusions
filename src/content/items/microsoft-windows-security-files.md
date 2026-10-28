@@ -2,6 +2,12 @@
 vendor: microsoft
 title: Microsoft Windows Security files
 order: 18
+lastReviewed: 2026-10-28
+related:
+  - microsoft-windows
+  - microsoft-windows-group-policy
+  - microsoft-windows-update
+  - microsoft-windows-user-profile
 sources:
   - label: Microsoft
     url: https://support.microsoft.com/en-us/help/822158/virus-scanning-recommendations-for-enterprise-computers-that-are-running
@@ -17,49 +23,57 @@ exclusions:
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\Security\Database\*.cmtx'
     type: File
     description: Windows Security files
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\Security\Database\*.csv'
     type: File
     description: Windows Security files
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\Security\Database\*.edb'
     type: File
     description: Windows Security files
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\Security\Database\*.jrs'
     type: File
     description: Windows Security files
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\Security\Database\*.log'
     type: File
     description: Windows Security files
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\Security\Database\*.sdb'
     type: File
     description: Windows Security files
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\Security\Database\*.xml'
     type: File
     description: Windows Security files
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Windows Security files
+Windows security database files on all Windows machines.

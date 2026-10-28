@@ -2,6 +2,10 @@
 vendor: liquidware
 title: Liquidware ProfileUnity Console
 order: 3
+lastReviewed: 2026-10-28
+related:
+  - liquidware-flexapp-one
+  - liquidware-profileunity-client
 sources:
   - label: Antivirus Exclusion List for ProfileUnity Program Files and Directories
     url: https://support.liquidware.com/hc/en-us/articles/44957009957901-Antivirus-Exclusion-List-for-ProfileUnity-Program-Files-and-Directories
@@ -15,13 +19,15 @@ exclusions:
     justification: Exclude recursively.
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Liquidware Labs\ProfileUnity'
     type: Folder
     description: ''
     justification: Exclude recursively.
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Liquidware ProfileUnity Console
+ProfileUnity management console server.

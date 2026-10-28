@@ -2,6 +2,13 @@
 vendor: ivanti
 title: Ivanti User Workspace Manager File Director
 order: 7
+lastReviewed: 2026-10-28
+related:
+  - ivanti-user-workspace-manager-application-control
+  - ivanti-user-workspace-manager-environment-manager
+  - ivanti-user-workspace-manager-insight
+  - ivanti-user-workspace-manager-management-center-communications-agent
+  - ivanti-user-workspace-manager-performance-manager
 sources:
   - label: Recommended Anti-Virus and User Workspace Manager (AppSense) Exclusions
     url: https://hub.ivanti.com/s/article/Recommended-Anti-Virus-and-AppSense-Exclusions?language=en_US
@@ -17,7 +24,8 @@ exclusions:
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Ivanti User Workspace Manager File Director
+UWM File Director agent on endpoints.

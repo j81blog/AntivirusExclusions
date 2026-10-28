@@ -2,6 +2,9 @@
 vendor: microsoft
 title: Microsoft Teams v2
 order: 14
+lastReviewed: 2026-10-28
+related:
+  - microsoft-teams-v1-classic
 sources:
   - label: Exclude antivirus and DLP applications from blocking Teams
     url: https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/teams-administration/include-exclude-teams-from-antivirus-dlp#new-teams
@@ -17,31 +20,36 @@ exclusions:
     justification: https://mc.merill.net/message/MC1189656
     condition: ''
     status: current
+    source: https://mc.merill.net/message/MC1189656
   - path: '%ProgramFiles%\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe\ms-teams.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/teams-administration/include-exclude-teams-from-antivirus-dlp#new-teams
   - path: '%ProgramFiles%\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe\ms-teamsupdate.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/teams-administration/include-exclude-teams-from-antivirus-dlp#new-teams
   - path: msedgewebview2.exe
     type: Process
     description: Edge WebView2 runtime
     justification: Runs from the Edge WebView2 runtime folder, not from the Teams folder, so exclude it by process name.
     condition: ''
     status: current
+    source: https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/teams-administration/include-exclude-teams-from-antivirus-dlp#new-teams
   - path: '%ProgramFiles%\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe\msteams_autostarter.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/teams-administration/include-exclude-teams-from-antivirus-dlp#new-teams
 tags: []
 ---
 
-Av exclusions for Microsoft Teams v2
+New Teams on desktops and session hosts.

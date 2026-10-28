@@ -2,6 +2,8 @@
 vendor: microsoft
 title: Microsoft Intune Win32
 order: 7
+lastReviewed: 2026-10-28
+related: []
 sources:
   - label: 'Microsoft Learn: Troubleshoot Win32 app issues'
     url: https://learn.microsoft.com/en-us/intune/app-management/deployment/troubleshoot-win32
@@ -15,19 +17,22 @@ exclusions:
     justification: ''
     condition: x64 clients
     status: current
+    source: ''
   - path: '%SystemRoot%\IMECache'
     type: Folder
     description: ''
     justification: Needed for installation and execution of LOB Win32 apps.
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles%\Microsoft Intune Management Extension\Content'
     type: Folder
     description: ''
     justification: ''
     condition: x86 clients
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Intune Win32
+Intune Management Extension on Intune-managed Windows clients.

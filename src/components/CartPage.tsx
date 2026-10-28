@@ -11,7 +11,7 @@ function downloadBlob(filename: string, content: string, mime: string) {
   URL.revokeObjectURL(url);
 }
 
-const HEADER = ['Product', 'Exclusion', 'Type', 'Applies when', 'Description', 'Justification', 'Status'];
+const HEADER = ['Product', 'Exclusion', 'Type', 'Applies when', 'Description', 'Justification', 'Status', 'Source'];
 
 function toRow(item: CartItem): string[] {
   return [
@@ -22,6 +22,7 @@ function toRow(item: CartItem): string[] {
     item.description,
     item.justification,
     item.status ?? 'current',
+    item.source ?? '',
   ];
 }
 

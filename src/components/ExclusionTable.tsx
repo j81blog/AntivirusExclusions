@@ -4,6 +4,7 @@ import { jsPDF } from 'jspdf';
 import { applyPlugin } from 'jspdf-autotable';
 import { addRowsToCart } from '../stores/cart';
 import { categorizeExclusionType } from '../lib/normalizeExclusionType';
+import { platformLabel, type Platform } from '../lib/platform';
 
 applyPlugin(jsPDF);
 
@@ -15,12 +16,17 @@ export interface ExclusionRow {
   justification: string;
   condition: string;
   status: 'current' | 'legacy';
+  source: string;
+  sourceLabel: string;
+  platform: Platform;
 }
 
 interface Props {
   itemSlug: string;
   itemTitle: string;
   rows: ExclusionRow[];
+  /** Show the Source column (items with more than one source). */
+  showSource?: boolean;
 }
 
 function typeBadgeFormatter(cell: CellComponent) {
@@ -34,6 +40,13 @@ function typeBadgeFormatter(cell: CellComponent) {
 
 function pathFormatter(cell: CellComponent) {
   const wrap = document.createElement('span');
+  const data = cell.getRow().getData() as ExclusionRow;
+  if (data.platform !== 'windows') {
+    const badge = document.createElement('span');
+    badge.className = 'platform-badge';
+    badge.textContent = platformLabel[data.platform];
+    wrap.append(badge, ' ');
+  }
   const code = document.createElement('code');
   code.textContent = String(cell.getValue() ?? '');
   // Badge goes first so long, truncated paths can't hide it.
@@ -48,6 +61,17 @@ function pathFormatter(cell: CellComponent) {
   return wrap;
 }
 
+function sourceFormatter(cell: CellComponent) {
+  const data = cell.getRow().getData() as ExclusionRow;
+  if (!data.source) return '—';
+  const link = document.createElement('a');
+  link.href = data.source;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = data.sourceLabel || data.source;
+  return link;
+}
+
 function emptyDashFormatter(cell: CellComponent) {
   const value = cell.getValue();
   return value ? String(value) : '—';
@@ -60,9 +84,10 @@ const exportColumns = [
   { field: 'description', title: 'Description' },
   { field: 'justification', title: 'Justification' },
   { field: 'status', title: 'Status' },
+  { field: 'source', title: 'Source' },
 ];
 
-export default function ExclusionTable({ itemSlug, itemTitle, rows }: Props) {
+export default function ExclusionTable({ itemSlug, itemTitle, rows, showSource = false }: Props) {
   const elRef = useRef<HTMLDivElement>(null);
   const tableRef = useRef<Tabulator | null>(null);
   const filterTextRef = useRef('');
@@ -78,7 +103,7 @@ export default function ExclusionTable({ itemSlug, itemTitle, rows }: Props) {
     table.setFilter((data: ExclusionRow) => {
       if (!includeLegacy && data.status === 'legacy') return false;
       if (!text) return true;
-      return [data.path, data.type, data.condition, data.description, data.justification].some((field) =>
+      return [data.path, data.type, data.condition, data.description, data.justification, data.sourceLabel].some((field) =>
         field.toLowerCase().includes(text),
       );
     });
@@ -113,6 +138,7 @@ export default function ExclusionTable({ itemSlug, itemTitle, rows }: Props) {
         { title: 'Description', field: 'description', widthGrow: 2, formatter: emptyDashFormatter },
         { title: 'Justification', field: 'justification', widthGrow: 2, formatter: emptyDashFormatter },
         { title: 'Status', field: 'status', visible: false, download: true },
+        { title: 'Source', field: 'source', widthGrow: 2, formatter: sourceFormatter, visible: showSource, download: true },
       ],
     });
 

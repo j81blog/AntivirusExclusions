@@ -2,6 +2,10 @@
 vendor: microsoft
 title: Microsoft Windows Server DNS
 order: 20
+lastReviewed: 2026-10-28
+related:
+  - microsoft-windows-active-directory-controller
+  - microsoft-windows-server-frs-and-dfsr
 sources:
   - label: Microsoft Defender Antivirus exclusions on Windows Server
     url: https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-exclusions-windows-server#dns-server-exclusions
@@ -15,31 +19,36 @@ exclusions:
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\Dns\*\*.dns'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\Dns\*\*.scc'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\Dns\*\BOOT'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\dns.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Windows Server DNS
+Windows Server DNS Server role.

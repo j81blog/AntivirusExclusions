@@ -5,6 +5,7 @@ import SourceLinks from '../../components/SourceLinks.astro';
 import ExclusionTable from '../../components/ExclusionTable';
 import Icon from '../../components/Icon.astro';
 import { rowId } from '../../lib/rowId';
+import { platformOf } from '../../lib/platform';
 
 export async function getStaticPaths() {
   const items = await getCollection('items');
@@ -17,8 +18,22 @@ export async function getStaticPaths() {
 const { item } = Astro.props;
 const { Content } = await render(item);
 const vendor = await getEntry('vendors', item.data.vendor);
+const sources = item.data.sources;
+const sourceLabel = new Map(sources.map((s) => [s.url, s.label]));
+const multiSource = sources.length > 1;
 
-const rows = item.data.exclusions.map((exclusion) => ({
+const allItems = await getCollection('items');
+const related = item.data.related
+  .map((slug) => allItems.find((other) => other.id === slug))
+  .filter((other) => other !== undefined)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const reviewed = item.data.lastReviewed?.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+const rows = item.data.exclusions.map((exclusion) => {
+  // A row without its own source comes from the item's only source.
+  const source = exclusion.source || (sources.length === 1 ? sources[0].url : '');
+  return {
   id: rowId(item.id, exclusion.path, exclusion.type),
   path: exclusion.path,
   type: exclusion.type,
@@ -26,7 +41,11 @@ const rows = item.data.exclusions.map((exclusion) => ({
   justification: exclusion.justification,
   condition: exclusion.condition,
   status: exclusion.status,
-}));
+  source,
+  sourceLabel: sourceLabel.get(source) ?? '',
+  platform: platformOf(exclusion.path),
+  };
+});
 ---
 
 <BaseLayout title={item.data.title}>
@@ -53,6 +72,22 @@ const rows = item.data.exclusions.map((exclusion) => ({
 
   <SourceLinks sources={item.data.sources} />
 
+  {reviewed && <p class="reviewed">Last checked against the sources: {reviewed}</p>}
+
+  {
+    related.length > 0 && (
+      <p class="related">
+        Related:{' '}
+        {related.map((other, index) => (
+          <>
+            {index > 0 && ', '}
+            <a href={`/items/${other.id}/`}>{other.data.title}</a>
+          </>
+        ))}
+      </p>
+    )
+  }
+
   {
     item.data.notes.length > 0 && (
       <div class="notes">
@@ -71,7 +106,7 @@ const rows = item.data.exclusions.map((exclusion) => ({
 
   {
     rows.length > 0 ? (
-      <ExclusionTable client:visible itemSlug={item.id} itemTitle={item.data.title} rows={rows} />
+      <ExclusionTable client:visible itemSlug={item.id} itemTitle={item.data.title} rows={rows} showSource={multiSource} />
     ) : (
       <p class="empty-state">No exclusions have been documented for this product yet.</p>
     )
@@ -125,6 +160,17 @@ const rows = item.data.exclusions.map((exclusion) => ({
 
     .notes p {
       margin: 0;
+    }
+
+    .reviewed,
+    .related {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin: 0 0 10px;
+    }
+
+    .related a {
+      color: var(--color-text-secondary);
     }
 
     .empty-state {

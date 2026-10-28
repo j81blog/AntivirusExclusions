@@ -2,6 +2,9 @@
 vendor: parallels
 title: Parallels RAS Client
 order: 1
+lastReviewed: 2026-10-28
+related:
+  - parallels-ras-server
 sources:
   - label: 'KB Parallels: Antivirus exclusions'
     url: https://kb.parallels.com/en/123235
@@ -15,19 +18,22 @@ exclusions:
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles%\Parallels'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Parallels'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Parallels RAS Client
+Parallels Client on Windows client devices.

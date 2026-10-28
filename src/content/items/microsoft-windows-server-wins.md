@@ -2,6 +2,8 @@
 vendor: microsoft
 title: Microsoft Windows Server WINS
 order: 26
+lastReviewed: 2026-10-28
+related: []
 sources:
   - label: Microsoft Defender Antivirus exclusions on Windows Server
     url: https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-exclusions-windows-server#windows-internet-name-service-wins-exclusions
@@ -15,31 +17,36 @@ exclusions:
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\Wins\*\*.log'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\Wins\*\*.mdb'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\System32\LogFiles'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\SysWow64\LogFiles'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Windows Server WINS
+Windows Server WINS feature.
