@@ -1,7 +1,7 @@
 ---
 vendor: citrix
 title: Citrix WorkspaceApp
-order: 16
+order: 20
 sources:
   - label: 'Tech Paper: Endpoint Security, Antivirus, and Antimalware Best Practices'
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
@@ -37,7 +37,7 @@ exclusions:
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles(x86)%\Citrix\ICA Client\CDViewer.exe'
+  - path: '%ProgramFiles(x86)%\Citrix\ICA Client\Citrix.DesktopViewer.App.exe'
     type: Process
     description: ''
     justification: ''
@@ -45,14 +45,22 @@ exclusions:
     type: Process
     description: ''
     justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\ICA Client\HdxRtcEngine.exe'
+    type: Process
+    description: ''
+    justification: Optimization for Microsoft Teams for Workspace app 2009.6 or higher 17-03-2022
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\HdxTeams.exe'
     type: Process
     description: ''
     justification: Optimization for Microsoft Teams for Workspace app 2009.5 or older
-  - path: '%ProgramFiles(x86)%\Citrix\ICA Client\MediaEngineService.exe'
+  - path: '%ProgramFiles(x86)%\Citrix\ICA Client\Legacy\CDViewer.exe'
     type: Process
     description: ''
     justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\ICA Client\MediaEngineService.exe'
+    type: Process
+    description: ''
+    justification: Only when HDX RealTime Optimization Pack is used
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\SelfServicePlugin\SelfService.exe'
     type: Process
     description: ''
@@ -61,14 +69,14 @@ exclusions:
     type: Process
     description: ''
     justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\ICA Client\wfcrun32.exe'
+    type: Process
+    description: ''
+    justification: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\wfica32.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%(x86)\Citrix\ICA Client\HdxRtcEngine.exe'
-    type: Process
-    description: ''
-    justification: Optimization for Microsoft Teams for Workspace app 2009.6 or higher 17-03-2022
 tags: []
 ---
 

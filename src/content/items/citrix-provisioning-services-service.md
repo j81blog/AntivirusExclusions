@@ -11,10 +11,10 @@ exclusions:
     type: File
     description: Boot file used for TFTP boot
     justification: ''
-  - path: '%ProgramFiles%\Citrix\Provisioning Services\Tftpboot\PVSNBP64.EFI'
+  - path: '%ProgramFiles%\Citrix\Provisioning Services\Pvsnbpn64.efi'
     type: File
     description: Boot file used for TFTP boot
-    justification: ''
+    justification: Only when UEFI PXE boot is used
   - path: '%SystemRoot%\System32\drivers\CfsDep2.sys'
     type: File
     description: ''
@@ -70,16 +70,16 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\Provisioning Services\CFsDep2.sys'
     type: Process
     description: File system minifilter
-    justification: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramFiles%\Citrix\Provisioning Services\CVhdMp.sys'
     type: Process
     description: Storage miniport driver
-    justification: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramFiles%\Citrix\Provisioning Services\Inventory.exe'
     type: Process
     description: vDisk Inventory
     justification: UDP port 6895
-  - path: '%ProgramFiles%\Citrix\Provisioning Services\MgmntDaemon.exe'
+  - path: '%ProgramFiles%\Citrix\Provisioning Services\MgmtDaemon.exe'
     type: Process
     description: Inter-server communication
     justification: UDP port 6898

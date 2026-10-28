@@ -1,7 +1,7 @@
 ---
 vendor: citrix
 title: Citrix Virtual Apps and Desktops VDA (Multi Session)
-order: 12
+order: 16
 sources:
   - label: 'Tech Paper: Endpoint Security, Antivirus, and Antimalware Best Practices'
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
@@ -27,6 +27,10 @@ exclusions:
     type: Process
     description: ''
     justification: CVAD 2003+
+  - path: '%ProgramFiles(x86)%\Citrix\ICAService\CtxSvcHost.exe'
+    type: Process
+    description: ''
+    justification: CVAD 1912 LTSR
   - path: '%ProgramFiles(x86)%\Citrix\System32\WebSocketService.exe'
     type: Process
     description: ''
@@ -47,18 +51,14 @@ exclusions:
     type: Process
     description: ''
     justification: CVAD 7.15 LTSR
-  - path: '%ProgramFiles%\Citrix\ICAService\CtxSvcHost.exe'
-    type: Process
-    description: ''
-    justification: CVAD 1912 LTSR
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVD.exe'
     type: Process
     description: ''
-    justification: AppDisks only
+    justification: AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVDSVC.exe'
     type: Process
     description: ''
-    justification: AppDisks only
+    justification: AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramFiles%\Citrix\System32\ctxgfx.exe'
     type: Process
     description: ''
@@ -78,8 +78,12 @@ exclusions:
   - path: '%SystemRoot%\System32\spoolsv.exe'
     type: Process
     description: ''
-    justification: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%SystemRoot%\System32\winlogon.exe'
+    type: Process
+    description: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+  - path: '%ProgramData%\Citrix\XenDesktopSetup\CtxBackup.exe'
     type: Process
     description: ''
     justification: ''

@@ -10,8 +10,20 @@ exclusions:
   - path: '%UserProfile%\AppData\Local\Citrix\SessionRecording\Player\Cache'
     type: Folder
     description: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+  - path: '%ProgramFiles(x86)%\Citrix\SessionRecording\Player'
+    type: Folder
+    description: ''
     justification: ''
-  - path: '%ProgramFiles%\Citrix\SessionRecording\Player\Bin\SsRecPlayer.exe'
+  - path: '%UserProfile%\AppData\Local\Citrix\SessionRecording\Player'
+    type: Folder
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\SessionRecording\Player\Bin\iclstat.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\SessionRecording\Player\Bin\SsRecPlayer.exe'
     type: Process
     description: ''
     justification: ''

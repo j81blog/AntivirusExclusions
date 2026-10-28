@@ -1,7 +1,7 @@
 ---
 vendor: citrix
 title: Citrix StoreFront
-order: 9
+order: 11
 sources:
   - label: 'Tech Paper: Endpoint Security, Antivirus, and Antimalware Best Practices'
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/

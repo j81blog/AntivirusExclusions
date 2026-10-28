@@ -26,7 +26,7 @@ exclusions:
   - path: '%SystemRoot%\System32\drivers\CVhdBusP6.sys'
     type: File
     description: ''
-    justification: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%SystemRoot%\System32\drivers\CVhdMp.sys'
     type: File
     description: ''
@@ -38,11 +38,11 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVD.exe'
     type: Process
     description: ''
-    justification: PvD and AppDisks only
+    justification: PvD and AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVDSVC.exe'
     type: Process
     description: ''
-    justification: PvD and AppDisks only
+    justification: PvD and AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
   - path: '%ProgramFiles%\Citrix\Provisioning Services\BNDevice.exe'
     type: Process
     description: Handles client functions, licensing, etc
@@ -66,7 +66,7 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\PvsVm\Service\PvsVmAgent.exe'
     type: Process
     description: ''
-    justification: ''
+    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
 tags: []
 ---
 

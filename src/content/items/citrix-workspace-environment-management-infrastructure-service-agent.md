@@ -1,7 +1,7 @@
 ---
 vendor: citrix
 title: Citrix Workspace Environment Management Infrastructure Service Agent
-order: 14
+order: 18
 sources:
   - label: 'Tech Paper: Endpoint Security, Antivirus, and Antimalware Best Practices'
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
@@ -11,6 +11,14 @@ notes:
   - kind: note
     text: Older versions of the agent can be installed in %ProgramFiles(x86)%\Norskale\Norskale Agent Host. Make sure to check the installation directory before configuring antivirus exclusions.
 exclusions:
+  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent'
+    type: Folder
+    description: ''
+    justification: On 64-bit OS
+  - path: '%ProgramFiles%\Citrix\Workspace Environment Management Agent'
+    type: Folder
+    description: ''
+    justification: '32-bit OS only'
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Agent Log Parser.exe'
     type: Process
     description: ''
@@ -23,7 +31,15 @@ exclusions:
     type: Process
     description: ''
     justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\AppInfoViewer.exe'
+    type: Process
+    description: ''
+    justification: ''
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\AppsMgmtUtil.exe'
+    type: Process
+    description: ''
+    justification: ''
+  - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Citrix.Wem.Agent.EnrollmentUtility.exe'
     type: Process
     description: ''
     justification: ''

@@ -1,11 +1,13 @@
 ---
 vendor: citrix
 title: Citrix Workspace Environment Management Infrastructure Service
-order: 15
+order: 19
 sources:
   - label: 'Tech Paper: Endpoint Security, Antivirus, and Antimalware Best Practices'
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
 notes:
+  - kind: note
+    text: Older versions only, no longer listed in the 2026 Citrix tech paper
   - kind: note
     text: On a 64- bit system, by default, the installation directory will exist in "%ProgramFiles(x86)%" instead of "%ProgramFiles%" on 32-bit systems.
 exclusions:

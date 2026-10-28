@@ -1,7 +1,7 @@
 ---
 vendor: citrix
 title: Citrix User Profile Management
-order: 10
+order: 12
 sources:
   - label: 'Article: Citrix Guidelines for Antivirus Software Configuration for Citrix Profile Management'
     url: https://support.citrix.com/s/article/CTX220622-citrix-guidelines-for-antivirus-software-configuration-for-citrix-profile-management
