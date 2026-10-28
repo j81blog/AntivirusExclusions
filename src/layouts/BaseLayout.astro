@@ -1,6 +1,7 @@
 ---
 import Icon from '../components/Icon.astro';
 import CartBadge from '../components/CartBadge';
+import SideNav from '../components/SideNav.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -28,6 +29,7 @@ const { title, description = 'Community-maintained antivirus and EDR exclusion r
           <span>AV exclusions</span>
         </a>
         <nav class="site-nav">
+          <a href="#browse" class="browse-link">Browse</a>
           <a href="/downloads" aria-label="Downloads" class="cart-link">
             <Icon name="download" size={18} />
             <CartBadge client:only="preact" />
@@ -35,9 +37,14 @@ const { title, description = 'Community-maintained antivirus and EDR exclusion r
         </nav>
       </div>
     </header>
-    <main class="container site-main">
-      <slot />
-    </main>
+    <div class="container site-body">
+      <main class="site-main">
+        <slot />
+      </main>
+      <aside class="site-aside">
+        <SideNav />
+      </aside>
+    </div>
     <footer class="site-footer">
       <div class="container">
         <p>
@@ -101,10 +108,60 @@ const { title, description = 'Community-maintained antivirus and EDR exclusion r
         padding: 2px 5px;
       }
 
-      .site-main {
+      .site-body {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
         min-height: calc(100vh - 52px - 90px);
+      }
+
+      /* Sidebar first on wide screens; on a phone it wraps below the content. */
+      .site-aside {
+        order: -1;
+        flex: 1 1 220px;
+        max-width: 260px;
+        padding-top: 28px;
+      }
+
+      .site-aside :global(.sidenav) {
+        position: sticky;
+        top: 16px;
+        max-height: calc(100vh - 32px);
+        overflow-y: auto;
+        padding-bottom: 24px;
+      }
+
+      .site-main {
+        flex: 999 1 560px;
+        min-width: 0;
         padding-top: 28px;
         padding-bottom: 40px;
+      }
+
+      .browse-link {
+        display: none !important;
+        font-size: 13px;
+      }
+
+      @media (max-width: 860px) {
+        .site-aside {
+          order: 0;
+          max-width: none;
+          flex-basis: 100%;
+          padding-top: 0;
+          padding-bottom: 32px;
+          border-top: 1px solid var(--color-border);
+        }
+
+        .site-aside :global(.sidenav) {
+          position: static;
+          max-height: none;
+          padding-top: 20px;
+        }
+
+        .browse-link {
+          display: flex !important;
+        }
       }
 
       .site-footer {
