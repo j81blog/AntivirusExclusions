@@ -5,6 +5,7 @@ import { applyPlugin } from 'jspdf-autotable';
 import { addRowsToCart } from '../stores/cart';
 import { categorizeExclusionType } from '../lib/normalizeExclusionType';
 import { platformLabel, type Platform } from '../lib/platform';
+import AvExport from './AvExport';
 
 applyPlugin(jsPDF);
 
@@ -201,6 +202,17 @@ export default function ExclusionTable({ itemSlug, itemTitle, rows, showSource =
           Add to downloads
         </button>
       </div>
+      <AvExport
+        filePrefix={itemSlug}
+        getRows={() =>
+          ((tableRef.current?.getData('active') ?? []) as ExclusionRow[]).map((row) => ({
+            path: row.path,
+            type: row.type,
+            condition: row.condition,
+            itemTitle,
+          }))
+        }
+      />
       <div ref={elRef}></div>
     </div>
   );

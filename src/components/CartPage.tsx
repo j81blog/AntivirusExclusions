@@ -1,5 +1,6 @@
 import { useStore } from '@nanostores/preact';
 import { cartStore, removeRowFromCart, clearCart, type CartItem } from '../stores/cart';
+import AvExport from './AvExport';
 
 function downloadBlob(filename: string, content: string, mime: string) {
   const blob = new Blob([content], { type: mime });
@@ -79,6 +80,10 @@ export default function CartPage() {
           <button onClick={() => clearCart()}>Clear selection</button>
         </div>
       </div>
+
+      <AvExport
+        getRows={() => items.map((item) => ({ path: item.path, type: item.type, condition: item.condition, itemTitle: item.itemTitle }))}
+      />
 
       <div class="cart-table-wrap">
         <table class="cart-table">

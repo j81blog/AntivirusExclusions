@@ -76,6 +76,10 @@ browser and you should see the vendor list on the homepage.
     the header should update.
   - Click **Download CSV** / **Download PDF** / **Download JSON** — a file should
     download for each.
+  - Pick a product under **Export for** (experimental) and click **Download**. You get a
+    Defender PowerShell script or paste-ready lists for Defender, ESET, Trend Micro Apex One or
+    Deep Security. Rows a product can't express are listed under "Check manually". The
+    conversion lives in `src/lib/avExport.ts`.
 - **Downloads page** (`/downloads`) — shows everything you've added across products,
   with its own combined CSV/PDF/JSON export and per-row remove buttons.
 - **Dark mode** — the site follows `prefers-color-scheme`; toggle your OS/browser theme
