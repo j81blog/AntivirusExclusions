@@ -5,7 +5,7 @@ import { applyPlugin } from 'jspdf-autotable';
 import { addRowsToCart } from '../stores/cart';
 import { categorizeExclusionType } from '../lib/normalizeExclusionType';
 import { platformLabel, type Platform } from '../lib/platform';
-import AvExport from './AvExport';
+import ExportMenu from './ExportMenu';
 
 applyPlugin(jsPDF);
 
@@ -195,24 +195,24 @@ export default function ExclusionTable({ itemSlug, itemTitle, rows, showSource =
             Show legacy ({legacyCount})
           </label>
         )}
-        <button onClick={downloadCsv}>Download CSV</button>
-        <button onClick={downloadPdf}>Download PDF</button>
-        <button onClick={downloadJson}>Download JSON</button>
-        <button class="button-accent" onClick={addSelectedToCart}>
-          Add to downloads
-        </button>
+        <ExportMenu
+          filePrefix={itemSlug}
+          fileActions={[
+            { label: 'CSV', run: downloadCsv },
+            { label: 'PDF', run: downloadPdf },
+            { label: 'JSON', run: downloadJson },
+          ]}
+          getAvRows={() =>
+            ((tableRef.current?.getData('active') ?? []) as ExclusionRow[]).map((row) => ({
+              path: row.path,
+              type: row.type,
+              condition: row.condition,
+              itemTitle,
+            }))
+          }
+        />
+        <button onClick={addSelectedToCart}>Add to downloads</button>
       </div>
-      <AvExport
-        filePrefix={itemSlug}
-        getRows={() =>
-          ((tableRef.current?.getData('active') ?? []) as ExclusionRow[]).map((row) => ({
-            path: row.path,
-            type: row.type,
-            condition: row.condition,
-            itemTitle,
-          }))
-        }
-      />
       <div ref={elRef}></div>
     </div>
   );
