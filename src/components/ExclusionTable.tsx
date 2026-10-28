@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { TabulatorFull as Tabulator, type CellComponent, type RowComponent } from 'tabulator-tables';
+// Type-only import: Tabulator itself is loaded in the browser (see useEffect), because
+// tabulator-tables touches `document` when the module loads, which breaks the static build.
+import type { TabulatorFull as Tabulator, CellComponent, RowComponent } from 'tabulator-tables';
 import { jsPDF } from 'jspdf';
 import { applyPlugin } from 'jspdf-autotable';
 import { addRowsToCart } from '../stores/cart';
@@ -112,42 +114,48 @@ export default function ExclusionTable({ itemSlug, itemTitle, rows, showSource =
 
   useEffect(() => {
     if (!elRef.current) return;
+    let table: Tabulator | null = null;
+    let cancelled = false;
 
-    const table = new Tabulator(elRef.current, {
-      data: rows,
-      index: 'id',
-      layout: 'fitColumns',
-      selectableRows: true,
-      dependencies: { jspdf: { jsPDF } },
-      rowFormatter: (row: RowComponent) => {
-        row.getElement().classList.toggle('row-legacy', (row.getData() as ExclusionRow).status === 'legacy');
-      },
-      columns: [
-        {
-          title: '',
-          formatter: 'rowSelection',
-          titleFormatter: 'rowSelection',
-          hozAlign: 'center',
-          headerSort: false,
-          width: 36,
-          download: false,
-          cellClick: (_e, cell) => cell.getRow().toggleSelect(),
+    import('tabulator-tables').then(({ TabulatorFull }) => {
+      if (cancelled || !elRef.current) return;
+      table = new TabulatorFull(elRef.current, {
+        data: rows,
+        index: 'id',
+        layout: 'fitColumns',
+        selectableRows: true,
+        dependencies: { jspdf: { jsPDF } },
+        rowFormatter: (row: RowComponent) => {
+          row.getElement().classList.toggle('row-legacy', (row.getData() as ExclusionRow).status === 'legacy');
         },
-        { title: 'Exclusion', field: 'path', widthGrow: 3, formatter: pathFormatter },
-        { title: 'Type', field: 'type', widthGrow: 1, formatter: typeBadgeFormatter },
-        { title: 'Applies when', field: 'condition', widthGrow: 2, formatter: emptyDashFormatter },
-        { title: 'Description', field: 'description', widthGrow: 2, formatter: emptyDashFormatter },
-        { title: 'Justification', field: 'justification', widthGrow: 2, formatter: emptyDashFormatter },
-        { title: 'Status', field: 'status', visible: false, download: true },
-        { title: 'Source', field: 'source', widthGrow: 2, formatter: sourceFormatter, visible: showSource, download: true },
-      ],
+        columns: [
+          {
+            title: '',
+            formatter: 'rowSelection',
+            titleFormatter: 'rowSelection',
+            hozAlign: 'center',
+            headerSort: false,
+            width: 36,
+            download: false,
+            cellClick: (_e, cell) => cell.getRow().toggleSelect(),
+          },
+          { title: 'Exclusion', field: 'path', widthGrow: 3, formatter: pathFormatter },
+          { title: 'Type', field: 'type', widthGrow: 1, formatter: typeBadgeFormatter },
+          { title: 'Applies when', field: 'condition', widthGrow: 2, formatter: emptyDashFormatter },
+          { title: 'Description', field: 'description', widthGrow: 2, formatter: emptyDashFormatter },
+          { title: 'Justification', field: 'justification', widthGrow: 2, formatter: emptyDashFormatter },
+          { title: 'Status', field: 'status', visible: false, download: true },
+          { title: 'Source', field: 'source', widthGrow: 2, formatter: sourceFormatter, visible: showSource, download: true },
+        ],
+      });
+
+      tableRef.current = table;
+      table.on('tableBuilt', applyFilters);
     });
 
-    tableRef.current = table;
-    table.on('tableBuilt', applyFilters);
-
     return () => {
-      table.destroy();
+      cancelled = true;
+      table?.destroy();
       tableRef.current = null;
     };
   }, [rows]);
