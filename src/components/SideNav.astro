@@ -27,16 +27,20 @@ const groups = vendors.map((vendor) => ({
   <a href="/" class:list={['sidenav-home', { current: path === '/' }]}>All vendors</a>
   {
     groups.map((group) => (
-      <div class="sidenav-group">
-        <a
-          href={`/vendors/${group.id}/`}
-          class:list={['sidenav-vendor', { current: path === `/vendors/${group.id}/`, active: group.id === currentVendor }]}
-          aria-current={path === `/vendors/${group.id}/` ? 'page' : undefined}
-        >
-          <span>{group.title}</span>
-          <span class="sidenav-count">{group.items.length}</span>
-        </a>
-        {group.id === currentVendor && group.items.length > 0 && (
+      group.id === currentVendor && group.items.length > 0 ? (
+        // The current vendor's products sit in a collapsible section. On its own overview
+        // page the name toggles the list; elsewhere the name links to the overview and the
+        // arrow toggles.
+        <details class="sidenav-group" open>
+          <summary class:list={['sidenav-vendor', 'active', { current: path === `/vendors/${group.id}/` }]}>
+            {path === `/vendors/${group.id}/` ? (
+              <span aria-current="page">{group.title}</span>
+            ) : (
+              <a href={`/vendors/${group.id}/`} class="sidenav-vendor-link">{group.title}</a>
+            )}
+            <span class="sidenav-count">{group.items.length}</span>
+            <span class="sidenav-chevron" aria-hidden="true"></span>
+          </summary>
           <ul>
             {group.items.map((item) => (
               <li>
@@ -50,8 +54,17 @@ const groups = vendors.map((vendor) => ({
               </li>
             ))}
           </ul>
-        )}
-      </div>
+        </details>
+      ) : (
+        <a
+          href={`/vendors/${group.id}/`}
+          class:list={['sidenav-vendor', { current: path === `/vendors/${group.id}/` }]}
+          aria-current={path === `/vendors/${group.id}/` ? 'page' : undefined}
+        >
+          <span>{group.title}</span>
+          <span class="sidenav-count">{group.items.length}</span>
+        </a>
+      )
     ))
   }
   <a href="/downloads" class:list={['sidenav-home', { current: path.startsWith('/downloads') }]}>Selected exclusions</a>
@@ -100,6 +113,52 @@ const groups = vendors.map((vendor) => ({
 
   .sidenav-vendor.active:not(.current) {
     background: var(--color-bg-subtle);
+  }
+
+  summary.sidenav-vendor {
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary.sidenav-vendor::-webkit-details-marker {
+    display: none;
+  }
+
+  summary.sidenav-vendor.current {
+    background: var(--color-accent-bg);
+    color: var(--color-accent);
+  }
+
+  summary.sidenav-vendor > :first-child {
+    flex-grow: 1;
+  }
+
+  .sidenav .sidenav-vendor-link {
+    display: inline;
+    padding: 0;
+    color: inherit;
+  }
+
+  .sidenav .sidenav-vendor-link:hover {
+    background: none;
+    text-decoration: underline;
+  }
+
+  .sidenav-chevron {
+    width: 6px;
+    height: 6px;
+    border-right: 1.5px solid var(--color-text-muted);
+    border-bottom: 1.5px solid var(--color-text-muted);
+    transform: rotate(45deg);
+    margin: 0 2px 3px 2px;
+    transition: transform 0.15s;
+  }
+
+  .sidenav-group:not([open]) .sidenav-chevron {
+    transform: rotate(-45deg);
+    margin-bottom: 0;
   }
 
   .sidenav-count {
