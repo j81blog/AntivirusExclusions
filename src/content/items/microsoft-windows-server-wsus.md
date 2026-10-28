@@ -2,6 +2,9 @@
 vendor: microsoft
 title: Microsoft Windows Server WSUS
 order: 27
+lastReviewed: 2026-10-28
+related:
+  - microsoft-windows-update
 sources:
   - label: Microsoft Defender Antivirus exclusions on Windows Server
     url: https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-exclusions-windows-server#windows-server-update-services-exclusions
@@ -15,25 +18,29 @@ exclusions:
     justification: The location is set in HKEY_LOCAL_MACHINE\Software\Microsoft\Update Services\Server\Setup.
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\WSUS\UpdateServicesDBFiles'
     type: Folder
     description: ''
     justification: The location is set in HKEY_LOCAL_MACHINE\Software\Microsoft\Update Services\Server\Setup.
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\SoftwareDistribution\Datastore'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\SoftwareDistribution\Download'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Windows Server WSUS
+Windows Server Update Services (WSUS) servers.

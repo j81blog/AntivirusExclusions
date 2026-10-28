@@ -2,6 +2,8 @@
 vendor: citrix
 title: Citrix WorkspaceApp
 order: 21
+lastReviewed: 2026-10-28
+related: []
 sources:
   - label: 'Tech Paper: Endpoint Security, Antivirus, and Antimalware Best Practices'
     url: https://community.citrix.com/tech-zone/build/tech-papers/antivirus-best-practices/
@@ -15,103 +17,120 @@ exclusions:
     justification: ''
     condition: Only when App Protection is used
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\ctxapclient64.dll'
     type: File
     description: ''
     justification: ''
     condition: Only when App Protection is used
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\ctxapdotnet.dll'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\ctxapinject.sys'
     type: File
     description: ''
     justification: ''
     condition: Only when App Protection is used
     status: current
+    source: ''
   - path: '%UserProfile%\AppData\Local\Temp\Citrix\RTMediaEngineSRV\MediaEngineSRVDebugLogs\*\*.txt'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\AuthManager\AuthManSvr.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\bgblursvc.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\Citrix.DesktopViewer.App.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\concentr.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\HdxRtcEngine.exe'
     type: Process
     description: ''
     justification: ''
     condition: Optimization for Microsoft Teams for Workspace app 2009.6 or higher 17-03-2022
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\HdxTeams.exe'
     type: Process
     description: ''
     justification: ''
     condition: Optimization for Microsoft Teams for Workspace app 2009.5 or older
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\Legacy\CDViewer.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\MediaEngineService.exe'
     type: Process
     description: ''
     justification: ''
     condition: Only when HDX RealTime Optimization Pack is used
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\SelfServicePlugin\SelfService.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\SelfServicePlugin\SelfServicePlugin.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\wfcrun32.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\wfica32.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Citrix WorkspaceApp
+Citrix Workspace app on client devices, or on a VDA for nested sessions.

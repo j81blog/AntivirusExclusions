@@ -2,6 +2,10 @@
 vendor: microsoft
 title: Microsoft Internet Information Services
 order: 6
+lastReviewed: 2026-10-28
+related:
+  - citrix-director
+  - citrix-storefront
 sources:
   - label: Web Server exclusions
     url: https://learn.microsoft.com/en-us/defender-endpoint/microsoft-defender-antivirus-exclusions-windows-server#web-server-exclusions
@@ -15,73 +19,85 @@ exclusions:
     justification: ''
     condition: IIS 7
     status: legacy
+    source: ''
   - path: '%SystemRoot%\system32\inetsrv\config\*.config'
     type: File
     description: ''
     justification: ''
     condition: IIS 7
     status: legacy
+    source: ''
   - path: '%SystemRoot%\system32\inetsrv\MBschema.xml'
     type: File
     description: ''
     justification: ''
     condition: IIS 6
     status: legacy
+    source: ''
   - path: '%SystemRoot%\system32\inetsrv\MetaBase.xml'
     type: File
     description: ''
     justification: ''
     condition: IIS 6
     status: legacy
+    source: ''
   - path: '%SystemDrive%\inetpub\logs'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemDrive%\inetpub\temp\ASP Compiled Templates'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemDrive%\inetpub\temp\IIS Temporary Compressed Files'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemDrive%\inetpub\wwwroot'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\IIS Temporary Compressed Files'
     type: Folder
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemDrive%\PHP5433\php-cgi.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\system32\inetsrv\w3wp.exe'
     type: Process
     description: ''
     justification: ''
     condition: ''
     status: current
+    source: ''
   - path: '%SystemRoot%\SysWOW64\inetsrv\w3wp.exe'
     type: Process
     description: ''
     justification: ''
     condition: x64 systems only
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Internet Information Services
+Web servers running IIS.

@@ -2,6 +2,10 @@
 vendor: microsoft
 title: Microsoft Office OneDrive
 order: 8
+lastReviewed: 2026-10-28
+related:
+  - microsoft-fslogix
+  - microsoft-office-outlook
 sources: []
 notes:
   - kind: warning
@@ -13,13 +17,15 @@ exclusions:
     justification: ''
     condition: Per-User install
     status: current
+    source: ''
   - path: '%ProgramFiles%\Microsoft OneDrive\OneDrive.exe'
     type: Process
     description: Microsoft OneDrive
     justification: ''
     condition: Per-Machine install
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Microsoft Office OneDrive
+OneDrive sync app on desktops and session hosts.

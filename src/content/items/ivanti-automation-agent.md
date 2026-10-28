@@ -2,6 +2,11 @@
 vendor: ivanti
 title: Ivanti Automation Agent
 order: 1
+lastReviewed: 2026-10-28
+related:
+  - ivanti-automation-console
+  - ivanti-automation-dispatcher
+  - ivanti-workspace-control-agent
 sources:
   - label: Ivanti Automation Antivirus Best Practices
     url: https://hub.ivanti.com/s/article/Ivanti-Automation-Antivirus-Best-Practices?language=en_US
@@ -17,109 +22,127 @@ exclusions:
     justification: ''
     condition: Agent+ (x64)
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\agent_updater.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\deployer.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\Sidekick32.exe'
     type: File
     description: ''
     justification: ''
     condition: Agent+ (x64)
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\Sidekick64.exe'
     type: File
     description: ''
     justification: ''
     condition: Agent+ (x64)
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\Wisexch.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisgate.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisShell_2.0.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisShell_4.0.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisstub_2.0_x64.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: legacy
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisstub_2.0_x86.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: legacy
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisstub_4.0_x64.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: legacy
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisstub_4.0_x86.exe'
     type: File
     description: ''
     justification: ''
     condition: ''
     status: legacy
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisShell_2.0_x64.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisShell_2.0_x86.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisShell_4.0_x64.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\wisShell_4.0_x86.exe'
     type: File
     description: ''
     justification: ''
     condition: RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
   - path: '%ProgramFiles%\Ivanti\Automation\Agent\agent.exe'
     type: File / Process
     description: ''
     justification: 'Service Name: RESWAS'
     condition: Agent+ (x64), and RES ONE Automation Agent up to 10.2.100.0
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Ivanti Automation Agent
+Ivanti Automation agent on managed machines.

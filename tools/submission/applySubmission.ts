@@ -175,6 +175,7 @@ function main() {
       justification: row.justification,
       condition: row.condition,
       status,
+      source: sourceUrl,
     });
   });
 
@@ -220,6 +221,7 @@ function main() {
       notes: [],
       exclusions: normalizedRows,
       tags: [],
+      related: [],
     };
     itemBody = introText || `Av exclusions for ${itemTitle}.`;
   } else {

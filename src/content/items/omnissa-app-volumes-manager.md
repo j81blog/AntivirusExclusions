@@ -2,6 +2,9 @@
 vendor: omnissa
 title: Omnissa App Volumes Manager
 order: 2
+lastReviewed: 2026-10-28
+related:
+  - omnissa-app-volumes-agent
 sources:
   - label: Antivirus executable exclusion list for Omnissa Horizon (2082045)
     url: https://kb.omnissa.com/s/article/2082045
@@ -15,7 +18,8 @@ exclusions:
     justification: ''
     condition: ''
     status: current
+    source: ''
 tags: []
 ---
 
-Av exclusions for Omnissa App Volumes Manager
+App Volumes Manager servers.

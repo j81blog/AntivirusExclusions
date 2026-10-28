@@ -19,6 +19,8 @@ export const exclusionSchema = z.object({
   condition: z.string().default(''),
   /** `legacy`: only for older product versions, hidden by default. */
   status: z.enum(['current', 'legacy']).default('current'),
+  /** URL of the item source this row comes from; '' means the item's only source. */
+  source: z.string().default(''),
 });
 
 export const itemSchema = z.object({
@@ -29,7 +31,10 @@ export const itemSchema = z.object({
   notes: z.array(noteSchema).default([]),
   exclusions: z.array(exclusionSchema).default([]),
   tags: z.array(z.string()).default([]),
+  /** Date the item was last checked against its sources. */
   lastReviewed: z.coerce.date().optional(),
+  /** Slugs of related items, shown as links on the item page. */
+  related: z.array(z.string()).default([]),
 });
 
 export const vendorSchema = z.object({

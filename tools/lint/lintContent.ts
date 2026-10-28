@@ -17,7 +17,7 @@ import exclusionTypeMap from '../shared/exclusion-type-map.json' with { type: 'j
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const ITEMS_DIR = path.join(ROOT, 'src/content/items');
 
-const FIELDS = ['path', 'type', 'description', 'justification', 'condition', 'status'];
+const FIELDS = ['path', 'type', 'description', 'justification', 'condition', 'status', 'source'];
 const TYPES = new Set(Object.values(exclusionTypeMap as Record<string, string>));
 const STATUSES = new Set(['current', 'legacy']);
 
@@ -30,22 +30,38 @@ interface Finding {
 const errors: Finding[] = [];
 const warnings: Finding[] = [];
 
-function readRows(file: string): Row[] | null {
+interface ItemData {
+  exclusions?: Row[];
+  sources?: { url: string }[];
+  related?: string[];
+}
+
+function readItem(file: string): ItemData | null {
   const text = readFileSync(path.join(ITEMS_DIR, file), 'utf8');
   const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) {
     errors.push({ file, message: 'No frontmatter found.' });
     return null;
   }
-  const data = (yaml.load(match[1]) ?? {}) as { exclusions?: Row[] };
-  return data.exclusions ?? [];
+  return (yaml.load(match[1]) ?? {}) as ItemData;
 }
 
 const files = readdirSync(ITEMS_DIR).filter((f) => f.endsWith('.md')).sort();
+const slugs = new Set(files.map((f) => f.replace(/\.md$/, '')));
 const rowsByFile = new Map<string, Row[]>();
+const itemByFile = new Map<string, ItemData>();
 for (const file of files) {
-  const rows = readRows(file);
-  if (rows) rowsByFile.set(file, rows);
+  const item = readItem(file);
+  if (!item) continue;
+  itemByFile.set(file, item);
+  rowsByFile.set(file, item.exclusions ?? []);
+}
+
+for (const [file, item] of itemByFile) {
+  for (const slug of item.related ?? []) {
+    if (!slugs.has(slug)) errors.push({ file, message: `related item "${slug}" does not exist.` });
+    if (`${slug}.md` === file) errors.push({ file, message: 'an item cannot be related to itself.' });
+  }
 }
 
 // Most common spelling of each environment variable, used as the reference casing.
@@ -84,6 +100,10 @@ for (const [file, rows] of rowsByFile) {
     }
     if (row.status !== undefined && !STATUSES.has(String(row.status))) {
       errors.push({ file, message: `${where}: status must be current or legacy.` });
+    }
+    const sourceUrls = (itemByFile.get(file)?.sources ?? []).map((s) => s.url);
+    if (row.source && !sourceUrls.includes(String(row.source))) {
+      errors.push({ file, message: `${where}: source must be one of the item's source URLs.` });
     }
 
     const rowPath = String(row.path ?? '');
