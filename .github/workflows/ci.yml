@@ -37,6 +37,8 @@ jobs:
           key: astro-build-cache-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             astro-build-cache-
+      - name: Check content files
+        run: npm run lint:content
       - name: Type-check
         run: npx astro check
       - name: Build

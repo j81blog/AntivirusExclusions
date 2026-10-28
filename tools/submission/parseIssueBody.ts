@@ -32,9 +32,12 @@ export interface RawExclusionRow {
   type: string;
   description: string;
   justification: string;
+  condition: string;
+  status: string;
 }
 
-const HEADER_ROW = 'path;type;description;justification';
+// Older submissions use the first four columns only; both header forms are accepted.
+const HEADER_ROWS = ['path;type;description;justification', 'path;type;description;justification;condition;status'];
 
 /**
  * The Exclusions field is declared `render: text`, so GitHub wraps its value
@@ -51,7 +54,7 @@ function stripCodeFence(raw: string): string {
   return lines.join('\n');
 }
 
-/** Parses the `path;type;description;justification` textarea, one row per line. */
+/** Parses the `path;type;description;justification;condition;status` textarea, one row per line. */
 export function parseExclusionRows(raw: string): RawExclusionRow[] {
   const lines = stripCodeFence(raw)
     .split(/\r?\n/)
@@ -63,7 +66,7 @@ export function parseExclusionRows(raw: string): RawExclusionRow[] {
 
   // The field description spells the column names out, so submitters
   // reasonably paste them as a header row. Treat that as a header.
-  if (lines[0]?.toLowerCase().replace(/\s+/g, '') === HEADER_ROW) lines.shift();
+  if (HEADER_ROWS.includes(lines[0]?.toLowerCase().replace(/\s+/g, '') ?? '')) lines.shift();
 
   return lines.map((line) => {
     const parts = line.split(';');
@@ -72,6 +75,8 @@ export function parseExclusionRows(raw: string): RawExclusionRow[] {
       type: (parts[1] ?? '').trim(),
       description: (parts[2] ?? '').trim(),
       justification: (parts[3] ?? '').trim(),
+      condition: (parts[4] ?? '').trim(),
+      status: (parts[5] ?? '').trim(),
     };
   });
 }
