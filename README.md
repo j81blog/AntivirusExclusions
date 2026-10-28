@@ -65,7 +65,7 @@ browser and you should see the vendor list on the homepage.
 
 ### What to check when testing locally
 
-- **Homepage** (`/`) — lists all 5 vendors with their product counts.
+- **Homepage** (`/`) — lists all vendors with their product counts.
 - **Vendor page** (`/vendors/{vendor}/`, e.g. `/vendors/microsoft/`) — vendor intro and
   its list of products.
 - **Product page** (`/items/{slug}/`, e.g. `/items/microsoft-fslogix/`) — the exclusions
@@ -91,6 +91,7 @@ browser restarts (same origin). Clear it via the **Clear selection** button on
 npm run build     # build the static site to ./dist
 npm run preview   # serve the production build locally, to test the built output
 npx astro check   # type-check the whole project (also runs in CI)
+npm run lint:content  # check item files: field order, types, duplicates, path style (also runs in CI)
 ```
 
 `npm run preview` is worth running before pushing anything build-sensitive — it serves
@@ -117,8 +118,8 @@ exclusions:
     type: Process
     description: ''
     justification: ''         # why it is needed, or extra advice
-    condition: FSLogix 2.9+   # optional: when it applies (version, OS, feature)
-    status: legacy            # optional: only for older versions, hidden by default
+    condition: FSLogix 2.9+   # when it applies (version, OS, feature), or ''
+    status: current           # current, or legacy (older versions only, hidden by default)
 tags: []
 ---
 
@@ -170,8 +171,8 @@ Either way, nothing goes live until a maintainer reviews and merges the PR.
 
 `.github/ISSUE_TEMPLATE/submit-exclusion.yml` is a GitHub issue form with required
 fields for product name, vendor, at least one source URL, and at least one exclusion row
-(`path;type;description;justification` per line — `path` and `type` are required per
-row).
+(`path;type;description;justification;condition;status` per line; `path` and `type` are
+required per row, the rest is optional and trailing columns can be left off).
 
 When someone submits it, `.github/workflows/submission-to-pr.yml` runs
 `tools/submission/applySubmission.ts`, which:

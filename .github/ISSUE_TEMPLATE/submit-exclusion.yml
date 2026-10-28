@@ -22,6 +22,10 @@ body:
         - Ivanti
         - ESET
         - Trend Micro
+        - ControlUp
+        - Parallels
+        - Omnissa
+        - Liquidware
         - Other (specify below)
     validations:
       required: true
@@ -70,15 +74,20 @@ body:
     attributes:
       label: Exclusions
       description: |
-        One exclusion per line: `path;type;description;justification`
+        One exclusion per line: `path;type;description;justification;condition;status`
 
-        - `path` and `type` are required. `description` and `justification` may be left
-          blank, but keep the semicolons so the columns line up.
+        - `path` and `type` are required. The other columns may be left blank, but keep
+          the semicolons so the columns line up. Trailing columns can be left off.
         - `type` should be one of: Process, File, Folder, File / Extension,
           File / Folder, File / Process, Registry
+        - `justification`: why it is needed, or extra advice.
+        - `condition`: when it applies, e.g. a version (`2311+`), OS or feature
+          (`Only when caching is enabled`).
+        - `status`: leave blank, or `legacy` for entries that only apply to older versions.
       placeholder: |
-        %ProgramFiles%\Example\example.exe;Process;;
-        %ProgramData%\Example\Cache\*;File / Folder;;Only when caching is enabled
+        %ProgramFiles%\Example\example.exe;Process;;;;
+        %ProgramData%\Example\Cache\*;File / Folder;;;Only when caching is enabled;
+        %ProgramFiles%\Example\old.exe;Process;;;Version 1.x;legacy
       render: text
     validations:
       required: true
