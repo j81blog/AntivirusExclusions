@@ -10,7 +10,8 @@ exclusions:
   - path: '%UserProfile%\AppData\Local\Citrix\SessionRecording\Player\Cache'
     type: Folder
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%ProgramFiles(x86)%\Citrix\SessionRecording\Player'
     type: Folder
     description: ''

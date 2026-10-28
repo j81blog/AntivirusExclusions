@@ -12,23 +12,28 @@ exclusions:
   - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName_log.ldf'
     type: File
     description: ''
-    justification: 1912+
+    justification: ''
+    condition: 1912+
   - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaDatabaseName.mdf'
     type: File
     description: ''
-    justification: 1912+
+    justification: ''
+    condition: 1912+
   - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName_log.ldf'
     type: File
     description: ''
-    justification: 1912+
+    justification: ''
+    condition: 1912+
   - path: '%SystemRoot%\ServiceProfiles\NetworkService\HaImportDatabaseName.mdf'
     type: File
     description: ''
-    justification: 1912+
+    justification: ''
+    condition: 1912+
   - path: '%ProgramData%\Citrix\Broker\Cache'
     type: Folder
     description: ''
-    justification: 1912+
+    justification: ''
+    condition: 1912+
   - path: '%ProgramFiles%\Citrix\Broker\Service\BrokerService.exe'
     type: Process
     description: ''
@@ -36,11 +41,13 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\Broker\Service\HighAvailabilityService.exe'
     type: Process
     description: ''
-    justification: 1912+
+    justification: ''
+    condition: 1912+
   - path: '%ProgramFiles%\Citrix\ConfigSync\ConfigSyncService.exe'
     type: Process
     description: ''
-    justification: 1912+
+    justification: ''
+    condition: 1912+
   - path: '%ProgramFiles%\Microsoft SQL Server\150\LocalDB\Binn\sqlservr.exe'
     type: Process
     description: ''
@@ -48,7 +55,8 @@ exclusions:
   - path: '%ProgramFiles%\Microsoft SQL Server\160\LocalDB\Binn\sqlservr.exe'
     type: Process
     description: ''
-    justification: 2311+
+    justification: ''
+    condition: 2311+
 tags: []
 ---
 

@@ -22,47 +22,60 @@ exclusions:
   - path: D:\mcsdif.vhdx
     type: File
     description: ''
-    justification: When using MCS I/O
+    justification: ''
+    condition: When using MCS I/O
   - path: '%ProgramFiles(x86)%\Citrix\HDX\bin\WebSocketService.exe'
     type: Process
     description: ''
-    justification: CVAD 2003+
+    justification: ''
+    condition: CVAD 2003+
   - path: '%ProgramFiles(x86)%\Citrix\ICAService\CtxSvcHost.exe'
     type: Process
     description: ''
-    justification: CVAD 1912 LTSR
+    justification: ''
+    condition: CVAD 1912 LTSR
   - path: '%ProgramFiles(x86)%\Citrix\System32\WebSocketService.exe'
     type: Process
     description: ''
-    justification: CVAD 1912 LTSR
+    justification: ''
+    condition: CVAD 1912 LTSR
   - path: '%ProgramFiles%\Citrix\HDX\bin\ctxgfx.exe'
     type: Process
     description: ''
-    justification: CVAD 2112+
+    justification: ''
+    condition: CVAD 2112+
   - path: '%ProgramFiles%\Citrix\HDX\bin\CtxSvcHost.exe'
     type: Process
     description: ''
-    justification: CVAD 2112+
+    justification: ''
+    condition: CVAD 2112+
   - path: '%ProgramFiles%\Citrix\HDX\bin\picaSvc2.exe'
     type: Process
     description: ''
-    justification: CVAD 2112+
+    justification: ''
+    condition: CVAD 2112+
   - path: '%ProgramFiles%\Citrix\HTML5 Video Redirection\WebSocketService.exe'
     type: Process
     description: ''
-    justification: CVAD 7.15 LTSR
+    justification: ''
+    condition: CVAD 7.15 LTSR
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVD.exe'
     type: Process
     description: ''
-    justification: AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    condition: AppDisks only
+    status: legacy
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVDSVC.exe'
     type: Process
     description: ''
-    justification: AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    condition: AppDisks only
+    status: legacy
   - path: '%ProgramFiles%\Citrix\System32\ctxgfx.exe'
     type: Process
     description: ''
-    justification: CVAD 1912 LTSR
+    justification: ''
+    condition: CVAD 1912 LTSR
   - path: '%ProgramFiles%\Citrix\User Profile Manager\UserProfileManager.exe'
     type: Process
     description: ''
@@ -74,15 +87,18 @@ exclusions:
   - path: '%SystemRoot%\System32\drivers\CVhdFilter.sys'
     type: Process
     description: ''
-    justification: When using MCS I/O
+    justification: ''
+    condition: When using MCS I/O
   - path: '%SystemRoot%\System32\spoolsv.exe'
     type: Process
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%SystemRoot%\System32\winlogon.exe'
     type: Process
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%ProgramData%\Citrix\XenDesktopSetup\CtxBackup.exe'
     type: Process
     description: ''

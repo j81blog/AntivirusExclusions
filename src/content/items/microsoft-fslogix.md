@@ -22,67 +22,83 @@ exclusions:
   - path: \\<storageaccount.file.core.windows.net>\<share>\*.VHDX
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHDX files
   - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.VHD
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHD files
   - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.lock
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHD files
   - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.meta
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHD files
   - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhd.metadata
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHD files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHD files
   - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.lock
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHDX files
   - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.meta
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHDX files
   - path: \\<storageaccount.file.core.windows.net>\<share>\*\*.vhdx.metadata
     type: File / Extension
     description: ''
-    justification: If Azure storage is used, change the value to the correct SA fqdn and share! Only when using VHDX files
+    justification: If Azure storage is used, change the value to the correct SA fqdn and share!
+    condition: Only when using VHDX files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhd
     type: File / Extension
     description: ''
-    justification: Only when using VHD files
+    justification: ''
+    condition: Only when using VHD files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhd.lock
     type: File / Extension
     description: ''
-    justification: Only when using VHD files
+    justification: ''
+    condition: Only when using VHD files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhd.meta
     type: File / Extension
     description: ''
-    justification: Only when using VHD files
+    justification: ''
+    condition: Only when using VHD files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhd.metadata
     type: File / Extension
     description: ''
-    justification: Only when using VHD files
+    justification: ''
+    condition: Only when using VHD files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhdx
     type: File / Extension
     description: ''
-    justification: Only when using VHDX files
+    justification: ''
+    condition: Only when using VHDX files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhdx.lock
     type: File / Extension
     description: ''
-    justification: Only when using VHDX files
+    justification: ''
+    condition: Only when using VHDX files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhdx.meta
     type: File / Extension
     description: ''
-    justification: Only when using VHDX files
+    justification: ''
+    condition: Only when using VHDX files
   - path: \\Fileserver\Share\fsllogixpath\*\*.vhdx.metadata
     type: File / Extension
     description: ''
-    justification: Only when using VHDX files
+    justification: ''
+    condition: Only when using VHDX files
   - path: '%SystemRoot%\TEMP\*.VHD'
     type: File / Extension
     description: ''
@@ -102,11 +118,13 @@ exclusions:
   - path: '%ProgramData%\FSLogix\Cache\*'
     type: File / Folder
     description: ''
-    justification: If CloudCache is enabled
+    justification: ''
+    condition: If CloudCache is enabled
   - path: '%ProgramData%\FSLogix\Proxy\*'
     type: File / Folder
     description: ''
-    justification: If CloudCache is enabled
+    justification: ''
+    condition: If CloudCache is enabled
   - path: '%ProgramFiles%\FSLogix\Apps\frxccd.exe'
     type: Process
     description: ''

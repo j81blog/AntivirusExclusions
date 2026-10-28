@@ -10,7 +10,8 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\SessionRecording\Server\App_Data*.xml'
     type: File
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: C:\SessionRecordings\<yyyy>\<MM>\<dd>\i_*.icl*
     type: File
     description: ''
@@ -18,7 +19,8 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\log'
     type: Folder
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%SystemRoot%\System32\msmq'
     type: Folder
     description: ''
@@ -102,11 +104,13 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\SsRecWebSocketServer.exe'
     type: Process
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%ProgramFiles%\Citrix\SessionRecording\Server\Bin\TestPolicyAdmin.exe'
     type: Process
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%ProgramFiles%\Citrix\SessionRecording\MQCoreService\Bin\SsRecMQCoreService.exe'
     type: Process
     description: ''

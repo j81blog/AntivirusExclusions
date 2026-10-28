@@ -14,7 +14,8 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\Provisioning Services\Pvsnbpn64.efi'
     type: File
     description: Boot file used for TFTP boot
-    justification: Only when UEFI PXE boot is used
+    justification: ''
+    condition: Only when UEFI PXE boot is used
   - path: '%SystemRoot%\System32\drivers\CfsDep2.sys'
     type: File
     description: ''
@@ -22,11 +23,13 @@ exclusions:
   - path: '%SystemRoot%\System32\drivers\CvhdBusP6.sys'
     type: File
     description: ''
-    justification: Windows Server 2008 R2
+    justification: ''
+    condition: Windows Server 2008 R2
   - path: '%SystemRoot%\System32\drivers\CVhdMp.sys'
     type: File
     description: ''
-    justification: Windows Server 2012 R2
+    justification: ''
+    condition: Windows Server 2012 R2
   - path: '**\*.avhd'
     type: File / Extension
     description: ''
@@ -70,11 +73,13 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\Provisioning Services\CFsDep2.sys'
     type: Process
     description: File system minifilter
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%ProgramFiles%\Citrix\Provisioning Services\CVhdMp.sys'
     type: Process
     description: Storage miniport driver
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%ProgramFiles%\Citrix\Provisioning Services\Inventory.exe'
     type: Process
     description: vDisk Inventory

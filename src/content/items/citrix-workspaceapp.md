@@ -12,11 +12,13 @@ exclusions:
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\ctxapclient32.dll'
     type: File
     description: ''
-    justification: Only when App Protection is used
+    justification: ''
+    condition: Only when App Protection is used
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\ctxapclient64.dll'
     type: File
     description: ''
-    justification: Only when App Protection is used
+    justification: ''
+    condition: Only when App Protection is used
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\ctxapdotnet.dll'
     type: File
     description: ''
@@ -24,7 +26,8 @@ exclusions:
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\ctxapinject.sys'
     type: File
     description: ''
-    justification: Only when App Protection is used
+    justification: ''
+    condition: Only when App Protection is used
   - path: '%userprofile%\AppData\Local\Temp\Citrix\RTMediaEngineSRV\MediaEngineSRVDebugLogs\*\*.txt'
     type: File
     description: ''
@@ -48,11 +51,13 @@ exclusions:
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\HdxRtcEngine.exe'
     type: Process
     description: ''
-    justification: Optimization for Microsoft Teams for Workspace app 2009.6 or higher 17-03-2022
+    justification: ''
+    condition: Optimization for Microsoft Teams for Workspace app 2009.6 or higher 17-03-2022
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\HdxTeams.exe'
     type: Process
     description: ''
-    justification: Optimization for Microsoft Teams for Workspace app 2009.5 or older
+    justification: ''
+    condition: Optimization for Microsoft Teams for Workspace app 2009.5 or older
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\Legacy\CDViewer.exe'
     type: Process
     description: ''
@@ -60,7 +65,8 @@ exclusions:
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\MediaEngineService.exe'
     type: Process
     description: ''
-    justification: Only when HDX RealTime Optimization Pack is used
+    justification: ''
+    condition: Only when HDX RealTime Optimization Pack is used
   - path: '%ProgramFiles(x86)%\Citrix\ICA Client\SelfServicePlugin\SelfService.exe'
     type: Process
     description: ''

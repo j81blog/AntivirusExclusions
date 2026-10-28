@@ -10,19 +10,23 @@ exclusions:
   - path: '%SystemRoot%\inetpub\logs\logfiles\**.log'
     type: File
     description: ''
-    justification: IIS 7
+    justification: ''
+    condition: IIS 7
   - path: '%SystemRoot%\system32\inetsrv\config\*.config'
     type: File
     description: ''
-    justification: IIS 7
+    justification: ''
+    condition: IIS 7
   - path: '%SystemRoot%\system32\inetsrv\MBschema.xml'
     type: File
     description: ''
-    justification: IIS 6
+    justification: ''
+    condition: IIS 6
   - path: '%SystemRoot%\system32\inetsrv\MetaBase.xml'
     type: File
     description: ''
-    justification: IIS 6
+    justification: ''
+    condition: IIS 6
   - path: '%systemDrive%\inetpub\logs'
     type: Folder
     description: ''
@@ -54,7 +58,8 @@ exclusions:
   - path: '%SystemRoot%\SysWOW64\inetsrv\w3wp.exe'
     type: Process
     description: ''
-    justification: x64 systems only
+    justification: ''
+    condition: x64 systems only
 tags: []
 ---
 

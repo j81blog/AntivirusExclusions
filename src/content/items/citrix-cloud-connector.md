@@ -86,7 +86,8 @@ exclusions:
   - path: C:\Logs\CDF
     type: Folder
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%ProgramData%\Citrix\WorkspaceCloud\InstallExes\CWCConnector.exe'
     type: Process
     description: ''
