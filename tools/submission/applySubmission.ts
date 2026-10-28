@@ -47,7 +47,10 @@ function splitFrontmatter(content: string): { data: Record<string, unknown>; bod
 }
 
 function writeContentFile(filePath: string, frontmatter: Record<string, unknown>, body: string) {
-  const yamlText = yaml.dump(frontmatter, { lineWidth: -1, noRefs: true });
+  // js-yaml quotes date-like strings; the hand-written files write lastReviewed unquoted.
+  const yamlText = yaml
+    .dump(frontmatter, { lineWidth: -1, noRefs: true })
+    .replace(/^lastReviewed: '(\d{4}-\d{2}-\d{2})'$/m, 'lastReviewed: $1');
   writeFileSync(filePath, `---\n${yamlText}---\n\n${body.trim()}\n`, 'utf8');
 }
 
@@ -263,8 +266,24 @@ function main() {
     return;
   }
 
-  // Every row carries all fields, matching the hand-written item files.
-  writeContentFile(itemPath, itemData, itemBody);
+  // Same key order as the hand-written item files; every row carries all fields.
+  // lastReviewed is written as a plain date, not a full timestamp.
+  const { lastReviewed, related, ...rest } = itemData;
+  writeContentFile(
+    itemPath,
+    {
+      vendor: rest.vendor,
+      title: rest.title,
+      order: rest.order,
+      ...(lastReviewed ? { lastReviewed: lastReviewed.toISOString().slice(0, 10) } : {}),
+      related,
+      sources: rest.sources,
+      notes: rest.notes,
+      exclusions: rest.exclusions,
+      tags: rest.tags,
+    },
+    itemBody,
+  );
   changedFiles.push(path.relative(ROOT, itemPath));
 
   const prTitle = isNewItem
