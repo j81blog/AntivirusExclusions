@@ -10,13 +10,15 @@ exclusions:
   - path: '%ProgramData%\App-V'
     type: Folder
     description: ''
-    justification: ''
-    condition: If no persistent cache
+    justification: Optional. Do not exclude the copy-on-write locations (%LocalAppData%\Microsoft\AppV).
+    condition: Only when using Shared Content Store mode, or packages that are not fully streamed
+    status: current
   - path: <CustomDrive>:\<CustomPath>
     type: Folder
     description: ''
     justification: Directory may be different
     condition: Only if persistent disk
+    status: legacy
 tags: []
 ---
 

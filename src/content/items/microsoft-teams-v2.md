@@ -1,7 +1,7 @@
 ---
 vendor: microsoft
 title: Microsoft Teams v2
-order: 8
+order: 14
 sources:
   - label: Exclude antivirus and DLP applications from blocking Teams
     url: https://learn.microsoft.com/en-us/troubleshoot/microsoftteams/teams-administration/include-exclude-teams-from-antivirus-dlp#new-teams
@@ -15,22 +15,32 @@ exclusions:
     type: Process
     description: ''
     justification: https://mc.merill.net/message/MC1189656
+    condition: ''
+    status: current
   - path: '%ProgramFiles%\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe\ms-teams.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramFiles%\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe\ms-teamsupdate.exe'
     type: Process
     description: ''
     justification: ''
-  - path: '%ProgramFiles%\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe\msedgewebview2.exe'
+    condition: ''
+    status: current
+  - path: msedgewebview2.exe
     type: Process
-    description: ''
-    justification: ''
+    description: Edge WebView2 runtime
+    justification: Runs from the Edge WebView2 runtime folder, not from the Teams folder, so exclude it by process name.
+    condition: ''
+    status: current
   - path: '%ProgramFiles%\WindowsApps\MSTeams_*_x64__8wekyb3d8bbwe\msteams_autostarter.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
 tags: []
 ---
 

@@ -15,14 +15,20 @@ exclusions:
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramFiles(x86)%\Norskale\Norskale Infrastructure Services\Norskale Broker Service.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
   - path: '%ProgramFiles(x86)%\Norskale\Norskale Infrastructure Services\Norskale Database Management Utility.exe'
     type: Process
     description: ''
     justification: ''
+    condition: ''
+    status: current
 tags: []
 ---
 
