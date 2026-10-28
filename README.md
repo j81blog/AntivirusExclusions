@@ -116,7 +116,9 @@ exclusions:
   - path: '%ProgramFiles%\FSLogix\Apps\frxccd.exe'
     type: Process
     description: ''
-    justification: ''
+    justification: ''         # why it is needed, or extra advice
+    condition: FSLogix 2.9+   # optional: when it applies (version, OS, feature)
+    status: legacy            # optional: only for older versions, hidden by default
 tags: []
 ---
 

@@ -163,7 +163,14 @@ function main() {
       errors.push(`Exclusion row ${lineNum}: ${error}`);
       return;
     }
-    normalizedRows.push({ path: row.path, type, description: row.description, justification: row.justification });
+    normalizedRows.push({
+      path: row.path,
+      type,
+      description: row.description,
+      justification: row.justification,
+      condition: '',
+      status: 'current',
+    });
   });
 
   if (errors.length > 0) {
@@ -249,7 +256,13 @@ function main() {
     return;
   }
 
-  writeContentFile(itemPath, itemData, itemBody);
+  // Only write condition/status when set, so files stay as compact as hand-written ones.
+  const compactExclusions = itemData.exclusions.map(({ condition, status, ...rest }) => ({
+    ...rest,
+    ...(condition ? { condition } : {}),
+    ...(status === 'legacy' ? { status } : {}),
+  }));
+  writeContentFile(itemPath, { ...itemData, exclusions: compactExclusions }, itemBody);
   changedFiles.push(path.relative(ROOT, itemPath));
 
   const prTitle = isNewItem

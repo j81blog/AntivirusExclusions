@@ -10,11 +10,13 @@ exclusions:
   - path: '%ProgramData%\App-V'
     type: Folder
     description: ''
-    justification: If no persistent cache
+    justification: ''
+    condition: If no persistent cache
   - path: <CustomDrive>:\<CustomPath>
     type: Folder
     description: ''
-    justification: Only if persistent disk (Directory may be different)
+    justification: Directory may be different
+    condition: Only if persistent disk
 tags: []
 ---
 

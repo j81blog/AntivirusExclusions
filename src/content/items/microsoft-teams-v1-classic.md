@@ -10,27 +10,33 @@ exclusions:
   - path: '%localappdata%\Microsoft\Teams\current\squirrel.exe'
     type: File
     description: ''
-    justification: Per-User install
+    justification: ''
+    condition: Per-User install
   - path: '%localappdata%\Microsoft\Teams\current\teams.exe'
     type: File
     description: ''
-    justification: Per-User install
+    justification: ''
+    condition: Per-User install
   - path: '%localappdata%\Microsoft\Teams\update.exe'
     type: File
     description: ''
-    justification: Per-User install
+    justification: ''
+    condition: Per-User install
   - path: '%ProgramFiles(x86)%\Microsoft\Teams\current\squirrel.exe'
     type: File
     description: ''
-    justification: Per-Machine install
+    justification: ''
+    condition: Per-Machine install
   - path: '%ProgramFiles(x86)%\Microsoft\Teams\current\teams.exe'
     type: File
     description: ''
-    justification: Per-Machine install
+    justification: ''
+    condition: Per-Machine install
   - path: '%ProgramFiles(x86)%\Microsoft\Teams\update.exe'
     type: File
     description: ''
-    justification: Per-Machine install
+    justification: ''
+    condition: Per-Machine install
 tags: []
 ---
 

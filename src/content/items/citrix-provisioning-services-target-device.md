@@ -10,7 +10,8 @@ exclusions:
   - path: '**\vdiskdif.vhdx'
     type: File
     description: ''
-    justification: 7.x only, when using RAM cache with overflow
+    justification: ''
+    condition: 7.x only, when using RAM cache with overflow
   - path: '%SystemRoot%\System32\drivers\bnistack6.sys'
     type: File
     description: ''
@@ -26,11 +27,13 @@ exclusions:
   - path: '%SystemRoot%\System32\drivers\CVhdBusP6.sys'
     type: File
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
   - path: '%SystemRoot%\System32\drivers\CVhdMp.sys'
     type: File
     description: ''
-    justification: 7.x only
+    justification: ''
+    condition: 7.x only
   - path: '**\*.vdiskcache'
     type: File / Extension
     description: ''
@@ -38,11 +41,15 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVD.exe'
     type: Process
     description: ''
-    justification: PvD and AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    condition: PvD and AppDisks only
+    status: legacy
   - path: '%ProgramFiles%\Citrix\Personal vDisk\BIN\CTXPVDSVC.exe'
     type: Process
     description: ''
-    justification: PvD and AppDisks only. Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    condition: PvD and AppDisks only
+    status: legacy
   - path: '%ProgramFiles%\Citrix\Provisioning Services\BNDevice.exe'
     type: Process
     description: Handles client functions, licensing, etc
@@ -66,7 +73,8 @@ exclusions:
   - path: '%ProgramFiles%\Citrix\PvsVm\Service\PvsVmAgent.exe'
     type: Process
     description: ''
-    justification: Older versions only, no longer listed in the 2026 Citrix tech paper
+    justification: ''
+    status: legacy
 tags: []
 ---
 

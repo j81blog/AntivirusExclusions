@@ -8,11 +8,13 @@ exclusions:
   - path: '%localappdata%\Microsoft\OneDrive\OneDrive.exe'
     type: Process
     description: Microsoft OneDrive
-    justification: Per-User install
+    justification: ''
+    condition: Per-User install
   - path: '%ProgramFiles%\Microsoft OneDrive\OneDrive.exe'
     type: Process
     description: Microsoft OneDrive
-    justification: Per-Machine install
+    justification: ''
+    condition: Per-Machine install
 tags: []
 ---
 

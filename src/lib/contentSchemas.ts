@@ -15,6 +15,10 @@ export const exclusionSchema = z.object({
   type: z.string(),
   description: z.string().default(''),
   justification: z.string().default(''),
+  /** When the exclusion applies, e.g. a product version, OS or feature. */
+  condition: z.string().default(''),
+  /** `legacy`: only for older product versions, hidden by default. */
+  status: z.enum(['current', 'legacy']).default('current'),
 });
 
 export const itemSchema = z.object({

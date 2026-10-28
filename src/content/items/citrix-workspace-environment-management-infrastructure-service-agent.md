@@ -14,11 +14,13 @@ exclusions:
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent'
     type: Folder
     description: ''
-    justification: On 64-bit OS
+    justification: ''
+    condition: On 64-bit OS
   - path: '%ProgramFiles%\Citrix\Workspace Environment Management Agent'
     type: Folder
     description: ''
-    justification: '32-bit OS only'
+    justification: ''
+    condition: 32-bit OS only
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Agent Log Parser.exe'
     type: Process
     description: ''
@@ -50,11 +52,13 @@ exclusions:
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Citrix.Wem.Agent.Service.exe'
     type: Process
     description: ''
-    justification: On-prem 1909+ /Cloud 1903+
+    justification: ''
+    condition: On-prem 1909+ /Cloud 1903+
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\Norskale Agent Host Service.exe'
     type: Process
     description: ''
-    justification: Up to on-prem 1909+/ Up to cloud 1903+
+    justification: ''
+    condition: Up to on-prem 1909+/ Up to cloud 1903+
   - path: '%ProgramFiles(x86)%\Citrix\Workspace Environment Management Agent\PrnsMgmtUtil.exe'
     type: Process
     description: ''

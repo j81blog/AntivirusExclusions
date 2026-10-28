@@ -9,6 +9,9 @@ export interface CartItem {
   type: string;
   description: string;
   justification: string;
+  /** Optional: entries saved before these fields existed lack them. */
+  condition?: string;
+  status?: 'current' | 'legacy';
   addedAt: string;
 }
 
@@ -18,6 +21,8 @@ export interface CartRowInput {
   type: string;
   description: string;
   justification: string;
+  condition: string;
+  status: 'current' | 'legacy';
 }
 
 /**
@@ -46,6 +51,8 @@ export function addRowsToCart(itemSlug: string, itemTitle: string, rows: CartRow
       type: row.type,
       description: row.description,
       justification: row.justification,
+      condition: row.condition,
+      status: row.status,
       addedAt,
     }));
 

@@ -11,14 +11,24 @@ function downloadBlob(filename: string, content: string, mime: string) {
   URL.revokeObjectURL(url);
 }
 
+const HEADER = ['Product', 'Exclusion', 'Type', 'Applies when', 'Description', 'Justification', 'Status'];
+
+function toRow(item: CartItem): string[] {
+  return [
+    item.itemTitle,
+    item.path,
+    item.type,
+    item.condition ?? '',
+    item.description,
+    item.justification,
+    item.status ?? 'current',
+  ];
+}
+
 function toCsv(items: CartItem[]): string {
-  const header = ['Product', 'Exclusion', 'Type', 'Description', 'Justification'];
+  const header = HEADER;
   const escape = (value: string) => `"${value.replace(/"/g, '""')}"`;
-  const rows = items.map((item) =>
-    [item.itemTitle, item.path, item.type, item.description, item.justification]
-      .map(escape)
-      .join(','),
-  );
+  const rows = items.map((item) => toRow(item).map(escape).join(','));
   return [header.join(','), ...rows].join('\r\n');
 }
 
@@ -30,8 +40,8 @@ async function toPdf(items: CartItem[]) {
   doc.text('AV exclusions - selected items', 14, 14);
   autoTable(doc, {
     startY: 20,
-    head: [['Product', 'Exclusion', 'Type', 'Description', 'Justification']],
-    body: items.map((item) => [item.itemTitle, item.path, item.type, item.description, item.justification]),
+    head: [HEADER],
+    body: items.map(toRow),
     styles: { fontSize: 8 },
   });
   doc.save('av-exclusions-selection.pdf');
@@ -76,6 +86,7 @@ export default function CartPage() {
               <th>Product</th>
               <th>Exclusion</th>
               <th>Type</th>
+              <th>Applies when</th>
               <th>Description</th>
               <th>Justification</th>
               <th></th>
@@ -87,8 +98,12 @@ export default function CartPage() {
                 <td>
                   <a href={`/items/${item.itemSlug}/`}>{item.itemTitle}</a>
                 </td>
-                <td class="mono">{item.path}</td>
+                <td class="mono">
+                  {item.path}
+                  {item.status === 'legacy' && <span class="legacy-badge">Legacy</span>}
+                </td>
                 <td>{item.type}</td>
+                <td>{item.condition || '—'}</td>
                 <td>{item.description || '—'}</td>
                 <td>{item.justification || '—'}</td>
                 <td>
