@@ -20,7 +20,7 @@
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.9",
     "nanostores": "^1.5.5",
-    "preact": "^10.29.8",
+    "preact": "^11.1.0",
     "tabulator-tables": "^6.7.1",
     "zod": "^4.6.7"
   },
